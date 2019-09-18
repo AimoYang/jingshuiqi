@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.GoodsOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.GoodsOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="order_price" property="orderPrice" jdbcType="INTEGER" />
+    <result column="actual_price" property="actualPrice" jdbcType="INTEGER" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="CHAR" />
+    <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
+    <result column="buyer_message" property="buyerMessage" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="is_comment" property="isComment" jdbcType="INTEGER" />
+    <result column="pay_uuid" property="payUuid" jdbcType="VARCHAR" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+    <result column="trade_successful_time" property="tradeSuccessfulTime" jdbcType="TIMESTAMP" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, open_id, order_price, actual_price, receiver_name, receiver_phone, receiver_address, 
+    buyer_message, freight, order_status, is_comment, pay_uuid, pay_time, delivery_time, 
+    trade_successful_time, pay_type, create_time, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.GoodsOrder" >
+    insert into goods_order (id, uuid, open_id, 
+      order_price, actual_price, receiver_name, 
+      receiver_phone, receiver_address, buyer_message, 
+      freight, order_status, is_comment, 
+      pay_uuid, pay_time, delivery_time, 
+      trade_successful_time, pay_type, create_time, 
+      is_delete)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{orderPrice,jdbcType=INTEGER}, #{actualPrice,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, 
+      #{receiverPhone,jdbcType=CHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{buyerMessage,jdbcType=VARCHAR}, 
+      #{freight,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{isComment,jdbcType=INTEGER}, 
+      #{payUuid,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP}, 
+      #{tradeSuccessfulTime,jdbcType=TIMESTAMP}, #{payType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsOrder" >
+    insert into goods_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="orderPrice != null" >
+        order_price,
+      </if>
+      <if test="actualPrice != null" >
+        actual_price,
+      </if>
+      <if test="receiverName != null" >
+        receiver_name,
+      </if>
+      <if test="receiverPhone != null" >
+        receiver_phone,
+      </if>
+      <if test="receiverAddress != null" >
+        receiver_address,
+      </if>
+      <if test="buyerMessage != null" >
+        buyer_message,
+      </if>
+      <if test="freight != null" >
+        freight,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="isComment != null" >
+        is_comment,
+      </if>
+      <if test="payUuid != null" >
+        pay_uuid,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time,
+      </if>
+      <if test="tradeSuccessfulTime != null" >
+        trade_successful_time,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null" >
+        #{orderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="actualPrice != null" >
+        #{actualPrice,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null" >
+        #{receiverPhone,jdbcType=CHAR},
+      </if>
+      <if test="receiverAddress != null" >
+        #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerMessage != null" >
+        #{buyerMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isComment != null" >
+        #{isComment,jdbcType=INTEGER},
+      </if>
+      <if test="payUuid != null" >
+        #{payUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryTime != null" >
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeSuccessfulTime != null" >
+        #{tradeSuccessfulTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.GoodsOrder" >
+    update goods_order
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="orderPrice != null" >
+        order_price = #{orderPrice,jdbcType=INTEGER},
+      </if>
+      <if test="actualPrice != null" >
+        actual_price = #{actualPrice,jdbcType=INTEGER},
+      </if>
+      <if test="receiverName != null" >
+        receiver_name = #{receiverName,jdbcType=VARCHAR},
+      </if>
+      <if test="receiverPhone != null" >
+        receiver_phone = #{receiverPhone,jdbcType=CHAR},
+      </if>
+      <if test="receiverAddress != null" >
+        receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="buyerMessage != null" >
+        buyer_message = #{buyerMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="isComment != null" >
+        is_comment = #{isComment,jdbcType=INTEGER},
+      </if>
+      <if test="payUuid != null" >
+        pay_uuid = #{payUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeSuccessfulTime != null" >
+        trade_successful_time = #{tradeSuccessfulTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.GoodsOrder" >
+    update goods_order
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      order_price = #{orderPrice,jdbcType=INTEGER},
+      actual_price = #{actualPrice,jdbcType=INTEGER},
+      receiver_name = #{receiverName,jdbcType=VARCHAR},
+      receiver_phone = #{receiverPhone,jdbcType=CHAR},
+      receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      buyer_message = #{buyerMessage,jdbcType=VARCHAR},
+      freight = #{freight,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      is_comment = #{isComment,jdbcType=INTEGER},
+      pay_uuid = #{payUuid,jdbcType=VARCHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      trade_successful_time = #{tradeSuccessfulTime,jdbcType=TIMESTAMP},
+      pay_type = #{payType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

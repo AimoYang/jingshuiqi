@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.ReAdvertisementGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.ReAdvertisementGoods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="advertisement_id" property="advertisementId" jdbcType="INTEGER" />
+    <result column="goods_uuid" property="goodsUuid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, advertisement_id, goods_uuid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from re_advertisement_goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from re_advertisement_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.ReAdvertisementGoods" >
+    insert into re_advertisement_goods (id, advertisement_id, goods_uuid
+      )
+    values (#{id,jdbcType=INTEGER}, #{advertisementId,jdbcType=INTEGER}, #{goodsUuid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.ReAdvertisementGoods" >
+    insert into re_advertisement_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="advertisementId != null" >
+        advertisement_id,
+      </if>
+      <if test="goodsUuid != null" >
+        goods_uuid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="advertisementId != null" >
+        #{advertisementId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsUuid != null" >
+        #{goodsUuid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.ReAdvertisementGoods" >
+    update re_advertisement_goods
+    <set >
+      <if test="advertisementId != null" >
+        advertisement_id = #{advertisementId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsUuid != null" >
+        goods_uuid = #{goodsUuid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.ReAdvertisementGoods" >
+    update re_advertisement_goods
+    set advertisement_id = #{advertisementId,jdbcType=INTEGER},
+      goods_uuid = #{goodsUuid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

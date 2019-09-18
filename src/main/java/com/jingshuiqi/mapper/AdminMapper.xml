@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.AdminMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.Admin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="admin" property="admin" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="establish_date" property="establishDate" jdbcType="TIMESTAMP" />
+    <result column="lastlogin_time" property="lastloginTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="is_super" property="isSuper" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="demo" property="demo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, token, admin, password, establish_date, lastlogin_time, status, is_super, 
+    is_delete, demo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.Admin" >
+    insert into admin (id, uuid, token, 
+      admin, password, establish_date, 
+      lastlogin_time, status, is_super, 
+      is_delete, demo)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=CHAR}, #{token,jdbcType=VARCHAR}, 
+      #{admin,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{establishDate,jdbcType=TIMESTAMP}, 
+      #{lastloginTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{isSuper,jdbcType=INTEGER}, 
+      #{isDelete,jdbcType=INTEGER}, #{demo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.Admin" >
+    insert into admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="admin != null" >
+        admin,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="establishDate != null" >
+        establish_date,
+      </if>
+      <if test="lastloginTime != null" >
+        lastlogin_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isSuper != null" >
+        is_super,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="demo != null" >
+        demo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="admin != null" >
+        #{admin,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null" >
+        #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginTime != null" >
+        #{lastloginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSuper != null" >
+        #{isSuper,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="demo != null" >
+        #{demo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.Admin" >
+    update admin
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="admin != null" >
+        admin = #{admin,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null" >
+        establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastloginTime != null" >
+        lastlogin_time = #{lastloginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isSuper != null" >
+        is_super = #{isSuper,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="demo != null" >
+        demo = #{demo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.Admin" >
+    update admin
+    set uuid = #{uuid,jdbcType=CHAR},
+      token = #{token,jdbcType=VARCHAR},
+      admin = #{admin,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      lastlogin_time = #{lastloginTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      is_super = #{isSuper,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      demo = #{demo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

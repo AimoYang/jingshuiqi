@@ -1,0 +1,58 @@
+package com.jingshuiqi.service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSONObject;
+import com.yidao.bean.Message;
+import com.yidao.bean.TestMessage;
+import com.yidao.dao.MessageDao;
+import com.yidao.util.WeixinUtil;
+
+@Service
+public class CustomService {
+	
+	@Autowired
+	private AccessTokenService accessTokenService;
+	@Autowired
+	private MessageDao messageDao;
+	
+	protected static final Logger logger = LoggerFactory.getLogger(CustomService.class);
+
+	public void content(String openid, String text){
+		//获得accessToken
+		String accessToken = accessTokenService.findAccessToken();
+		TestMessage testMessage = new TestMessage();
+		//设置消息的类型
+		testMessage.setMsgtype("text");
+		if (text.equals("1")) {
+			text ="大汉医道，汉之学府" + "\n" + "恭喜您成为闻道者，一年课程无限畅听，分享可获198元奖励！";
+		}
+		if (text.equals("2")) {
+			text ="大汉医道，汉之学府" + "\r\n" + "恭喜您成为闻道者，一年课程无限畅听，分享可获198元奖励！";
+		}
+		//发送的openid
+		testMessage.setTouser(openid);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("content", text);
+		testMessage.setText(map);
+		String jsonMessage = JSONObject.toJSONString(testMessage);
+		net.sf.json.JSONObject jsonObject = WeixinUtil.cusMsgToUser(jsonMessage, accessToken);
+		Message message = new Message();
+		message.setOpenid(openid);
+		message.setMeTime(new Date());
+		message.setMessage(text);
+		int row = messageDao.saveMessage(message);
+		if (row <= 0 || 0 != jsonObject.getInt("errcode")){
+				logger.error("信息未保存成功：" +"Time:"+ (new Date()).toString() +"------"+ text );
+		}
+		System.out.println(jsonObject);
+	}
+	
+}

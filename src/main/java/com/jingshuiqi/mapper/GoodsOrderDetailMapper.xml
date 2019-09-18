@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.GoodsOrderDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.GoodsOrderDetail" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
+    <result column="goods_uuid" property="goodsUuid" jdbcType="VARCHAR" />
+    <result column="sku_uuid" property="skuUuid" jdbcType="VARCHAR" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="properties" property="properties" jdbcType="VARCHAR" />
+    <result column="deduction" property="deduction" jdbcType="INTEGER" />
+    <result column="commission" property="commission" jdbcType="DOUBLE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name, 
+    amount, properties, deduction, commission, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goods_order_detail
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods_order_detail
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.GoodsOrderDetail" >
+    insert into goods_order_detail (id, uuid, order_uuid, 
+      goods_uuid, sku_uuid, quantity, 
+      price, thumb, product_name, 
+      amount, properties, deduction, 
+      commission, status)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, 
+      #{goodsUuid,jdbcType=VARCHAR}, #{skuUuid,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
+      #{price,jdbcType=INTEGER}, #{thumb,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=INTEGER}, #{properties,jdbcType=VARCHAR}, #{deduction,jdbcType=INTEGER}, 
+      #{commission,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsOrderDetail" >
+    insert into goods_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid,
+      </if>
+      <if test="goodsUuid != null" >
+        goods_uuid,
+      </if>
+      <if test="skuUuid != null" >
+        sku_uuid,
+      </if>
+      <if test="quantity != null" >
+        quantity,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="properties != null" >
+        properties,
+      </if>
+      <if test="deduction != null" >
+        deduction,
+      </if>
+      <if test="commission != null" >
+        commission,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUuid != null" >
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUuid != null" >
+        #{goodsUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="skuUuid != null" >
+        #{skuUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="properties != null" >
+        #{properties,jdbcType=VARCHAR},
+      </if>
+      <if test="deduction != null" >
+        #{deduction,jdbcType=INTEGER},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.GoodsOrderDetail" >
+    update goods_order_detail
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsUuid != null" >
+        goods_uuid = #{goodsUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="skuUuid != null" >
+        sku_uuid = #{skuUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="quantity != null" >
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="properties != null" >
+        properties = #{properties,jdbcType=VARCHAR},
+      </if>
+      <if test="deduction != null" >
+        deduction = #{deduction,jdbcType=INTEGER},
+      </if>
+      <if test="commission != null" >
+        commission = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.GoodsOrderDetail" >
+    update goods_order_detail
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      goods_uuid = #{goodsUuid,jdbcType=VARCHAR},
+      sku_uuid = #{skuUuid,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      properties = #{properties,jdbcType=VARCHAR},
+      deduction = #{deduction,jdbcType=INTEGER},
+      commission = #{commission,jdbcType=DOUBLE},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

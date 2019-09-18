@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.OrderCommissionMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.OrderCommission" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_detail_uuid" property="orderDetailUuid" jdbcType="VARCHAR" />
+    <result column="parent_open_id" property="parentOpenId" jdbcType="VARCHAR" />
+    <result column="grandpa_open_id" property="grandpaOpenId" jdbcType="VARCHAR" />
+    <result column="parent_commission" property="parentCommission" jdbcType="DOUBLE" />
+    <result column="grandpa_commission" property="grandpaCommission" jdbcType="DOUBLE" />
+    <result column="actual_parent_commission" property="actualParentCommission" jdbcType="DOUBLE" />
+    <result column="actual_grandpa_commission" property="actualGrandpaCommission" jdbcType="DOUBLE" />
+    <result column="is_success" property="isSuccess" jdbcType="SMALLINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="do_time" property="doTime" jdbcType="TIMESTAMP" />
+    <result column="do_type" property="doType" jdbcType="SMALLINT" />
+    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
+    <result column="reserve1" property="reserve1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_detail_uuid, parent_open_id, grandpa_open_id, parent_commission, grandpa_commission, 
+    actual_parent_commission, actual_grandpa_commission, is_success, create_time, do_time, 
+    do_type, reserve, reserve1
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from order_commission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from order_commission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.OrderCommission" >
+    insert into order_commission (id, order_detail_uuid, parent_open_id, 
+      grandpa_open_id, parent_commission, grandpa_commission, 
+      actual_parent_commission, actual_grandpa_commission, 
+      is_success, create_time, do_time, 
+      do_type, reserve, reserve1
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderDetailUuid,jdbcType=VARCHAR}, #{parentOpenId,jdbcType=VARCHAR}, 
+      #{grandpaOpenId,jdbcType=VARCHAR}, #{parentCommission,jdbcType=DOUBLE}, #{grandpaCommission,jdbcType=DOUBLE}, 
+      #{actualParentCommission,jdbcType=DOUBLE}, #{actualGrandpaCommission,jdbcType=DOUBLE}, 
+      #{isSuccess,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP}, #{doTime,jdbcType=TIMESTAMP}, 
+      #{doType,jdbcType=SMALLINT}, #{reserve,jdbcType=VARCHAR}, #{reserve1,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.OrderCommission" >
+    insert into order_commission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderDetailUuid != null" >
+        order_detail_uuid,
+      </if>
+      <if test="parentOpenId != null" >
+        parent_open_id,
+      </if>
+      <if test="grandpaOpenId != null" >
+        grandpa_open_id,
+      </if>
+      <if test="parentCommission != null" >
+        parent_commission,
+      </if>
+      <if test="grandpaCommission != null" >
+        grandpa_commission,
+      </if>
+      <if test="actualParentCommission != null" >
+        actual_parent_commission,
+      </if>
+      <if test="actualGrandpaCommission != null" >
+        actual_grandpa_commission,
+      </if>
+      <if test="isSuccess != null" >
+        is_success,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="doTime != null" >
+        do_time,
+      </if>
+      <if test="doType != null" >
+        do_type,
+      </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
+      <if test="reserve1 != null" >
+        reserve1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderDetailUuid != null" >
+        #{orderDetailUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOpenId != null" >
+        #{parentOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="grandpaOpenId != null" >
+        #{grandpaOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCommission != null" >
+        #{parentCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="grandpaCommission != null" >
+        #{grandpaCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="actualParentCommission != null" >
+        #{actualParentCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="actualGrandpaCommission != null" >
+        #{actualGrandpaCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="isSuccess != null" >
+        #{isSuccess,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doTime != null" >
+        #{doTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doType != null" >
+        #{doType,jdbcType=SMALLINT},
+      </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        #{reserve1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.OrderCommission" >
+    update order_commission
+    <set >
+      <if test="orderDetailUuid != null" >
+        order_detail_uuid = #{orderDetailUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOpenId != null" >
+        parent_open_id = #{parentOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="grandpaOpenId != null" >
+        grandpa_open_id = #{grandpaOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCommission != null" >
+        parent_commission = #{parentCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="grandpaCommission != null" >
+        grandpa_commission = #{grandpaCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="actualParentCommission != null" >
+        actual_parent_commission = #{actualParentCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="actualGrandpaCommission != null" >
+        actual_grandpa_commission = #{actualGrandpaCommission,jdbcType=DOUBLE},
+      </if>
+      <if test="isSuccess != null" >
+        is_success = #{isSuccess,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doTime != null" >
+        do_time = #{doTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="doType != null" >
+        do_type = #{doType,jdbcType=SMALLINT},
+      </if>
+      <if test="reserve != null" >
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve1 != null" >
+        reserve1 = #{reserve1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.OrderCommission" >
+    update order_commission
+    set order_detail_uuid = #{orderDetailUuid,jdbcType=VARCHAR},
+      parent_open_id = #{parentOpenId,jdbcType=VARCHAR},
+      grandpa_open_id = #{grandpaOpenId,jdbcType=VARCHAR},
+      parent_commission = #{parentCommission,jdbcType=DOUBLE},
+      grandpa_commission = #{grandpaCommission,jdbcType=DOUBLE},
+      actual_parent_commission = #{actualParentCommission,jdbcType=DOUBLE},
+      actual_grandpa_commission = #{actualGrandpaCommission,jdbcType=DOUBLE},
+      is_success = #{isSuccess,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      do_time = #{doTime,jdbcType=TIMESTAMP},
+      do_type = #{doType,jdbcType=SMALLINT},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      reserve1 = #{reserve1,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

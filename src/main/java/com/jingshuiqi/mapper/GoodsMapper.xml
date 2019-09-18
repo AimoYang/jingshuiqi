@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.GoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.Goods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="one_sort_id" property="oneSortId" jdbcType="INTEGER" />
+    <result column="show_count" property="showCount" jdbcType="INTEGER" />
+    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
+    <result column="pictures" property="pictures" jdbcType="VARCHAR" />
+    <result column="goods_create_time" property="goodsCreateTime" jdbcType="TIMESTAMP" />
+    <result column="goods_update_time" property="goodsUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="is_shelf" property="isShelf" jdbcType="INTEGER" />
+    <result column="cover_img" property="coverImg" jdbcType="VARCHAR" />
+    <result column="goods_video" property="goodsVideo" jdbcType="VARCHAR" />
+    <result column="video_type" property="videoType" jdbcType="INTEGER" />
+    <result column="deduction_max" property="deductionMax" jdbcType="INTEGER" />
+    <result column="deduction_by" property="deductionBy" jdbcType="INTEGER" />
+    <result column="logo_name" property="logoName" jdbcType="VARCHAR" />
+    <result column="logo_img" property="logoImg" jdbcType="VARCHAR" />
+    <result column="goods_type" property="goodsType" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="freight" property="freight" jdbcType="DOUBLE" />
+    <result column="is_one" property="isOne" jdbcType="INTEGER" />
+    <result column="is_hot" property="isHot" jdbcType="INTEGER" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="is_recommend" property="isRecommend" jdbcType="INTEGER" />
+    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.jingshuiqi.bean.GoodsWithBLOBs" extends="BaseResultMap" >
+    <result column="details" property="details" jdbcType="LONGVARCHAR" />
+    <result column="specification" property="specification" jdbcType="LONGVARCHAR" />
+    <result column="after_sales" property="afterSales" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, goods_create_time, 
+    goods_update_time, is_shelf, cover_img, goods_video, video_type, deduction_max, deduction_by, 
+    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend, 
+    reserve
+  </sql>
+  <sql id="Blob_Column_List" >
+    details, specification, after_sales
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.GoodsWithBLOBs" >
+    insert into goods (id, uuid, goods_name, 
+      one_sort_id, show_count, thumb, 
+      pictures, goods_create_time, goods_update_time, 
+      is_shelf, cover_img, goods_video, 
+      video_type, deduction_max, deduction_by, 
+      logo_name, logo_img, goods_type, 
+      sort, freight, is_one, 
+      is_hot, is_delete, is_recommend, 
+      reserve, details, specification, 
+      after_sales)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
+      #{oneSortId,jdbcType=INTEGER}, #{showCount,jdbcType=INTEGER}, #{thumb,jdbcType=VARCHAR}, 
+      #{pictures,jdbcType=VARCHAR}, #{goodsCreateTime,jdbcType=TIMESTAMP}, #{goodsUpdateTime,jdbcType=TIMESTAMP}, 
+      #{isShelf,jdbcType=INTEGER}, #{coverImg,jdbcType=VARCHAR}, #{goodsVideo,jdbcType=VARCHAR}, 
+      #{videoType,jdbcType=INTEGER}, #{deductionMax,jdbcType=INTEGER}, #{deductionBy,jdbcType=INTEGER}, 
+      #{logoName,jdbcType=VARCHAR}, #{logoImg,jdbcType=VARCHAR}, #{goodsType,jdbcType=INTEGER}, 
+      #{sort,jdbcType=INTEGER}, #{freight,jdbcType=DOUBLE}, #{isOne,jdbcType=INTEGER}, 
+      #{isHot,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{isRecommend,jdbcType=INTEGER}, 
+      #{reserve,jdbcType=VARCHAR}, #{details,jdbcType=LONGVARCHAR}, #{specification,jdbcType=LONGVARCHAR}, 
+      #{afterSales,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsWithBLOBs" >
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
+      <if test="oneSortId != null" >
+        one_sort_id,
+      </if>
+      <if test="showCount != null" >
+        show_count,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+      <if test="pictures != null" >
+        pictures,
+      </if>
+      <if test="goodsCreateTime != null" >
+        goods_create_time,
+      </if>
+      <if test="goodsUpdateTime != null" >
+        goods_update_time,
+      </if>
+      <if test="isShelf != null" >
+        is_shelf,
+      </if>
+      <if test="coverImg != null" >
+        cover_img,
+      </if>
+      <if test="goodsVideo != null" >
+        goods_video,
+      </if>
+      <if test="videoType != null" >
+        video_type,
+      </if>
+      <if test="deductionMax != null" >
+        deduction_max,
+      </if>
+      <if test="deductionBy != null" >
+        deduction_by,
+      </if>
+      <if test="logoName != null" >
+        logo_name,
+      </if>
+      <if test="logoImg != null" >
+        logo_img,
+      </if>
+      <if test="goodsType != null" >
+        goods_type,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="freight != null" >
+        freight,
+      </if>
+      <if test="isOne != null" >
+        is_one,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="isRecommend != null" >
+        is_recommend,
+      </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+      <if test="specification != null" >
+        specification,
+      </if>
+      <if test="afterSales != null" >
+        after_sales,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="oneSortId != null" >
+        #{oneSortId,jdbcType=INTEGER},
+      </if>
+      <if test="showCount != null" >
+        #{showCount,jdbcType=INTEGER},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="pictures != null" >
+        #{pictures,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCreateTime != null" >
+        #{goodsCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsUpdateTime != null" >
+        #{goodsUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isShelf != null" >
+        #{isShelf,jdbcType=INTEGER},
+      </if>
+      <if test="coverImg != null" >
+        #{coverImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsVideo != null" >
+        #{goodsVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null" >
+        #{videoType,jdbcType=INTEGER},
+      </if>
+      <if test="deductionMax != null" >
+        #{deductionMax,jdbcType=INTEGER},
+      </if>
+      <if test="deductionBy != null" >
+        #{deductionBy,jdbcType=INTEGER},
+      </if>
+      <if test="logoName != null" >
+        #{logoName,jdbcType=VARCHAR},
+      </if>
+      <if test="logoImg != null" >
+        #{logoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="freight != null" >
+        #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="isOne != null" >
+        #{isOne,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isRecommend != null" >
+        #{isRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="specification != null" >
+        #{specification,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="afterSales != null" >
+        #{afterSales,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.GoodsWithBLOBs" >
+    update goods
+    <set >
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsName != null" >
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="oneSortId != null" >
+        one_sort_id = #{oneSortId,jdbcType=INTEGER},
+      </if>
+      <if test="showCount != null" >
+        show_count = #{showCount,jdbcType=INTEGER},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="pictures != null" >
+        pictures = #{pictures,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsCreateTime != null" >
+        goods_create_time = #{goodsCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goodsUpdateTime != null" >
+        goods_update_time = #{goodsUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isShelf != null" >
+        is_shelf = #{isShelf,jdbcType=INTEGER},
+      </if>
+      <if test="coverImg != null" >
+        cover_img = #{coverImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsVideo != null" >
+        goods_video = #{goodsVideo,jdbcType=VARCHAR},
+      </if>
+      <if test="videoType != null" >
+        video_type = #{videoType,jdbcType=INTEGER},
+      </if>
+      <if test="deductionMax != null" >
+        deduction_max = #{deductionMax,jdbcType=INTEGER},
+      </if>
+      <if test="deductionBy != null" >
+        deduction_by = #{deductionBy,jdbcType=INTEGER},
+      </if>
+      <if test="logoName != null" >
+        logo_name = #{logoName,jdbcType=VARCHAR},
+      </if>
+      <if test="logoImg != null" >
+        logo_img = #{logoImg,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsType != null" >
+        goods_type = #{goodsType,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="freight != null" >
+        freight = #{freight,jdbcType=DOUBLE},
+      </if>
+      <if test="isOne != null" >
+        is_one = #{isOne,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isRecommend != null" >
+        is_recommend = #{isRecommend,jdbcType=INTEGER},
+      </if>
+      <if test="reserve != null" >
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="specification != null" >
+        specification = #{specification,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="afterSales != null" >
+        after_sales = #{afterSales,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.jingshuiqi.bean.GoodsWithBLOBs" >
+    update goods
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      one_sort_id = #{oneSortId,jdbcType=INTEGER},
+      show_count = #{showCount,jdbcType=INTEGER},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      pictures = #{pictures,jdbcType=VARCHAR},
+      goods_create_time = #{goodsCreateTime,jdbcType=TIMESTAMP},
+      goods_update_time = #{goodsUpdateTime,jdbcType=TIMESTAMP},
+      is_shelf = #{isShelf,jdbcType=INTEGER},
+      cover_img = #{coverImg,jdbcType=VARCHAR},
+      goods_video = #{goodsVideo,jdbcType=VARCHAR},
+      video_type = #{videoType,jdbcType=INTEGER},
+      deduction_max = #{deductionMax,jdbcType=INTEGER},
+      deduction_by = #{deductionBy,jdbcType=INTEGER},
+      logo_name = #{logoName,jdbcType=VARCHAR},
+      logo_img = #{logoImg,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      freight = #{freight,jdbcType=DOUBLE},
+      is_one = #{isOne,jdbcType=INTEGER},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      is_recommend = #{isRecommend,jdbcType=INTEGER},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      details = #{details,jdbcType=LONGVARCHAR},
+      specification = #{specification,jdbcType=LONGVARCHAR},
+      after_sales = #{afterSales,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.Goods" >
+    update goods
+    set uuid = #{uuid,jdbcType=VARCHAR},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      one_sort_id = #{oneSortId,jdbcType=INTEGER},
+      show_count = #{showCount,jdbcType=INTEGER},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      pictures = #{pictures,jdbcType=VARCHAR},
+      goods_create_time = #{goodsCreateTime,jdbcType=TIMESTAMP},
+      goods_update_time = #{goodsUpdateTime,jdbcType=TIMESTAMP},
+      is_shelf = #{isShelf,jdbcType=INTEGER},
+      cover_img = #{coverImg,jdbcType=VARCHAR},
+      goods_video = #{goodsVideo,jdbcType=VARCHAR},
+      video_type = #{videoType,jdbcType=INTEGER},
+      deduction_max = #{deductionMax,jdbcType=INTEGER},
+      deduction_by = #{deductionBy,jdbcType=INTEGER},
+      logo_name = #{logoName,jdbcType=VARCHAR},
+      logo_img = #{logoImg,jdbcType=VARCHAR},
+      goods_type = #{goodsType,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=INTEGER},
+      freight = #{freight,jdbcType=DOUBLE},
+      is_one = #{isOne,jdbcType=INTEGER},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      is_recommend = #{isRecommend,jdbcType=INTEGER},
+      reserve = #{reserve,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

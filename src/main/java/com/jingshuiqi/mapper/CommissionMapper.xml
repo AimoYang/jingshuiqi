@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jingshuiqi.dao.CommissionMapper" >
+  <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.Commission" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="all_money" property="allMoney" jdbcType="DOUBLE" />
+    <result column="remain" property="remain" jdbcType="DOUBLE" />
+    <result column="wait_money" property="waitMoney" jdbcType="DOUBLE" />
+    <result column="already_money" property="alreadyMoney" jdbcType="DOUBLE" />
+    <result column="common_money" property="commonMoney" jdbcType="DOUBLE" />
+    <result column="city_money" property="cityMoney" jdbcType="DOUBLE" />
+    <result column="team_money" property="teamMoney" jdbcType="DOUBLE" />
+    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, open_id, all_money, remain, wait_money, already_money, common_money, city_money, 
+    team_money, reserve, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from commission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from commission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jingshuiqi.bean.Commission" >
+    insert into commission (id, open_id, all_money, 
+      remain, wait_money, already_money, 
+      common_money, city_money, team_money, 
+      reserve, is_delete)
+    values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{allMoney,jdbcType=DOUBLE}, 
+      #{remain,jdbcType=DOUBLE}, #{waitMoney,jdbcType=DOUBLE}, #{alreadyMoney,jdbcType=DOUBLE}, 
+      #{commonMoney,jdbcType=DOUBLE}, #{cityMoney,jdbcType=DOUBLE}, #{teamMoney,jdbcType=DOUBLE}, 
+      #{reserve,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jingshuiqi.bean.Commission" >
+    insert into commission
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="allMoney != null" >
+        all_money,
+      </if>
+      <if test="remain != null" >
+        remain,
+      </if>
+      <if test="waitMoney != null" >
+        wait_money,
+      </if>
+      <if test="alreadyMoney != null" >
+        already_money,
+      </if>
+      <if test="commonMoney != null" >
+        common_money,
+      </if>
+      <if test="cityMoney != null" >
+        city_money,
+      </if>
+      <if test="teamMoney != null" >
+        team_money,
+      </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="allMoney != null" >
+        #{allMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remain != null" >
+        #{remain,jdbcType=DOUBLE},
+      </if>
+      <if test="waitMoney != null" >
+        #{waitMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="alreadyMoney != null" >
+        #{alreadyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="commonMoney != null" >
+        #{commonMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cityMoney != null" >
+        #{cityMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="teamMoney != null" >
+        #{teamMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.Commission" >
+    update commission
+    <set >
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="allMoney != null" >
+        all_money = #{allMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="remain != null" >
+        remain = #{remain,jdbcType=DOUBLE},
+      </if>
+      <if test="waitMoney != null" >
+        wait_money = #{waitMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="alreadyMoney != null" >
+        already_money = #{alreadyMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="commonMoney != null" >
+        common_money = #{commonMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="cityMoney != null" >
+        city_money = #{cityMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="teamMoney != null" >
+        team_money = #{teamMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="reserve != null" >
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.Commission" >
+    update commission
+    set open_id = #{openId,jdbcType=VARCHAR},
+      all_money = #{allMoney,jdbcType=DOUBLE},
+      remain = #{remain,jdbcType=DOUBLE},
+      wait_money = #{waitMoney,jdbcType=DOUBLE},
+      already_money = #{alreadyMoney,jdbcType=DOUBLE},
+      common_money = #{commonMoney,jdbcType=DOUBLE},
+      city_money = #{cityMoney,jdbcType=DOUBLE},
+      team_money = #{teamMoney,jdbcType=DOUBLE},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
