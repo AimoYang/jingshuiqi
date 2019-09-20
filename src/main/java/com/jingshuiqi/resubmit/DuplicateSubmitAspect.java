@@ -23,7 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 public class DuplicateSubmitAspect {
 	public static final String  DUPLICATE_TOKEN_KEY="duplicate_token_key";
 
-    @Pointcut("execution(public * com.ruiguo.controller..*.*(..))")
+    @Pointcut("execution(public * com.jingshuiqi.controller..*.*(..))")
 
     public void webLog() {
     }

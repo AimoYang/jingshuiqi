@@ -2,7 +2,10 @@ package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.Goods;
 import com.jingshuiqi.bean.GoodsWithBLOBs;
+import com.jingshuiqi.util.PageObject;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface GoodsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -20,4 +23,8 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
     Goods findGoodsInfoByUuid(@Param("uuid") String uuid);
+
+    List<Goods> findCollectInfo(@Param("pageObject") PageObject pageObject);
+
+    int getCollectInfoRow(@Param("pageObject")PageObject pageObject);
 }

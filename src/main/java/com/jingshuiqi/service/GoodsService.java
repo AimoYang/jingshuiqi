@@ -6,13 +6,13 @@ import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.dao.CollectionMapper;
 import com.jingshuiqi.dao.GoodsMapper;
 import com.jingshuiqi.dao.SkuMapper;
+import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.ResultUtil;
-import com.jingshuiqi.util.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,5 +66,18 @@ public class GoodsService {
             }
         }
         return ResultUtil.success();
+    }
+
+    public JsonResult findCollectInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<>(2);
+        List<Goods> list = goodsMapper.findCollectInfo(pageObject);
+        int row = goodsMapper.getCollectInfoRow(pageObject);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
     }
 }

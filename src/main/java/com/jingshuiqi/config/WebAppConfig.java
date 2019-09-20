@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import com.yidao.interceptors.LoginInterceptor;
+import com.jingshuiqi.interceptors.LoginInterceptor;
 
 @Configuration
 public class WebAppConfig extends WebMvcConfigurerAdapter{
@@ -29,6 +29,7 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
     }
     
     //配置拦截器,对swagger不拦截
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor()).addPathPatterns("/**")
         .excludePathPatterns("/Code","/pay/notify","/error","/swagger-resources/**","/v2/**");

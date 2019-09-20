@@ -2,16 +2,15 @@ package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.service.GoodsService;
+import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 /**
  * @Auther: Mr.Yang
@@ -39,6 +38,14 @@ public class GoodsController {
         String token = request.getHeader("x-access-token");
         JsonResult r = goodsService.updateCollectInfo(uuid ,token);
         return r;
+    }
+
+    @ApiOperation(value = "查看我的收藏商品" , notes = "根据url查看我的收藏商品")
+    @RequestMapping(value = "findCollectInfo" , method = RequestMethod.POST)
+    public JsonResult findCollectInfo(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        pageObject.setOpenId(token);
+        return goodsService.findCollectInfo(pageObject);
     }
 
 }

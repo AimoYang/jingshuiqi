@@ -305,6 +305,13 @@
         <scope>compile</scope>
     </dependency>
 
+    <!--可以查查最新版-->
+    <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        <version>1.8.9</version>
+    </dependency>
+
     <!--二维码生成-->
     <dependency>
         <groupId>com.google.zxing</groupId>
