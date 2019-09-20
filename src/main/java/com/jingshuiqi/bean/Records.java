@@ -1,6 +1,6 @@
 package com.jingshuiqi.bean;
 
-public class Collection {
+public class Records {
     private Integer id;
 
     private String openId;

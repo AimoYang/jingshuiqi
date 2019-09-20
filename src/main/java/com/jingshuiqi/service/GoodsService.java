@@ -1,10 +1,11 @@
 package com.jingshuiqi.service;
 
-import com.jingshuiqi.bean.Collection;
+
 import com.jingshuiqi.bean.Goods;
 import com.jingshuiqi.bean.JsonResult;
-import com.jingshuiqi.dao.CollectionMapper;
+import com.jingshuiqi.bean.Records;
 import com.jingshuiqi.dao.GoodsMapper;
+import com.jingshuiqi.dao.RecordsMapper;
 import com.jingshuiqi.dao.SkuMapper;
 import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.ResultUtil;
@@ -28,7 +29,7 @@ public class GoodsService {
     @Autowired
     private SkuMapper skuMapper;
     @Autowired
-    private CollectionMapper collectionMapper;
+    private RecordsMapper recordsMapper;
 
     public JsonResult findGoodsInfo(String uuid, String token) {
         Map<String,Object> map = new HashMap<>(2);
@@ -39,7 +40,7 @@ public class GoodsService {
         }
         goods.setSkus(skuMapper.findSku(uuid));
 
-        int rows = collectionMapper.findRecordsInfo(uuid, token);
+        int rows = recordsMapper.findRecordsInfo(uuid, token);
         if (rows == 0) {
             map.put("isCollect", 0);
         }else {
@@ -50,17 +51,17 @@ public class GoodsService {
     }
 
     public JsonResult updateCollectInfo(String uuid, String token) {
-        int rows = collectionMapper.findRecordsInfo(uuid, token);
+        int rows = recordsMapper.findRecordsInfo(uuid, token);
         if (rows == 0) {
-            Collection collection = new Collection();
-            collection.setGoodsUuid(uuid);
-            collection.setOpenId(token);
-            int row = collectionMapper.insertSelective(collection);
+            Records records = new Records();
+            records.setGoodsUuid(uuid);
+            records.setOpenId(token);
+            int row = recordsMapper.insertSelective(records);
             if (row <= 0) {
                 return ResultUtil.fail("操作失败");
             }
         }else {
-            int row = collectionMapper.deleteByCollectInfo(uuid, token);
+            int row = recordsMapper.deleteByCollectInfo(uuid, token);
             if (row <= 0) {
                 return ResultUtil.fail("操作失败");
             }
