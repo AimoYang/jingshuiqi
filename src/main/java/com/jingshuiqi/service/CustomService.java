@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.yidao.bean.Message;
-import com.yidao.bean.TestMessage;
-import com.yidao.dao.MessageDao;
-import com.yidao.util.WeixinUtil;
+import com.jingshuiqi.bean.Message;
+import com.jingshuiqi.bean.TestMessage;
+import com.jingshuiqi.dao.MessageMapper;
+import com.jingshuiqi.util.WeixinUtil;
 
 @Service
 public class CustomService {
@@ -21,7 +21,7 @@ public class CustomService {
 	@Autowired
 	private AccessTokenService accessTokenService;
 	@Autowired
-	private MessageDao messageDao;
+	private MessageMapper messageDao;
 	
 	protected static final Logger logger = LoggerFactory.getLogger(CustomService.class);
 
@@ -31,12 +31,6 @@ public class CustomService {
 		TestMessage testMessage = new TestMessage();
 		//设置消息的类型
 		testMessage.setMsgtype("text");
-		if (text.equals("1")) {
-			text ="大汉医道，汉之学府" + "\n" + "恭喜您成为闻道者，一年课程无限畅听，分享可获198元奖励！";
-		}
-		if (text.equals("2")) {
-			text ="大汉医道，汉之学府" + "\r\n" + "恭喜您成为闻道者，一年课程无限畅听，分享可获198元奖励！";
-		}
 		//发送的openid
 		testMessage.setTouser(openid);
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -48,7 +42,7 @@ public class CustomService {
 		message.setOpenid(openid);
 		message.setMeTime(new Date());
 		message.setMessage(text);
-		int row = messageDao.saveMessage(message);
+		int row = messageDao.insertSelective(message);
 		if (row <= 0 || 0 != jsonObject.getInt("errcode")){
 				logger.error("信息未保存成功：" +"Time:"+ (new Date()).toString() +"------"+ text );
 		}

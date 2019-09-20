@@ -3,7 +3,7 @@ package com.jingshuiqi.service;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.yidao.util.WeixinUtil;
+import com.jingshuiqi.util.WeixinUtil;
 
 @Service
 public class WeChatCodeService {

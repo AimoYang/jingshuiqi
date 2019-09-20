@@ -43,8 +43,8 @@ public class WeixinUtil {
 	//public static final String appSecret = "6732b8ad290a02313b71c6ae57c3ac53";
 
 	//正式
-	public static final String appId = "wx1923dcce28c19258";
-	public static final String appSecret = "5db36261c0084b15540cbf2c0eec581e";
+	public static final String appId = "wx9de51f80532538c9";
+	public static final String appSecret = "607b3fef8618017de61e2235a0a07a10";
 	public static final String mch_id = "1534649181";
 	public static final String refundURL = "https://api.mch.weixin.qq.com/secapi/pay/refund";
 	public static final String WITHDRAW_URL= "https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers";
@@ -59,7 +59,7 @@ public class WeixinUtil {
 	public static final String refresh_access_token_url = "https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&grant_type=refresh_token&refresh_token=REFRESH_TOKEN";
 	private static final String template_msg_url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=ACCESS_TOKEN";
 	public static final String CERT_PATH = "/usr/apiclient_cert.p12";
-	public static final String mch_appid = "wx1923dcce28c19258";
+	public static final String mch_appid = "wx9de51f80532538c9";
 	//客服消息url
 	private static final String customer_service_message_url = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=ACCESS_TOKEN";
 	

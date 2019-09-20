@@ -20,6 +20,18 @@
     id, uuid, goods_uuid, stock, properties, old_price, new_price, one_commission, two_commission, 
     city_commission, top_commission, reserve, is_delete
   </sql>
+
+  <select id="findSku" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from sku
+    where goods_uuid = #{uuid} and is_delete = 0
+  </select>
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
