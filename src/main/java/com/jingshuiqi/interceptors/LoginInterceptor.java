@@ -36,7 +36,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		String token = request.getHeader("x-access-token");
 		System.out.println("------token:" + token);
 
-		// 如果不是映射到方法直接通过
+		/*// 如果不是映射到方法直接通过
 		if (!(handler instanceof HandlerMethod)) {
 			return true;
 		}
@@ -67,7 +67,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 			System.out.println("token not exists");
 			printJson(response,StatusCode.INVALID,"token已过期,请重新登录");
 			return false;
-		}
+		}*/
 		return true;
 	}
 
