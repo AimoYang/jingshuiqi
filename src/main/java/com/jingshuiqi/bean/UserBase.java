@@ -33,6 +33,16 @@ public class UserBase {
 
     private Integer isDelete;
 
+    private String bindUuid;
+
+    public String getBindUuid() {
+        return bindUuid;
+    }
+
+    public void setBindUuid(String bindUuid) {
+        this.bindUuid = bindUuid;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -11,7 +11,7 @@ public class Address {
 
     private String phone;
 
-    private String address;
+    private Integer addressArea;
 
     private String addressDetail;
 
@@ -57,12 +57,12 @@ public class Address {
         this.phone = phone == null ? null : phone.trim();
     }
 
-    public String getAddress() {
-        return address;
+    public Integer getAddressArea() {
+        return addressArea;
     }
 
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+    public void setAddressArea(Integer addressArea) {
+        this.addressArea = addressArea;
     }
 
     public String getAddressDetail() {

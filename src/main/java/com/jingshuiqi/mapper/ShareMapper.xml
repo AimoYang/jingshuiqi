@@ -12,6 +12,72 @@
   <sql id="Base_Column_List" >
     id, open_id, parent_open_id, create_time, reserve, is_delete
   </sql>
+
+  <select id="findUserInfoForBind" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from share
+    where open_id = #{openid}
+  </select>
+
+  <select id="findCountForBind" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from share
+    where parent_open_id = #{oneOpenid}
+  </select>
+
+  <insert id="saveShareBind" parameterType="com.jingshuiqi.bean.Share" >
+    insert into share
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="parentOpenId != null" >
+        parent_open_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentOpenId != null" >
+        #{parentOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
+
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

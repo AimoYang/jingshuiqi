@@ -42,6 +42,19 @@
   <sql id="Blob_Column_List" >
     details, specification, after_sales
   </sql>
+
+  <select id="findGoodsInfoByUuid" resultMap="ResultMapWithBLOBs" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from goods
+    where uuid = #{uuid} and is_delete = 0 and is_shelf = 1
+  </select>
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

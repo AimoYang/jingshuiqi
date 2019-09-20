@@ -1,6 +1,7 @@
 package com.jingshuiqi.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class Goods {
     private Integer id;
@@ -52,6 +53,16 @@ public class Goods {
     private Integer isRecommend;
 
     private String reserve;
+
+    private List<Sku> skus;
+
+    public List<Sku> getSkus() {
+        return skus;
+    }
+
+    public void setSkus(List<Sku> skus) {
+        this.skus = skus;
+    }
 
     public Integer getId() {
         return id;

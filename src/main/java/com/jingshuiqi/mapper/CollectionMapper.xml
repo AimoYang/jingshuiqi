@@ -9,6 +9,14 @@
   <sql id="Base_Column_List" >
     id, open_id, goods_uuid
   </sql>
+
+  <select id="findRecordsInfo" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from collection
+    where open_id = #{openId} and goods_uuid = #{uuid}
+  </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
