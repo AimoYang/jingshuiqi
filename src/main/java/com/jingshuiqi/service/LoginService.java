@@ -42,7 +42,7 @@ public class LoginService {
 	private CustomService customService;
 
 	public Map<String, Object> findUserInfoByCode(String code) {
-		HashMap<String, Object> map = new HashMap<>();
+		HashMap<String, Object> map = new HashMap<String, Object>(2);
 		Code code2 = new Code();
 		String uuid = UUIDGenerator.generate();
 		//获取accessToken

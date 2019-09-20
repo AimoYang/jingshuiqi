@@ -71,6 +71,23 @@
     where c.open_id = #{pageObject.openId} and g.is_delete = 0 and is_shelf = 1
   </select>
 
+  <select id="findOneGoodsInfo" resultMap="ResultMapWithBLOBs" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="getOneGoodsInfoRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+
 
 
 

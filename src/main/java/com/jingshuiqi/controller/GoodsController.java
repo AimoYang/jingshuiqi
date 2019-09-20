@@ -48,4 +48,10 @@ public class GoodsController {
         return goodsService.findCollectInfo(pageObject);
     }
 
+    @ApiOperation(value = "查看一级分类下的商品" , notes = "根据url查看一级分类下的商品")
+    @RequestMapping(value = "findOneGoodsInfo" , method = RequestMethod.POST)
+    public JsonResult findOneGoodsInfo(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject){
+        return goodsService.findOneGoodsInfo(pageObject);
+    }
+
 }

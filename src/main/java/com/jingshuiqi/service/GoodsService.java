@@ -32,7 +32,7 @@ public class GoodsService {
     private RecordsMapper recordsMapper;
 
     public JsonResult findGoodsInfo(String uuid, String token) {
-        Map<String,Object> map = new HashMap<>(2);
+        Map<String,Object> map = new HashMap<String, Object>(2);
 
         Goods goods = goodsMapper.findGoodsInfoByUuid(uuid);
         if (goods == null) {
@@ -70,7 +70,7 @@ public class GoodsService {
     }
 
     public JsonResult findCollectInfo(PageObject pageObject) {
-        Map<String, Object> map = new HashMap<>(2);
+        Map<String, Object> map = new HashMap<String, Object>(2);
         List<Goods> list = goodsMapper.findCollectInfo(pageObject);
         int row = goodsMapper.getCollectInfoRow(pageObject);
         for (Goods goods : list) {
@@ -81,4 +81,18 @@ public class GoodsService {
         map.put("pageObject", pageObject);
         return ResultUtil.success(map);
     }
+
+    public JsonResult findOneGoodsInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findOneGoodsInfo(pageObject);
+        int row = goodsMapper.getOneGoodsInfoRow(pageObject);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
 }

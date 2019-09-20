@@ -27,4 +27,8 @@ public interface GoodsMapper {
     List<Goods> findCollectInfo(@Param("pageObject") PageObject pageObject);
 
     int getCollectInfoRow(@Param("pageObject")PageObject pageObject);
+
+    List<Goods> findOneGoodsInfo(PageObject pageObject);
+
+    int getOneGoodsInfoRow(PageObject pageObject);
 }
