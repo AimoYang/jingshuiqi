@@ -1,6 +1,7 @@
 package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.JsonResult;
+import com.jingshuiqi.form.GoodsAllPage;
 import com.jingshuiqi.service.GoodsService;
 import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
@@ -52,6 +53,12 @@ public class GoodsController {
     @RequestMapping(value = "findOneGoodsInfo" , method = RequestMethod.POST)
     public JsonResult findOneGoodsInfo(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject){
         return goodsService.findOneGoodsInfo(pageObject);
+    }
+
+    @ApiOperation(value = "搜索商品信息" , notes = "根据url搜索商品信息")
+    @RequestMapping(value = "findAllGoodsInfo" , method = RequestMethod.POST)
+    public JsonResult findAllGoodsInfo(@ApiParam(value = "分页信息") @RequestBody GoodsAllPage goodsAllPage){
+        return goodsService.findAllGoodsInfo(goodsAllPage);
     }
 
 }

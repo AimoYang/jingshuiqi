@@ -3,6 +3,7 @@ package com.jingshuiqi.bean;
 import java.util.Date;
 
 public class Area {
+    //弃用bean
     private Integer id;
 
     private String areaName;

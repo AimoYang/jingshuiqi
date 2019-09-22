@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.Comment" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="goods_uuid" property="goodsUuid" jdbcType="VARCHAR" />
+    <result column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="level" property="level" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
@@ -12,8 +13,54 @@
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, goods_uuid, open_id, level, content, reply, create_time, is_delete
+    id, goods_uuid, order_uuid, open_id, level, content, reply, create_time, is_delete
   </sql>
+
+  <select id="findGoodsCommentInfo" resultMap="BaseResultMap" >
+    select
+    c.*, u.nick_name nickName, u.icon
+    from comment as c
+    left join user_base as u on u.open_id = c.open_id
+    where c.is_delete = 0 and c.goods_uuid = #{pageObject.uuid}
+    <if test="pageObject.id != null and pageObject.id != ''">
+      and c.level = #{pageObject.id}
+    </if>
+    order by level ,id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
+
+  <select id="getGoodsCommentInfoRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from comment
+    where is_delete = 0 and goods_uuid = #{pageObject.uuid}
+    <if test="pageObject.id != null and pageObject.id != ''">
+      and level = #{pageObject.id}
+    </if>
+  </select>
+
+  <select id="findUserCommentInfo" resultMap="BaseResultMap" >
+    select
+    c.*, u.nick_name nickName, u.icon, p.price, p.thumb, p.product_name productName
+    from comment as c
+    left join user_base as u on u.open_id = c.open_id
+    left join goods_order_detail as d on d.uuid = order_uuid
+    where c.is_delete = 0 and c.open_id = #{pageObject.openId}
+    order by id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
+
+  <select id="getUserCommentInfoRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from comment
+    where is_delete = 0 and open_id = #{pageObject.openId}
+  </select>
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -25,12 +72,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.jingshuiqi.bean.Comment" >
-    insert into comment (id, goods_uuid, open_id, 
-      level, content, reply, 
-      create_time, is_delete)
-    values (#{id,jdbcType=INTEGER}, #{goodsUuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
-      #{level,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{reply,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER})
+    insert into comment (id, goods_uuid, order_uuid, 
+      open_id, level, content, 
+      reply, create_time, is_delete
+      )
+    values (#{id,jdbcType=INTEGER}, #{goodsUuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, 
+      #{openId,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{reply,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.Comment" >
     insert into comment
@@ -40,6 +89,9 @@
       </if>
       <if test="goodsUuid != null" >
         goods_uuid,
+      </if>
+      <if test="orderUuid != null" >
+        order_uuid,
       </if>
       <if test="openId != null" >
         open_id,
@@ -67,6 +119,9 @@
       <if test="goodsUuid != null" >
         #{goodsUuid,jdbcType=VARCHAR},
       </if>
+      <if test="orderUuid != null" >
+        #{orderUuid,jdbcType=VARCHAR},
+      </if>
       <if test="openId != null" >
         #{openId,jdbcType=VARCHAR},
       </if>
@@ -93,6 +148,9 @@
       <if test="goodsUuid != null" >
         goods_uuid = #{goodsUuid,jdbcType=VARCHAR},
       </if>
+      <if test="orderUuid != null" >
+        order_uuid = #{orderUuid,jdbcType=VARCHAR},
+      </if>
       <if test="openId != null" >
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
@@ -117,6 +175,7 @@
   <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.Comment" >
     update comment
     set goods_uuid = #{goodsUuid,jdbcType=VARCHAR},
+      order_uuid = #{orderUuid,jdbcType=VARCHAR},
       open_id = #{openId,jdbcType=VARCHAR},
       level = #{level,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},

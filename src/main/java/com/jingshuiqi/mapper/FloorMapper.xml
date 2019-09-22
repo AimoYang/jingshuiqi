@@ -13,6 +13,28 @@
   <sql id="Base_Column_List" >
     id, floor_img, floor_title, sort, is_index, is_delete, create_time
   </sql>
+
+  <select id="findIndexFloorInfo" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from floor
+    where is_delete = 0
+    order by sort, id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
+
+  <select id="getIndexFloorRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from floor
+    where is_delete = 0
+  </select>
+
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

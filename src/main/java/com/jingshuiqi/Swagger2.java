@@ -39,8 +39,8 @@ public class Swagger2 {
 	
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("电话卡后台")
-				.description("电话卡开发接口文档")
+				.title("净水器后台")
+				.description("净水器开发接口文档")
 				.termsOfServiceUrl("")
 				.version("0.1.0")
 				.build();

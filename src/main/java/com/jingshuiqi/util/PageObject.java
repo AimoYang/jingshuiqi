@@ -16,17 +16,19 @@ public class PageObject implements Serializable {
 	
 	private int startIndex;
 	
-	private Date startTime;
-	
-	private Date endTime;
-	
 	private String uuid;
-	
-	private Integer express;
-	
-	private short state;
 
 	private String openId;
+
+	private Integer id;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getOpenId() {
 		return openId;
@@ -74,22 +76,6 @@ public class PageObject implements Serializable {
 		this.startIndex = startIndex;
 	}
 
-	public Date getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
-
-	public Date getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
-
 	public String getUuid() {
 		return uuid;
 	}
@@ -101,29 +87,18 @@ public class PageObject implements Serializable {
 	public void setPageCount(int pageCount) {
 		this.pageCount = pageCount;
 	}
-	
-	public Integer getExpress() {
-		return express;
-	}
-
-	public void setExpress(Integer express) {
-		this.express = express;
-	}
-
-	public short getState() {
-		return state;
-	}
-
-	public void setState(short state) {
-		this.state = state;
-	}
 
 	@Override
 	public String toString() {
-		return "PageObject [pageCurrent=" + pageCurrent + ", rowCount="
-				+ rowCount + ", pageCount=" + pageCount + ", pageSize="
-				+ pageSize + ", startIndex=" + startIndex + ", startTime="
-				+ startTime + ", endTime=" + endTime + ", uuid=" + uuid
-				+ ", express=" + express + ", state=" + state + "]";
+		return "PageObject{" +
+				"pageCurrent=" + pageCurrent +
+				", rowCount=" + rowCount +
+				", pageCount=" + pageCount +
+				", pageSize=" + pageSize +
+				", startIndex=" + startIndex +
+				", uuid='" + uuid + '\'' +
+				", openId='" + openId + '\'' +
+				", id=" + id +
+				'}';
 	}
 }

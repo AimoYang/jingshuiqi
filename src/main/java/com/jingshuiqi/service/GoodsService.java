@@ -7,6 +7,7 @@ import com.jingshuiqi.bean.Records;
 import com.jingshuiqi.dao.GoodsMapper;
 import com.jingshuiqi.dao.RecordsMapper;
 import com.jingshuiqi.dao.SkuMapper;
+import com.jingshuiqi.form.GoodsAllPage;
 import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.ResultUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,9 @@ public class GoodsService {
     }
 
     public JsonResult updateCollectInfo(String uuid, String token) {
+        if (uuid == null || token == null){
+            return ResultUtil.fail("信息为空");
+        }
         int rows = recordsMapper.findRecordsInfo(uuid, token);
         if (rows == 0) {
             Records records = new Records();
@@ -95,4 +99,16 @@ public class GoodsService {
         return ResultUtil.success(map);
     }
 
+    public JsonResult findAllGoodsInfo(GoodsAllPage goodsAllPage) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findAllGoodsInfo(goodsAllPage);
+        int row = goodsMapper.getAllGoodsInfoRow(goodsAllPage);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        goodsAllPage.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", goodsAllPage);
+        return ResultUtil.success(map);
+    }
 }

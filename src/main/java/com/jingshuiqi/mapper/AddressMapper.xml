@@ -18,6 +18,45 @@
     id, open_id, name, phone, address_area, address_detail, is_default, create_time, 
     update_time, sort, is_delete
   </sql>
+
+  <select id="findUserAddressAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from address
+    where open_id = #{pageObject.openId} and is_delete = 0
+    order by is_default desc , sort, create_time desc
+    limit #{pageObject.startIndex}, #{pageObject.pageSize}
+  </select>
+
+  <select id="getUserAddressAllRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from address
+    where open_id = #{pageObject.openId} and is_delete = 0
+  </select>
+
+  <select id="findUserAddressInfo" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from address
+    where id = #{id,jdbcType=INTEGER} and is_delete = 0
+  </select>
+
+  <update id="updateAddressInfoForZero" >
+    update address
+    set
+      is_default = 0
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateDefaultAddressInfo" >
+    update address
+    set
+      is_default = 1
+    where id = #{id}
+  </update>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

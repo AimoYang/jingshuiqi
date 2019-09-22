@@ -2,6 +2,7 @@ package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.Goods;
 import com.jingshuiqi.bean.GoodsWithBLOBs;
+import com.jingshuiqi.form.GoodsAllPage;
 import com.jingshuiqi.util.PageObject;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,7 +29,15 @@ public interface GoodsMapper {
 
     int getCollectInfoRow(@Param("pageObject")PageObject pageObject);
 
-    List<Goods> findOneGoodsInfo(PageObject pageObject);
+    List<Goods> findOneGoodsInfo(@Param("pageObject") PageObject pageObject);
 
-    int getOneGoodsInfoRow(PageObject pageObject);
+    int getOneGoodsInfoRow(@Param("pageObject")PageObject pageObject);
+
+    List<Goods> findAllGoodsInfo(@Param("pageObject")GoodsAllPage goodsAllPage);
+
+    int getAllGoodsInfoRow(@Param("pageObject")GoodsAllPage goodsAllPage);
+
+    List<Goods> findBannerById(@Param("pageObject")PageObject pageObject);
+
+    int getBannerRow(@Param("pageObject")PageObject pageObject);
 }
