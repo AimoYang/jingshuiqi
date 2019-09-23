@@ -1,7 +1,11 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.UserBase;
+import com.jingshuiqi.dto.TypePage;
+import com.jingshuiqi.dto.UserAgent;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserBaseMapper {
     int deleteByPrimaryKey(Integer id);
@@ -21,4 +25,10 @@ public interface UserBaseMapper {
     int updateUserInfo(UserBase userBase);
 
     int saveUserInfo(UserBase userBase);
+
+    List<UserAgent> selectUserAgent();
+
+    Integer countMembers(@Param("openId") String openId);
+
+    List<UserBase> selectMembers(@Param("openId") String openId);
 }

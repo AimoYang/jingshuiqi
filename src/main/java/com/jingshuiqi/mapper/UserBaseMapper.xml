@@ -365,4 +365,72 @@
       is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <resultMap id="ViewResultMap" type="com.jingshuiqi.dto.UserAgent" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="parent_open_id" property="parentOpenId" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="agent_type" property="agentType" jdbcType="INTEGER" />
+  </resultMap>
+
+  <!--查询所有用户-->
+  <select id="selectUserAgent" resultMap="ViewResultMap" >
+    SELECT
+      user_base.open_id,
+      user_base.user_type,
+      `share`.parent_open_id,
+      agent.agent_type
+    FROM
+        user_base
+    LEFT JOIN `share` ON `share`.open_id = user_base.open_id
+    LEFT JOIN agent ON agent.open_id = user_base.open_id
+    WHERE
+        user_base.is_delete = 0
+    ORDER BY `share`.is_delete,agent.is_delete
+   </select>
+
+  <select id="countMembers" resultType="java.lang.Integer">
+    SELECT
+        count(1)
+    FROM
+        user_base
+    LEFT JOIN `share` ON `share`.open_id = user_base.open_id
+    WHERE
+        `share`.is_delete = 0
+    AND user_base.is_delete = 0
+    AND `share`.parent_open_id = #{openId}
+  </select>
+
+  <sql id="Base_Column_List" >
+    id, open_id, nick_name, icon, name, phone, birth_date, is_enable, create_time, last_login,
+    consume_money, shop_coins, reserve, user_type, is_delete
+  </sql>
+
+  <select id="selectMembers" resultMap="BaseResultMap">
+    SELECT
+        user_base.id,
+        user_base.open_id,
+        user_base.nick_name,
+        user_base.icon,
+        user_base.`name`,
+        user_base.phone,
+        user_base.birth_date,
+        user_base.is_enable,
+        user_base.create_time,
+        user_base.last_login,
+        user_base.consume_money,
+        user_base.shop_coins,
+        user_base.reserve,
+        user_base.is_delete,
+        IFNULL(IF(user_type = 0,user_type,agent_type),0)AS user_type
+    FROM
+        user_base
+    LEFT JOIN `share` ON `share`.open_id = user_base.open_id
+    WHERE
+        `share`.is_delete = 0
+    AND user_base.is_delete = 0
+    AND `share`.parent_open_id = #{openId}
+  </select>
 </mapper>

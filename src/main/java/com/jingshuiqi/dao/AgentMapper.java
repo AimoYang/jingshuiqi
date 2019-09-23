@@ -1,6 +1,7 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.Agent;
+import org.apache.ibatis.annotations.Param;
 
 public interface AgentMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,6 @@ public interface AgentMapper {
     int updateByPrimaryKeySelective(Agent record);
 
     int updateByPrimaryKey(Agent record);
+
+    Agent selectByAreaId(@Param("areaId") Integer areaId);
 }

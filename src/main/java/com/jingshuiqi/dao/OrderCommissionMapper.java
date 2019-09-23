@@ -14,4 +14,6 @@ public interface OrderCommissionMapper {
     int updateByPrimaryKeySelective(OrderCommission record);
 
     int updateByPrimaryKey(OrderCommission record);
+
+    Double sumWaitCalculate(String openId);
 }
