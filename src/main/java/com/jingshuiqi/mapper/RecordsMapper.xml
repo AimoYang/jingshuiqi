@@ -14,11 +14,11 @@
   <select id="findRecordsInfo" resultType="java.lang.Integer" >
     select
     count(1)
-    from collection
+    from records
     where open_id = #{openId} and goods_uuid = #{uuid}
   </select>
 
-  <delete id="deleteByCollectInfo" parameterType="java.lang.Integer" >
+  <delete id="deleteByCollectInfo" >
     delete from records
     where open_id = #{openId} and goods_uuid = #{uuid}
   </delete>

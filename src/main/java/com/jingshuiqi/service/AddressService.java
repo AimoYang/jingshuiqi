@@ -69,7 +69,7 @@ public class AddressService {
         address.setIsDefault(null);
         int row = addressMapper.updateByPrimaryKeySelective(address);
         if (row <= 0){
-            return ResultUtil.fail("更细失败");
+            return ResultUtil.fail("更新失败");
         }
         return ResultUtil.success();
     }

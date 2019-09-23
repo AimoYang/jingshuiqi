@@ -4,18 +4,19 @@ package com.jingshuiqi.service;
 import com.jingshuiqi.bean.Goods;
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.bean.Records;
+import com.jingshuiqi.bean.Sku;
 import com.jingshuiqi.dao.GoodsMapper;
 import com.jingshuiqi.dao.RecordsMapper;
 import com.jingshuiqi.dao.SkuMapper;
 import com.jingshuiqi.form.GoodsAllPage;
 import com.jingshuiqi.util.PageObject;
+import com.jingshuiqi.util.RandomNum;
 import com.jingshuiqi.util.ResultUtil;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Auther: Mr.Yang
@@ -34,7 +35,6 @@ public class GoodsService {
 
     public JsonResult findGoodsInfo(String uuid, String token) {
         Map<String,Object> map = new HashMap<String, Object>(2);
-
         Goods goods = goodsMapper.findGoodsInfoByUuid(uuid);
         if (goods == null) {
             return ResultUtil.fail("该商品失效");
@@ -111,4 +111,43 @@ public class GoodsService {
         map.put("pageObject", goodsAllPage);
         return ResultUtil.success(map);
     }
+
+    public JsonResult findHotGoodsInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findHotGoodsInfo(pageObject);
+        int row = goodsMapper.getHotGoodsInfoRow(pageObject);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findRecommendGoodsInfo() {
+        List<Goods> listAll = goodsMapper.findRecommendGoodsInfo();
+        List<Goods> list = getRandomThreeInfoList(listAll);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        return ResultUtil.success(list);
+    }
+
+
+    public static List<Goods> getRandomThreeInfoList(List<Goods> list) {
+        List<Goods> olist = new ArrayList<Goods>();
+        if (list.size() <= 3) {
+            return list;
+        }else {
+            for (int i = 0; i < 3; i++) {
+                Random random = new Random();
+                int num = random.nextInt(list.size());
+                olist.add(list.get(num));
+                list.remove(num);
+            }
+            return olist;
+        }
+    }
+
 }

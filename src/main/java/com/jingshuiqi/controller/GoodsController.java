@@ -57,8 +57,20 @@ public class GoodsController {
 
     @ApiOperation(value = "搜索商品信息" , notes = "根据url搜索商品信息")
     @RequestMapping(value = "findAllGoodsInfo" , method = RequestMethod.POST)
-    public JsonResult findAllGoodsInfo(@ApiParam(value = "分页信息") @RequestBody GoodsAllPage goodsAllPage){
+    public JsonResult findAllGoodsInfo(@ApiParam(value = "分页信息: express(0升序1降序)state(1默认2销量3价格4时间)") @RequestBody GoodsAllPage goodsAllPage){
         return goodsService.findAllGoodsInfo(goodsAllPage);
+    }
+
+    @ApiOperation(value = "查看热卖中的商品" , notes = "根据url查看热卖中的商品")
+    @RequestMapping(value = "findHotGoodsInfo" , method = RequestMethod.POST)
+    public JsonResult findHotGoodsInfo(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject){
+        return goodsService.findHotGoodsInfo(pageObject);
+    }
+
+    @ApiOperation(value = "查看购物车推荐中的商品" , notes = "根据url查看购物车推荐中的商品")
+    @RequestMapping(value = "findRecommendGoodsInfo" , method = RequestMethod.POST)
+    public JsonResult findRecommendGoodsInfo(){
+        return goodsService.findRecommendGoodsInfo();
     }
 
 }

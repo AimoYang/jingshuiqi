@@ -47,10 +47,10 @@
 
   <select id="findUserCommentInfo" resultMap="UserResultMap" >
     select
-    c.*, u.nick_name nickName, u.icon, p.price, p.thumb, p.product_name productName
+    c.*, u.nick_name nickName, u.icon, d.price, d.thumb, d.product_name productName
     from comment as c
     left join user_base as u on u.open_id = c.open_id
-    left join goods_order_detail as d on d.uuid = order_uuid
+    left join goods_order_detail as d on d.uuid = c.order_uuid
     where c.is_delete = 0 and c.open_id = #{pageObject.openId}
     order by id desc
     limit #{pageObject.startIndex},#{pageObject.pageSize}

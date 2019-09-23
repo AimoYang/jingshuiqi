@@ -40,4 +40,10 @@ public interface GoodsMapper {
     List<Goods> findBannerById(@Param("pageObject")PageObject pageObject);
 
     int getBannerRow(@Param("pageObject")PageObject pageObject);
+
+    List<Goods> findHotGoodsInfo(@Param("pageObject")PageObject pageObject);
+
+    int getHotGoodsInfoRow(@Param("pageObject")PageObject pageObject);
+
+    List<Goods> findRecommendGoodsInfo();
 }

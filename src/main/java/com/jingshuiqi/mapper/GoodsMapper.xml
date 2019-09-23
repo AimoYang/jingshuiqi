@@ -54,11 +54,11 @@
 
   <select id="findCollectInfo" resultMap="ResultMapWithBLOBs" >
     select
-    id, uuid, goods_name, one_sort_id, thumb, pictures, cover_img,
-    logo_name, logo_img, goods_type, sort
-    from goods as g
-    left join records as c on c.goods_uuid = g.uuid
-    where c.open_id = #{pageObject.openId} and g.is_delete = 0 and is_shelf = 1
+    g.id, g.uuid, g.goods_name, g.one_sort_id, g.thumb, g.pictures, g.cover_img,
+    g.logo_name, g.logo_img, g.goods_type, g.sort
+    from records as c
+    left join goods as g on c.goods_uuid = g.uuid
+    where c.open_id = #{pageObject.openId} and g.is_delete = 0 and g.is_shelf = 1
     order by c.id desc
     limit #{pageObject.startIndex},#{pageObject.pageSize}
   </select>
@@ -66,8 +66,8 @@
   <select id="getCollectInfoRow" resultType="java.lang.Integer" >
     select
     count(1)
-    from goods as g
-    left join records as c on c.goods_uuid = g.uuid
+    from records as c
+    left join goods as g on c.goods_uuid = g.uuid
     where c.open_id = #{pageObject.openId} and g.is_delete = 0 and is_shelf = 1
   </select>
 
@@ -98,25 +98,25 @@
       and goods_name LIKE CONCAT ('%',#{pageObject.name},'%')
     </if>
     order by is_delete
-    <if test="pageObject.state != null and pageObject.time != ''">
+    <if test="pageObject.state == 1">
       ,sort
       <if test="pageObject.express != null and pageObject.express != ''">
         desc
       </if>
     </if>
-    <if test="pageObject.show != null and pageObject.show != ''">
+    <if test="pageObject.state == 2">
       ,show_count
       <if test="pageObject.express != null and pageObject.express != ''">
         desc
       </if>
     </if>
-    <if test="pageObject.price == 1 ">
-      , (select max(s.new_price) from sku as s LEFT JOIN goods as g on s.goods_uuid = g.uuid) desc
-    </if>
-    <if test="pageObject.price == 2">
+    <if test="pageObject.state == 3">
       , (select min(s.new_price) from sku as s LEFT JOIN goods as g on s.goods_uuid = g.uuid)
     </if>
-    <if test="pageObject.time != null and pageObject.time != ''">
+    <if test="pageObject.state == 3 and pageObject.express == 1">
+      , (select max(s.new_price) from sku as s LEFT JOIN goods as g on s.goods_uuid = g.uuid) desc
+    </if>
+    <if test="pageObject.state == 4">
       ,id
       <if test="pageObject.express != null and pageObject.express != ''">
         desc
@@ -151,8 +151,30 @@
     where g.is_delete = 0 and g.is_shelf = 1 and r.advertisement_id = #{pageObject.id}
   </select>
 
+  <select id="findHotGoodsInfo" resultMap="ResultMapWithBLOBs" >
+    select
+    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
+    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    from goods
+    where is_delete = 0 and is_shelf = 1 and is_hot = 1
+    order by sort, id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
 
+  <select id="getHotGoodsInfoRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods
+    where is_delete = 0 and is_shelf = 1 and is_hot = 1
+  </select>
 
+  <select id="findRecommendGoodsInfo" resultMap="ResultMapWithBLOBs" >
+    select
+    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
+    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    from goods
+    where is_delete = 0 and is_shelf = 1 and is_recommend = 1
+  </select>
 
 
 

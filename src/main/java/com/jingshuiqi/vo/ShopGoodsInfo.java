@@ -1,5 +1,6 @@
 package com.jingshuiqi.vo;
 
+import com.jingshuiqi.bean.GoodsCart;
 import lombok.Data;
 
 /**
@@ -8,15 +9,7 @@ import lombok.Data;
  * @Description:
  */
 @Data
-public class ShopGoodsInfo {
-
-    private Integer id;
-
-    private String goodsUuid;
-
-    private Integer skuUuid;
-
-    private Integer amount;
+public class ShopGoodsInfo extends GoodsCart {
 
     private String goodsName;
 

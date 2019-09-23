@@ -15,11 +15,11 @@ public class GoodsAllPage extends PageObject {
 
     private short state;
 
-    private String time;
+    private Integer time;
 
-    private String price;
+    private Integer price;
 
-    private String show;
+    private Integer show;
 
     private String name;
 

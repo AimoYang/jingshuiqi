@@ -17,7 +17,11 @@ public class AddressForm {
     @NotNull
     private String phone;
     @NotNull
+    private String provinceArea;
+    @NotNull
     private String addressArea;
+    @NotNull
+    private String detailArea;
     @NotNull
     private String addressDetail;
     @NotNull

@@ -11,7 +11,11 @@ public class Address {
 
     private String phone;
 
+    private String provinceArea;
+
     private String addressArea;
+
+    private String detailArea;
 
     private String addressDetail;
 
@@ -57,12 +61,28 @@ public class Address {
         this.phone = phone == null ? null : phone.trim();
     }
 
+    public String getProvinceArea() {
+        return provinceArea;
+    }
+
+    public void setProvinceArea(String provinceArea) {
+        this.provinceArea = provinceArea == null ? null : provinceArea.trim();
+    }
+
     public String getAddressArea() {
         return addressArea;
     }
 
     public void setAddressArea(String addressArea) {
         this.addressArea = addressArea == null ? null : addressArea.trim();
+    }
+
+    public String getDetailArea() {
+        return detailArea;
+    }
+
+    public void setDetailArea(String detailArea) {
+        this.detailArea = detailArea == null ? null : detailArea.trim();
     }
 
     public String getAddressDetail() {

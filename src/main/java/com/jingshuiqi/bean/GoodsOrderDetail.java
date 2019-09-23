@@ -13,7 +13,7 @@ public class GoodsOrderDetail {
 
     private Integer quantity;
 
-    private Integer price;
+    private Double price;
 
     private String thumb;
 
@@ -79,11 +79,11 @@ public class GoodsOrderDetail {
         this.quantity = quantity;
     }
 
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

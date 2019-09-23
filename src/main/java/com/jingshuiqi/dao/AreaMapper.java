@@ -14,4 +14,6 @@ public interface AreaMapper {
     int updateByPrimaryKeySelective(Area record);
 
     int updateByPrimaryKey(Area record);
+
+    String findAddress(Integer id);
 }

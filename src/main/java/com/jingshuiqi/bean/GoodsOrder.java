@@ -1,6 +1,7 @@
 package com.jingshuiqi.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class GoodsOrder {
     private Integer id;
@@ -40,6 +41,16 @@ public class GoodsOrder {
     private Date createTime;
 
     private Integer isDelete;
+
+    private List<GoodsOrderDetail> goodsOrderDetails;
+
+    public List<GoodsOrderDetail> getGoodsOrderDetails() {
+        return goodsOrderDetails;
+    }
+
+    public void setGoodsOrderDetails(List<GoodsOrderDetail> goodsOrderDetails) {
+        this.goodsOrderDetails = goodsOrderDetails;
+    }
 
     public Integer getId() {
         return id;

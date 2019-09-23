@@ -12,6 +12,16 @@
   <sql id="Base_Column_List" >
     id, area_name, create_time, value, is_delete, reserve
   </sql>
+
+  <select id="findAddress" resultType="java.lang.String" parameterType="java.lang.Integer" >
+    select
+    d.name
+    from area as a
+    left join area_address as d on d.value = a.value
+    where a.id = #{id}
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

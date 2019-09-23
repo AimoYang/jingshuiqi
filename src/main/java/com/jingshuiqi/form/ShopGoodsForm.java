@@ -16,7 +16,7 @@ public class ShopGoodsForm {
     private String goodsUuid;
 
     @NotNull
-    private Integer skuUuid;
+    private String skuUuid;
 
     @NotNull
     private Integer quantity;

@@ -1,8 +1,10 @@
 package com.jingshuiqi.controller;
 
+import com.jingshuiqi.bean.GoodsCart;
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.form.ShopGoodsForm;
 import com.jingshuiqi.service.ShopCarService;
+import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -32,6 +34,22 @@ public class ShopCarController {
     public JsonResult saveShopCar(@ApiParam("加入购物车的商品信息") @RequestBody @Valid ShopGoodsForm shopGoodsForm, HttpServletRequest request){
         String token = request.getHeader("x-access-token");
         return shopCarService.saveGoodsCart(shopGoodsForm, token);
+    }
+
+    @ApiOperation(value = "更新购物车" , notes = "更新购物车")
+    @RequestMapping(value = "updateShopCar" , method = RequestMethod.POST)
+    public JsonResult updateShopCar(@ApiParam("购物车商品信息") @RequestBody GoodsCart goodsCart, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        goodsCart.setOpenId(token);
+        return shopCarService.updateGoodsCart(goodsCart);
+    }
+
+    @ApiOperation(value = "显示购物车" , notes = "显示购物车")
+    @RequestMapping(value = "showShopCar" , method = RequestMethod.POST)
+    public JsonResult showShopCar(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        pageObject.setOpenId(token);
+        return shopCarService.showGoodsCart(pageObject);
     }
 
 }

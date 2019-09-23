@@ -14,4 +14,6 @@ public interface GoodsOrderMapper {
     int updateByPrimaryKeySelective(GoodsOrder record);
 
     int updateByPrimaryKey(GoodsOrder record);
+
+    GoodsOrder findOrdersByUuid(String uuid);
 }

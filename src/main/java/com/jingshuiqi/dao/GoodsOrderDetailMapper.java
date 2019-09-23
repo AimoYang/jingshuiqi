@@ -2,6 +2,8 @@ package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.GoodsOrderDetail;
 
+import java.util.List;
+
 public interface GoodsOrderDetailMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface GoodsOrderDetailMapper {
     int updateByPrimaryKeySelective(GoodsOrderDetail record);
 
     int updateByPrimaryKey(GoodsOrderDetail record);
+
+    List<GoodsOrderDetail> findOrderDetail(String uuid);
 }

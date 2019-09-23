@@ -22,16 +22,17 @@
     f.*,b.goods_uuid
     from floor as f
     left join floor_bind as b on f.id = b.floor_id
-    where is_delete = 0
-    order by sort, id desc
+    where f.is_delete = 0 and (select count(1) from floor_bind as b where b.floor_id = f.id) > 0
+    order by f.sort, f.id desc
     limit #{pageObject.startIndex},#{pageObject.pageSize}
   </select>
 
   <select id="getIndexFloorRow" resultType="java.lang.Integer" >
     select
     count(1)
-    from floor
-    where is_delete = 0
+    from floor as f
+    left join floor_bind as b on f.id = b.floor_id
+    where f.is_delete = 0 and (select count(1) from floor_bind as b where b.floor_id = f.id) > 0
   </select>
 
 

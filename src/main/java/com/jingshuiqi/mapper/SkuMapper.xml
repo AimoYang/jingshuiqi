@@ -26,9 +26,8 @@
     <include refid="Base_Column_List" />
     from sku
     where goods_uuid = #{uuid} and is_delete = 0
+    order by new_price
   </select>
-
-
 
 
 
