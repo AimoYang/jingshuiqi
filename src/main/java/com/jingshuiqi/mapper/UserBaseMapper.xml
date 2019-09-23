@@ -419,7 +419,7 @@
         user_base.shop_coins,
         user_base.reserve,
         user_base.is_delete,
-        IFNULL(IF(user_type = 0,user_type,agent_type),0)AS user_type
+        IFNULL(IF(user_type = 0,user_type,(SELECT agent_type FROM agent WHERE agent.open_id = user_base.open_id and agent.is_delete = 0 limit 1)),0)AS user_type
     FROM
         user_base
     LEFT JOIN `share` ON `share`.open_id = user_base.open_id

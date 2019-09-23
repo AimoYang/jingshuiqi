@@ -15,3 +15,96 @@ to {POST /findBannerById}: There is already 'bannerController' bean method
 public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBanner() mapped.
 2019-09-23 15:44:06,728 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers already contains value for com.jingshuiqi.dao.UserBaseMapper.Base_Column_List
 2019-09-23 15:46:25,591 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers already contains value for com.jingshuiqi.dao.UserBaseMapper.Base_Column_List
+2019-09-23 21:18:44,997 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list'
+### The error may exist in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT         user_base.id,         user_base.open_id,         user_base.nick_name,         user_base.icon,         user_base.`name`,         user_base.phone,         user_base.birth_date,         user_base.is_enable,         user_base.create_time,         user_base.last_login,         user_base.consume_money,         user_base.shop_coins,         user_base.reserve,         user_base.is_delete,         IFNULL(IF(user_type = 0,user_type,agent_type),0)AS user_type     FROM         user_base     LEFT JOIN `share` ON `share`.open_id = user_base.open_id     WHERE         `share`.is_delete = 0     AND user_base.is_delete = 0     AND `share`.parent_open_id = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list']
+2019-09-23 21:30:49,587 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'page' not found. Available parameters are [arg1, arg0, param1, param2]]
+2019-09-23 21:31:43,953 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+         
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+     
+     
+    order by goods_order.create_time desc
+    limit ?,?
+### The error may exist in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\GoodsOrderMapper.xml]
+### The error may involve com.jingshuiqi.dao.GoodsOrderMapper.selectMemberOrders
+### The error occurred while executing a query
+### SQL: SELECT               goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,     goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,     goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,     goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,     goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete    , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon     FROM         goods_order     LEFT JOIN user_base ON goods_order.open_id = user_base.open_id     LEFT JOIN `share` on user_base.open_id = `share`.open_id     WHERE         goods_order.is_delete = 0     and `share`.is_delete = 0     and `share`.parent_open_id = ?                 order by goods_order.create_time desc     limit ?,?
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+         
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+     
+     
+    order by goods_order.create_time desc
+    limit ?,?
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+         
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+     
+     
+    order by goods_order.create_time desc
+    limit ?,?; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+         
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+     
+     
+    order by goods_order.create_time desc
+    limit ?,?]

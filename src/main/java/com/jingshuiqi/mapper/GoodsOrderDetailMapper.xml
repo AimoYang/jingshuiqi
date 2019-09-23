@@ -209,4 +209,18 @@
       is_refund = #{isRefund,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByOrderUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods_order_detail
+    where order_uuid = #{orderUuid}
+  </select>
+
+  <select id="selectByUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods_order_detail
+    where uuid = #{uuid}
+  </select>
 </mapper>

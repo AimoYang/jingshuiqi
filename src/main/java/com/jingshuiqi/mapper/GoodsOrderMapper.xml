@@ -256,4 +256,117 @@
       is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="ViewResultMap" type="com.jingshuiqi.dto.GoodsOrderBean" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="order_price" property="orderPrice" jdbcType="DOUBLE" />
+    <result column="actual_price" property="actualPrice" jdbcType="DOUBLE" />
+    <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
+    <result column="receiver_phone" property="receiverPhone" jdbcType="CHAR" />
+    <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
+    <result column="buyer_message" property="buyerMessage" jdbcType="VARCHAR" />
+    <result column="freight" property="freight" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="is_comment" property="isComment" jdbcType="INTEGER" />
+    <result column="pay_uuid" property="payUuid" jdbcType="VARCHAR" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+    <result column="trade_successful_time" property="tradeSuccessfulTime" jdbcType="TIMESTAMP" />
+    <result column="pay_type" property="payType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="view_Column_List" >
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+  </sql>
+
+  <select id="selectMemberOrders" resultMap="ViewResultMap">
+    SELECT
+        DISTINCT goods_order.*,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = #{openId}
+    <if test="page.date != null and page.date != ''">
+      and date_format(goods_order.create_time,'%Y-%m') = #{page.date}
+    </if>
+    <if test="page.type == 0 or page.type == 1 or page.type == 2">
+      and goods_order.order_status = #{page.type}
+    </if>
+    order by goods_order.create_time desc
+    limit #{page.startIndex},#{page.pageSize}
+  </select>
+
+  <select id="countMemberOrders" resultType="java.lang.Integer">
+    select  count(1)
+    from (
+      SELECT
+         DISTINCT goods_order.uuid
+      FROM
+      goods_order
+      LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+      LEFT JOIN `share` on user_base.open_id = `share`.open_id
+      WHERE
+      goods_order.is_delete = 0
+      and `share`.is_delete = 0
+      and `share`.parent_open_id = #{openId}
+      <if test="page.date != null and page.date != ''">
+        and date_format(goods_order.create_time,'%Y-%m') = #{page.date}
+      </if>
+      <if test="page.type == 0 or page.type == 1 or page.type == 2">
+        and goods_order.order_status = #{page.type}
+      </if>
+    ) p
+  </select>
+
+  <select id="selectMemberRefundOrders" resultMap="ViewResultMap">
+    SELECT
+      goods_order.*,goods_order_detail.uuid as detailUuid,user_base.nick_name,user_base.icon
+    FROM
+    goods_order
+    LEFT JOIN goods_order_detail ON goods_order.uuid = goods_order_detail.order_uuid
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+    goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = #{openId}
+    and goods_order_detail.is_refund = 1
+    <if test="page.date != null and page.date != ''">
+      and date_format(goods_order.create_time,'%Y-%m') = #{page.date}
+    </if>
+    order by goods_order.create_time desc
+    limit #{page.startIndex},#{page.pageSize}
+  </select>
+
+  <select id="countMemberRefundOrders" resultType="java.lang.Integer">
+    SELECT
+      count(1)
+    FROM
+      goods_order
+    LEFT JOIN goods_order_detail ON goods_order.uuid = goods_order_detail.order_uuid
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+    goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = #{openId}
+    and goods_order_detail.is_refund = 1
+    <if test="page.date != null and page.date != ''">
+      and date_format(goods_order.create_time,'%Y-%m') = #{page.date}
+    </if>
+  </select>
 </mapper>

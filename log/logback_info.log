@@ -734,3 +734,540 @@ Error starting ApplicationContext. To display the conditions report re-run your 
 2019-09-23 15:47:35,222 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
 2019-09-23 15:47:35,245 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
 2019-09-23 15:47:35,248 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 6.384 seconds (JVM running for 7.27)
+2019-09-23 21:11:38,578 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 65468 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:11:38,580 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:11:38,793 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:11:38,794 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:11:39,676 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:11:39,678 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:11:39,715 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 23ms. Found 0 repository interfaces.
+2019-09-23 21:11:40,063 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3ec9fcb3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:11:40,174 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$306bfdb1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:11:40,741 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:11:40,757 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:11:40,770 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:11:40,770 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:11:40,888 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:11:40,889 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 2095 ms
+2019-09-23 21:11:42,663 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:11:42,929 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:11:42,996 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:11:44,613 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:11:44,627 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:11:44,627 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:11:44,628 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:11:44,629 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:11:44,629 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:11:44,629 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:11:44,629 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6334e20c
+2019-09-23 21:11:44,650 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:11:44,742 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:11:44,757 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:11:44,783 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:11:44,989 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:11:44,990 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:11:44,999 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:11:45,021 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:11:45,023 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 6.834 seconds (JVM running for 8.292)
+2019-09-23 21:16:23,953 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 58228 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:16:23,955 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:16:24,122 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:16:24,122 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:16:24,833 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:16:24,835 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:16:24,865 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 20ms. Found 0 repository interfaces.
+2019-09-23 21:16:25,183 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f2866fb1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:16:25,272 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$e42870af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:16:25,731 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:16:25,744 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:16:25,756 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:16:25,756 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:16:25,859 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:16:25,859 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1737 ms
+2019-09-23 21:16:27,235 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:16:27,494 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:16:27,553 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:16:29,048 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:16:29,057 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:16:29,058 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:16:29,059 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:16:29,059 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:16:29,060 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:16:29,060 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:16:29,060 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@285fe6fe
+2019-09-23 21:16:29,080 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:16:29,173 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:16:29,183 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:16:29,210 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:16:29,391 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:16:29,392 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:16:29,400 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:16:29,420 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:16:29,423 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.83 seconds (JVM running for 6.64)
+2019-09-23 21:16:35,295 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:16:35,295 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:16:35,306 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 11 ms
+2019-09-23 21:17:48,112 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 20756 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:17:48,114 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:17:48,297 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:17:48,297 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:17:48,985 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:17:48,987 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:17:49,015 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:17:49,316 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9a160811] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:17:49,399 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$8bb8090f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:17:49,847 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:17:49,860 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:17:49,871 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:17:49,872 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:17:49,971 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:17:49,971 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1673 ms
+2019-09-23 21:17:51,318 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:17:51,603 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:17:51,661 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:17:53,164 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:17:53,176 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:17:53,176 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:17:53,177 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:17:53,178 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:17:53,178 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:17:53,178 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:17:53,179 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@61c00bdb
+2019-09-23 21:17:53,203 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:17:53,307 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:17:53,317 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:17:53,341 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:17:53,519 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:17:53,519 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:17:53,528 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:17:53,548 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:17:53,551 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.802 seconds (JVM running for 6.697)
+2019-09-23 21:17:58,421 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:17:58,422 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:17:58,434 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 12 ms
+2019-09-23 21:18:35,540 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 64860 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:18:35,542 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:18:35,752 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:18:35,753 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:18:36,458 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:18:36,459 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:18:36,488 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 20ms. Found 0 repository interfaces.
+2019-09-23 21:18:36,782 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b83dc0d3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:18:36,877 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$a9dfc1d1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:18:37,358 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:18:37,370 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:18:37,381 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:18:37,382 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:18:37,482 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:18:37,482 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1729 ms
+2019-09-23 21:18:38,809 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:18:39,091 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:18:39,156 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:18:40,759 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:18:40,769 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:18:40,770 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:18:40,770 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:18:40,771 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:18:40,771 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:18:40,771 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:18:40,772 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6a86f711
+2019-09-23 21:18:40,790 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:18:40,896 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:18:40,909 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:18:40,941 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:18:41,114 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:18:41,115 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:18:41,124 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:18:41,144 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:18:41,146 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 6.137 seconds (JVM running for 6.981)
+2019-09-23 21:18:44,592 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:18:44,593 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:18:44,601 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 8 ms
+2019-09-23 21:25:36,843 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 4180 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:25:36,845 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:25:37,022 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:25:37,023 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:25:37,750 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:25:37,752 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:25:37,780 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:25:38,078 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$36aefdff] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:25:38,169 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$2850fefd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:25:38,678 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:25:38,692 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:25:38,704 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:25:38,704 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:25:38,807 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:25:38,807 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1784 ms
+2019-09-23 21:25:40,142 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:25:40,398 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:25:40,455 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:25:41,936 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:25:41,946 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:25:41,947 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:25:41,948 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:25:41,948 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:25:41,948 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:25:41,949 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:25:41,949 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@55bd5395
+2019-09-23 21:25:41,968 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:25:42,058 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:25:42,068 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:25:42,092 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:25:42,261 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:25:42,262 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:25:42,271 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:25:42,289 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:25:42,292 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.976 seconds (JVM running for 6.981)
+2019-09-23 21:25:50,955 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:25:50,956 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:25:50,966 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 10 ms
+2019-09-23 21:26:54,207 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 64380 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:26:54,209 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:26:54,375 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:26:54,375 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:26:55,100 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:26:55,102 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:26:55,130 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:26:55,442 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ba6258c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:26:55,529 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$fd48268a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:26:56,019 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:26:56,033 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:26:56,045 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:26:56,045 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:26:56,143 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:26:56,144 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1769 ms
+2019-09-23 21:26:57,516 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:26:57,774 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:26:57,829 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:26:59,300 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:26:59,309 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:26:59,310 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:26:59,310 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:26:59,311 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:26:59,311 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:26:59,311 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:26:59,312 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@507689ad
+2019-09-23 21:26:59,331 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:26:59,426 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:26:59,438 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:26:59,463 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:26:59,637 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:26:59,637 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:26:59,646 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:26:59,665 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:26:59,667 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.806 seconds (JVM running for 6.643)
+2019-09-23 21:27:05,190 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:27:05,190 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:27:05,200 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 10 ms
+2019-09-23 21:28:42,977 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 65092 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:28:42,979 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:28:43,160 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:28:43,161 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:28:43,904 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:28:43,905 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:28:43,934 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:28:44,247 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4cddea61] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:28:44,352 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$3e7feb5f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:28:44,835 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:28:44,848 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:28:44,859 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:28:44,860 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:28:44,960 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:28:44,960 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1799 ms
+2019-09-23 21:28:46,375 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:28:46,643 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:28:46,700 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:28:48,245 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:28:48,256 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:28:48,256 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:28:48,257 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:28:48,258 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:28:48,259 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:28:48,259 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:28:48,259 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@5d5be441
+2019-09-23 21:28:48,281 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:28:48,374 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:28:48,385 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:28:48,413 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:28:48,594 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:28:48,595 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:28:48,603 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:28:48,622 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:28:48,624 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.927 seconds (JVM running for 7.494)
+2019-09-23 21:28:55,763 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:28:55,763 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:28:55,771 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 8 ms
+2019-09-23 21:29:17,778 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 63772 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:29:17,780 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:29:17,948 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:29:17,949 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:29:18,662 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:29:18,664 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:29:18,691 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:29:18,986 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c1faf58a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:29:19,075 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$b39cf688] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:29:19,564 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:29:19,579 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:29:19,590 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:29:19,591 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:29:19,694 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:29:19,694 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1745 ms
+2019-09-23 21:29:21,053 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:29:21,319 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:29:21,376 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:29:22,893 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:29:22,903 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:29:22,903 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:29:22,904 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:29:22,905 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:29:22,905 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:29:22,905 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:29:22,905 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@115e73ad
+2019-09-23 21:29:22,925 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:29:23,017 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:29:23,028 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:29:23,052 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:29:23,259 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:29:23,260 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:29:23,268 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:29:23,288 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:29:23,291 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.918 seconds (JVM running for 6.746)
+2019-09-23 21:29:27,064 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:29:27,064 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:29:27,075 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 11 ms
+2019-09-23 21:29:36,076 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 2756 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:29:36,077 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:29:36,302 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:29:36,302 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:29:37,020 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:29:37,022 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:29:37,051 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:29:37,344 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bec0488f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:29:37,431 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$b062498d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:29:37,892 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:29:37,906 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:29:37,918 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:29:37,918 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:29:38,016 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:29:38,017 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1715 ms
+2019-09-23 21:29:39,358 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:29:39,618 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:29:39,674 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:29:41,195 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:29:41,204 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:29:41,205 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:29:41,205 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:29:41,206 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:29:41,206 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:29:41,207 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:29:41,207 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@65bf6056
+2019-09-23 21:29:41,227 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:29:41,320 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:29:41,330 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:29:41,353 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:29:41,525 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:29:41,525 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:29:41,535 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:29:41,555 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:29:41,557 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.891 seconds (JVM running for 6.745)
+2019-09-23 21:29:46,418 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:29:46,418 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:29:46,431 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 13 ms
+2019-09-23 21:30:37,257 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 65080 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:30:37,258 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:30:37,419 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:30:37,419 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:30:38,128 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:30:38,130 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:30:38,159 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 21ms. Found 0 repository interfaces.
+2019-09-23 21:30:38,461 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$ce06c705] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:30:38,544 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$bfa8c803] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:30:38,989 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:30:39,003 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:30:39,014 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:30:39,015 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:30:39,119 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:30:39,119 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1700 ms
+2019-09-23 21:30:40,485 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:30:40,732 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:30:40,787 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:30:42,335 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:30:42,345 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:30:42,345 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:30:42,346 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:30:42,346 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:30:42,347 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:30:42,347 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:30:42,347 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@48fb36ce
+2019-09-23 21:30:42,368 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:30:42,460 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:30:42,470 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:30:42,494 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:30:42,660 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:30:42,661 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:30:42,670 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:30:42,689 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:30:42,692 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.766 seconds (JVM running for 6.67)
+2019-09-23 21:30:49,225 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:30:49,226 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:30:49,235 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 9 ms
+2019-09-23 21:31:29,732 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 46824 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:31:29,734 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:31:29,900 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:31:29,900 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:31:30,650 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:31:30,652 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:31:30,679 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2019-09-23 21:31:30,971 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4ffeffe2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:31:31,056 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$41a100e0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:31:31,533 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:31:31,546 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:31:31,557 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:31:31,557 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:31:31,659 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:31:31,659 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1759 ms
+2019-09-23 21:31:33,011 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:31:33,270 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:31:33,326 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:31:34,836 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:31:34,846 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:31:34,847 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:31:34,847 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:31:34,849 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:31:34,849 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:31:34,849 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:31:34,849 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@25213663
+2019-09-23 21:31:34,871 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:31:34,964 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:31:34,974 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:31:35,027 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:31:35,200 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:31:35,200 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:31:35,209 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:31:35,228 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:31:35,230 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.879 seconds (JVM running for 6.743)
+2019-09-23 21:31:43,520 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:31:43,520 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:31:43,531 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 11 ms
+2019-09-23 21:35:09,540 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 50] Starting Application on SKY-20180405RPH with PID 65324 (E:\MySpace\jingshuiqi\target\classes started by Administrator in E:\MySpace\jingshuiqi)
+2019-09-23 21:35:09,542 INFO [restartedMain] com.jingshuiqi.Application [SpringApplication.java : 650] The following profiles are active: mybatis,mybatis-config-javaconfig,mybatis-mapping-xml
+2019-09-23 21:35:09,736 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-23 21:35:09,737 INFO [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor [DeferredLog.java : 225] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-23 21:35:10,444 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 244] Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-09-23 21:35:10,445 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 126] Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-23 21:35:10,473 INFO [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate [RepositoryConfigurationDelegate.java : 182] Finished Spring Data repository scanning in 20ms. Found 0 repository interfaces.
+2019-09-23 21:35:10,772 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f2950f92] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:35:10,859 INFO [restartedMain] o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [PostProcessorRegistrationDelegate.java : 330] Bean 'redisConfig' of type [com.jingshuiqi.config.RedisConfig$$EnhancerBySpringCGLIB$$e4371090] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-23 21:35:11,337 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 90] Tomcat initialized with port(s): 81 (http)
+2019-09-23 21:35:11,350 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Initializing ProtocolHandler ["http-nio-81"]
+2019-09-23 21:35:11,361 INFO [restartedMain] o.a.catalina.core.StandardService [DirectJDKLog.java : 173] Starting service [Tomcat]
+2019-09-23 21:35:11,362 INFO [restartedMain] o.a.catalina.core.StandardEngine [DirectJDKLog.java : 173] Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-09-23 21:35:11,460 INFO [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring embedded WebApplicationContext
+2019-09-23 21:35:11,461 INFO [restartedMain] o.s.web.context.ContextLoader [ServletWebServerApplicationContext.java : 283] Root WebApplicationContext: initialization completed in 1724 ms
+2019-09-23 21:35:12,821 INFO [restartedMain] s.d.s.w.PropertySourcedRequestMappingHandlerMapping [PropertySourcedRequestMappingHandlerMapping.java : 69] Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2019-09-23 21:35:13,083 INFO [restartedMain] o.s.s.c.ThreadPoolTaskExecutor [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-23 21:35:13,139 INFO [restartedMain] o.s.b.d.a.OptionalLiveReloadServer [OptionalLiveReloadServer.java : 57] LiveReload server is running on port 35729
+2019-09-23 21:35:14,673 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1208] Using default implementation for ThreadExecutor
+2019-09-23 21:35:14,683 INFO [restartedMain] o.quartz.core.SchedulerSignalerImpl [SchedulerSignalerImpl.java : 61] Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-09-23 21:35:14,683 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 229] Quartz Scheduler v.2.3.0 created.
+2019-09-23 21:35:14,684 INFO [restartedMain] org.quartz.simpl.RAMJobStore [RAMJobStore.java : 155] RAMJobStore initialized.
+2019-09-23 21:35:14,685 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 294] Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-09-23 21:35:14,685 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1362] Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-09-23 21:35:14,685 INFO [restartedMain] org.quartz.impl.StdSchedulerFactory [StdSchedulerFactory.java : 1366] Quartz scheduler version: 2.3.0
+2019-09-23 21:35:14,685 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 2287] JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@20ff936b
+2019-09-23 21:35:14,705 INFO [restartedMain] o.s.s.c.ThreadPoolTaskScheduler [ExecutorConfigurationSupport.java : 171] Initializing ExecutorService 'taskScheduler'
+2019-09-23 21:35:14,797 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 147] Context refreshed
+2019-09-23 21:35:14,807 INFO [restartedMain] s.d.s.w.p.DocumentationPluginsBootstrapper [DocumentationPluginsBootstrapper.java : 150] Found 1 custom documentation plugin(s)
+2019-09-23 21:35:14,832 INFO [restartedMain] s.d.s.w.s.ApiListingReferenceScanner [ApiListingReferenceScanner.java : 41] Scanning for api listing references
+2019-09-23 21:35:15,005 INFO [restartedMain] o.s.s.quartz.SchedulerFactoryBean [SchedulerFactoryBean.java : 726] Starting Quartz Scheduler now
+2019-09-23 21:35:15,006 INFO [restartedMain] org.quartz.core.QuartzScheduler [QuartzScheduler.java : 547] Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-09-23 21:35:15,015 INFO [restartedMain] o.a.coyote.http11.Http11NioProtocol [DirectJDKLog.java : 173] Starting ProtocolHandler ["http-nio-81"]
+2019-09-23 21:35:15,035 INFO [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer [TomcatWebServer.java : 202] Tomcat started on port(s): 81 (http) with context path ''
+2019-09-23 21:35:15,037 INFO [restartedMain] com.jingshuiqi.Application [StartupInfoLogger.java : 59] Started Application in 5.766 seconds (JVM running for 6.968)
+2019-09-23 21:35:19,394 INFO [http-nio-81-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] [DirectJDKLog.java : 173] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-23 21:35:19,394 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 524] Initializing Servlet 'dispatcherServlet'
+2019-09-23 21:35:19,403 INFO [http-nio-81-exec-1] o.s.web.servlet.DispatcherServlet [FrameworkServlet.java : 546] Completed initialization in 9 ms

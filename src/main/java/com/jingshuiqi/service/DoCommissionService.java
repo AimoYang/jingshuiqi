@@ -2,9 +2,7 @@ package com.jingshuiqi.service;
 
 import com.jingshuiqi.bean.*;
 import com.jingshuiqi.dao.*;
-import com.jingshuiqi.dto.CommissionBean;
-import com.jingshuiqi.dto.TypePage;
-import com.jingshuiqi.dto.UserAgent;
+import com.jingshuiqi.dto.*;
 import com.jingshuiqi.util.ArithUtil;
 import com.jingshuiqi.util.RandomNum;
 import com.jingshuiqi.util.ResultUtil;
@@ -40,6 +38,12 @@ public class DoCommissionService {
     private AgentMapper agentMapper;
     @Autowired
     private BankCardMapper bankCardMapper;
+    @Autowired
+    private GoodsOrderMapper goodsOrderMapper;
+    @Autowired
+    private GoodsOrderDetailMapper goodsOrderDetailMapper;
+    @Autowired
+    private RecordRefundMapper recordRefundMapper;
     /**
      * 计算佣金
      * @param openId 用户openid
@@ -154,9 +158,11 @@ public class DoCommissionService {
             commission.setCityMoney((double)0);
             commission.setTeamMoney((double)0);
         }
-        Double waitCalculate1 = orderCommissionMapper.sumWaitCalculate(openId);
-        Double waitCalculate2 = agentCommissionMapper.sumWaitCalculate(openId);
-        Double waitCalculate = ArithUtil.add(waitCalculate1,waitCalculate2);
+        Double waitCalculate1 = orderCommissionMapper.sumOneWaitCalculate(openId);
+        Double waitCalculate2 = orderCommissionMapper.sumTwoWaitCalculate(openId);
+        Double waitCalculate3 = agentCommissionMapper.sumWaitCalculate(openId);
+        Double waitCalculate4 = ArithUtil.add(waitCalculate1,waitCalculate2);
+        Double waitCalculate = ArithUtil.add(waitCalculate3,waitCalculate4);
         CommissionBean commissionBean = new CommissionBean();
         BeanUtils.copyProperties(commission,commissionBean);
         commissionBean.setWaitCalculate(waitCalculate);
@@ -185,7 +191,7 @@ public class DoCommissionService {
     //获取不同的成员
     private  List<UserBase> findMembersType(List<UserBase> list,Integer type){
         List<UserBase> list2 = new ArrayList<>();
-        if(type == 0 || type == 2|| type == 3 || type == 4){
+        if(type == 0 || type == 1 || type == 2 || type == 3){
             for (UserBase userBase: list) {
                 if(userBase.getUserType().intValue() == type.intValue()){
                     list2.add(userBase);
@@ -312,6 +318,113 @@ public class DoCommissionService {
         return ResultUtil.success();
     }
 
+    /**
+     * 获取成员订单
+     * @param openId
+     * @param page
+     * @return
+     */
+    public  Map<String,Object> findMemberOrders(String openId, TypeDatePage page){
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        if(page.getType() != 3){
+            Integer rowCount = goodsOrderMapper.countMemberOrders(openId,page);
+            page.setRowCount(rowCount);
+            //查询订单信息
+            List<GoodsOrderBean> list = goodsOrderMapper.selectMemberOrders(openId,page);
+            map.put("page", page);
+            map.put("info", dealOrderDetail(list,openId));
+            return map;
+        }
+        Integer rowCount = goodsOrderMapper.countMemberRefundOrders(openId,page);
+        page.setRowCount(rowCount);
+        List<GoodsOrderBean> list = goodsOrderMapper.selectMemberRefundOrders(openId,page);
+        map.put("page", page);
+        map.put("info", dealRefundOrderDetail(list,openId));
+        return map;
+    }
+
+    private  List<GoodsOrderBean> dealOrderDetail(List<GoodsOrderBean> list,String openId){
+        List<GoodsOrderBean> rlist = new ArrayList<>();
+        for (GoodsOrderBean g: list) {
+            List<GoodsOrderDetail> list1 = goodsOrderDetailMapper.selectByOrderUuid(g.getUuid());
+            double agentCommission = 0;
+            double cityCommission = 0;
+            double topCommission = 0;
+            for (GoodsOrderDetail d: list1) {
+                List<AgentCommission> list2 = agentCommissionMapper.selectByOrderDetailUuid(d.getUuid());
+                agentCommission = calculateOrderCommission(agentCommission,d.getUuid(),openId);
+                cityCommission = calculateAgentCommission(cityCommission,list2,openId,2);
+                topCommission = calculateAgentCommission(topCommission,list2,openId,3);
+            }
+            g.setTopCommission(topCommission);
+            g.setCityCommission(cityCommission);
+            g.setAgentCommission(agentCommission);
+            g.setList(list1);
+            rlist.add(g);
+        }
+        return  rlist;
+    }
+
+    private  List<GoodsOrderBean> dealRefundOrderDetail(List<GoodsOrderBean> list,String openId){
+        List<GoodsOrderBean> rlist = new ArrayList<>();
+        for (GoodsOrderBean g: list) {
+            GoodsOrderDetail d = goodsOrderDetailMapper.selectByUuid(g.getDetailUuid());
+            RecordRefund recordRefund = recordRefundMapper.selectByOrderUuid(g.getDetailUuid());
+            if(recordRefund != null){
+                d.setQuantity(recordRefund.getRefundNum());
+                g.setActualPrice(ArithUtil.sub(recordRefund.getRefundNum(),d.getPrice()));
+            }
+            List<AgentCommission> list2 = agentCommissionMapper.selectByOrderDetailUuid(d.getUuid());
+            double agentCommission = calculateOrderCommission(0,d.getUuid(),openId);
+            double cityCommission = calculateAgentCommission(0,list2,openId,2);
+            double topCommission = calculateAgentCommission(0,list2,openId,3);
+            g.setTopCommission(topCommission);
+            g.setCityCommission(cityCommission);
+            g.setAgentCommission(agentCommission);
+            List<GoodsOrderDetail> list1 = new ArrayList<>();
+            list1.add(d);
+            g.setList(list1);
+            rlist.add(g);
+        }
+        return  rlist;
+    }
+
+
+    private  Double calculateOrderCommission(double agentCommission,String orderDetailUuid,String openId){
+        OrderCommission orderCommission = orderCommissionMapper.selectByOrderDetailUuid(orderDetailUuid);
+        if(orderCommission != null){
+            if(openId.equals(orderCommission.getParentOpenId())){
+                if(orderCommission.getIsSuccess() == 1){
+                    agentCommission = ArithUtil.add(orderCommission.getActualParentCommission() == null ? 0 :orderCommission.getActualParentCommission(),agentCommission);
+                }else {
+                    agentCommission = ArithUtil.add(orderCommission.getParentCommission(),agentCommission);
+                }
+            }
+            if(orderCommission.getGrandpaOpenId() != null && openId.equals(orderCommission.getGrandpaOpenId()) ){
+                if(orderCommission.getIsSuccess() == 1){
+                    agentCommission = ArithUtil.add(orderCommission.getActualGrandpaCommission() == null ? 0 :orderCommission.getActualGrandpaCommission(),agentCommission);
+                }else {
+                    agentCommission = ArithUtil.add(orderCommission.getGrandpaCommission(),agentCommission);
+                }
+            }
+        }
+        return  agentCommission;
+    }
+
+    private  Double calculateAgentCommission(double commission,List<AgentCommission> list,String openId,Integer type){
+        for (AgentCommission a: list) {
+            if (openId.equals(a.getAgentOpenId())){
+                if(a.getType().intValue() == type.intValue()){
+                    if(a.getIsSuccess() == 1){
+                        commission = ArithUtil.add(a.getActualCommission() == null ? 0 :a.getActualCommission(),commission);
+                    }else {
+                        commission = ArithUtil.add(a.getCommission(),commission);
+                    }
+                }
+            }
+        }
+        return  commission;
+    }
 
 
 }

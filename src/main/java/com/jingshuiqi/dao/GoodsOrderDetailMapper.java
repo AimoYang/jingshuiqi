@@ -1,6 +1,9 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.GoodsOrderDetail;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface GoodsOrderDetailMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface GoodsOrderDetailMapper {
     int updateByPrimaryKeySelective(GoodsOrderDetail record);
 
     int updateByPrimaryKey(GoodsOrderDetail record);
+
+    List<GoodsOrderDetail> selectByOrderUuid(@Param("orderUuid") String orderUuid);
+
+    GoodsOrderDetail selectByUuid(@Param("uuid")String uuid);
 }
