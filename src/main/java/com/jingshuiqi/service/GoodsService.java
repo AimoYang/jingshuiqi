@@ -1,18 +1,20 @@
 package com.jingshuiqi.service;
 
-import com.jingshuiqi.bean.Collection;
+
 import com.jingshuiqi.bean.Goods;
 import com.jingshuiqi.bean.JsonResult;
-import com.jingshuiqi.dao.CollectionMapper;
+import com.jingshuiqi.bean.Records;
 import com.jingshuiqi.dao.GoodsMapper;
+import com.jingshuiqi.dao.RecordsMapper;
 import com.jingshuiqi.dao.SkuMapper;
+import com.jingshuiqi.form.GoodsAllPage;
+import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.ResultUtil;
-import com.jingshuiqi.util.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -28,10 +30,10 @@ public class GoodsService {
     @Autowired
     private SkuMapper skuMapper;
     @Autowired
-    private CollectionMapper collectionMapper;
+    private RecordsMapper recordsMapper;
 
     public JsonResult findGoodsInfo(String uuid, String token) {
-        Map<String,Object> map = new HashMap<>(2);
+        Map<String,Object> map = new HashMap<String, Object>(2);
 
         Goods goods = goodsMapper.findGoodsInfoByUuid(uuid);
         if (goods == null) {
@@ -39,7 +41,7 @@ public class GoodsService {
         }
         goods.setSkus(skuMapper.findSku(uuid));
 
-        int rows = collectionMapper.findRecordsInfo(uuid, token);
+        int rows = recordsMapper.findRecordsInfo(uuid, token);
         if (rows == 0) {
             map.put("isCollect", 0);
         }else {
@@ -50,21 +52,63 @@ public class GoodsService {
     }
 
     public JsonResult updateCollectInfo(String uuid, String token) {
-        int rows = collectionMapper.findRecordsInfo(uuid, token);
+        if (uuid == null || token == null){
+            return ResultUtil.fail("信息为空");
+        }
+        int rows = recordsMapper.findRecordsInfo(uuid, token);
         if (rows == 0) {
-            Collection collection = new Collection();
-            collection.setGoodsUuid(uuid);
-            collection.setOpenId(token);
-            int row = collectionMapper.insertSelective(collection);
+            Records records = new Records();
+            records.setGoodsUuid(uuid);
+            records.setOpenId(token);
+            int row = recordsMapper.insertSelective(records);
             if (row <= 0) {
                 return ResultUtil.fail("操作失败");
             }
         }else {
-            int row = collectionMapper.deleteByCollectInfo(uuid, token);
+            int row = recordsMapper.deleteByCollectInfo(uuid, token);
             if (row <= 0) {
                 return ResultUtil.fail("操作失败");
             }
         }
         return ResultUtil.success();
+    }
+
+    public JsonResult findCollectInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findCollectInfo(pageObject);
+        int row = goodsMapper.getCollectInfoRow(pageObject);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findOneGoodsInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findOneGoodsInfo(pageObject);
+        int row = goodsMapper.getOneGoodsInfoRow(pageObject);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findAllGoodsInfo(GoodsAllPage goodsAllPage) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findAllGoodsInfo(goodsAllPage);
+        int row = goodsMapper.getAllGoodsInfoRow(goodsAllPage);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        goodsAllPage.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", goodsAllPage);
+        return ResultUtil.success(map);
     }
 }

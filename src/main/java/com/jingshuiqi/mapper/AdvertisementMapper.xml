@@ -15,6 +15,18 @@
   <sql id="Base_Column_List" >
     id, title, image, create_time, sort, type, url, is_show, is_delete
   </sql>
+
+  <select id="findBanner" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from advertisement
+    where is_delete = 0 and is_show = 1
+    order by sort
+  </select>
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

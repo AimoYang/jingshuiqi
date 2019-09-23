@@ -9,6 +9,8 @@ public class Area {
 
     private Date createTime;
 
+    private String value;
+
     private Integer isDelete;
 
     private String reserve;
@@ -35,6 +37,14 @@ public class Area {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value == null ? null : value.trim();
     }
 
     public Integer getIsDelete() {

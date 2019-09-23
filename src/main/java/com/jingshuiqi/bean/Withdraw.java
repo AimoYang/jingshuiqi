@@ -21,6 +21,14 @@ public class Withdraw {
 
     private Integer isDelete;
 
+    private String ownerName;
+
+    private String bankName;
+
+    private String bankCard;
+
+    private Integer bankCardId;
+
     public Integer getId() {
         return id;
     }
@@ -91,5 +99,37 @@ public class Withdraw {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName == null ? null : ownerName.trim();
+    }
+
+    public String getBankName() {
+        return bankName;
+    }
+
+    public void setBankName(String bankName) {
+        this.bankName = bankName == null ? null : bankName.trim();
+    }
+
+    public String getBankCard() {
+        return bankCard;
+    }
+
+    public void setBankCard(String bankCard) {
+        this.bankCard = bankCard == null ? null : bankCard.trim();
+    }
+
+    public Integer getBankCardId() {
+        return bankCardId;
+    }
+
+    public void setBankCardId(Integer bankCardId) {
+        this.bankCardId = bankCardId;
     }
 }

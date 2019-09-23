@@ -3,9 +3,9 @@ package com.jingshuiqi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yidao.util.WeixinUtil;
-import com.yidao.util.pay.Ticket;
-import com.yidao.util.template.AccessToken;
+import com.jingshuiqi.util.WeixinUtil;
+import com.jingshuiqi.util.pay.Ticket;
+import com.jingshuiqi.util.template.AccessToken;
 
 @Service
 public class AccessTokenService {

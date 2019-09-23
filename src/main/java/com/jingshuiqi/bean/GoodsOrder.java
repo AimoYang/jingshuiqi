@@ -9,9 +9,9 @@ public class GoodsOrder {
 
     private String openId;
 
-    private Integer orderPrice;
+    private Double orderPrice;
 
-    private Integer actualPrice;
+    private Double actualPrice;
 
     private String receiverName;
 
@@ -65,19 +65,19 @@ public class GoodsOrder {
         this.openId = openId == null ? null : openId.trim();
     }
 
-    public Integer getOrderPrice() {
+    public Double getOrderPrice() {
         return orderPrice;
     }
 
-    public void setOrderPrice(Integer orderPrice) {
+    public void setOrderPrice(Double orderPrice) {
         this.orderPrice = orderPrice;
     }
 
-    public Integer getActualPrice() {
+    public Double getActualPrice() {
         return actualPrice;
     }
 
-    public void setActualPrice(Integer actualPrice) {
+    public void setActualPrice(Double actualPrice) {
         this.actualPrice = actualPrice;
     }
 

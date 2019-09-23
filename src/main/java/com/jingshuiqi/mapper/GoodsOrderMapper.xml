@@ -5,8 +5,8 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="uuid" property="uuid" jdbcType="VARCHAR" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
-    <result column="order_price" property="orderPrice" jdbcType="INTEGER" />
-    <result column="actual_price" property="actualPrice" jdbcType="INTEGER" />
+    <result column="order_price" property="orderPrice" jdbcType="DOUBLE" />
+    <result column="actual_price" property="actualPrice" jdbcType="DOUBLE" />
     <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
     <result column="receiver_phone" property="receiverPhone" jdbcType="CHAR" />
     <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
@@ -46,7 +46,7 @@
       trade_successful_time, pay_type, create_time, 
       is_delete)
     values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
-      #{orderPrice,jdbcType=INTEGER}, #{actualPrice,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, 
+      #{orderPrice,jdbcType=DOUBLE}, #{actualPrice,jdbcType=DOUBLE}, #{receiverName,jdbcType=VARCHAR}, 
       #{receiverPhone,jdbcType=CHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{buyerMessage,jdbcType=VARCHAR}, 
       #{freight,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{isComment,jdbcType=INTEGER}, 
       #{payUuid,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP}, 
@@ -125,10 +125,10 @@
         #{openId,jdbcType=VARCHAR},
       </if>
       <if test="orderPrice != null" >
-        #{orderPrice,jdbcType=INTEGER},
+        #{orderPrice,jdbcType=DOUBLE},
       </if>
       <if test="actualPrice != null" >
-        #{actualPrice,jdbcType=INTEGER},
+        #{actualPrice,jdbcType=DOUBLE},
       </if>
       <if test="receiverName != null" >
         #{receiverName,jdbcType=VARCHAR},
@@ -184,10 +184,10 @@
         open_id = #{openId,jdbcType=VARCHAR},
       </if>
       <if test="orderPrice != null" >
-        order_price = #{orderPrice,jdbcType=INTEGER},
+        order_price = #{orderPrice,jdbcType=DOUBLE},
       </if>
       <if test="actualPrice != null" >
-        actual_price = #{actualPrice,jdbcType=INTEGER},
+        actual_price = #{actualPrice,jdbcType=DOUBLE},
       </if>
       <if test="receiverName != null" >
         receiver_name = #{receiverName,jdbcType=VARCHAR},
@@ -238,8 +238,8 @@
     update goods_order
     set uuid = #{uuid,jdbcType=VARCHAR},
       open_id = #{openId,jdbcType=VARCHAR},
-      order_price = #{orderPrice,jdbcType=INTEGER},
-      actual_price = #{actualPrice,jdbcType=INTEGER},
+      order_price = #{orderPrice,jdbcType=DOUBLE},
+      actual_price = #{actualPrice,jdbcType=DOUBLE},
       receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_phone = #{receiverPhone,jdbcType=CHAR},
       receiver_address = #{receiverAddress,jdbcType=VARCHAR},

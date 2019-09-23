@@ -19,7 +19,7 @@ public class GoodsOrderDetail {
 
     private String productName;
 
-    private Integer amount;
+    private Double amount;
 
     private String properties;
 
@@ -28,6 +28,8 @@ public class GoodsOrderDetail {
     private Double commission;
 
     private Integer status;
+
+    private Integer isRefund;
 
     public Integer getId() {
         return id;
@@ -101,11 +103,11 @@ public class GoodsOrderDetail {
         this.productName = productName == null ? null : productName.trim();
     }
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -139,5 +141,13 @@ public class GoodsOrderDetail {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getIsRefund() {
+        return isRefund;
+    }
+
+    public void setIsRefund(Integer isRefund) {
+        this.isRefund = isRefund;
     }
 }

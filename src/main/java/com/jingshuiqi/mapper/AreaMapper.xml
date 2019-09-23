@@ -5,11 +5,12 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="area_name" property="areaName" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="value" property="value" jdbcType="VARCHAR" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
     <result column="reserve" property="reserve" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, area_name, create_time, is_delete, reserve
+    id, area_name, create_time, value, is_delete, reserve
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,9 +24,11 @@
   </delete>
   <insert id="insert" parameterType="com.jingshuiqi.bean.Area" >
     insert into area (id, area_name, create_time, 
-      is_delete, reserve)
+      value, is_delete, reserve
+      )
     values (#{id,jdbcType=INTEGER}, #{areaName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{isDelete,jdbcType=INTEGER}, #{reserve,jdbcType=VARCHAR})
+      #{value,jdbcType=VARCHAR}, #{isDelete,jdbcType=INTEGER}, #{reserve,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.Area" >
     insert into area
@@ -38,6 +41,9 @@
       </if>
       <if test="createTime != null" >
         create_time,
+      </if>
+      <if test="value != null" >
+        value,
       </if>
       <if test="isDelete != null" >
         is_delete,
@@ -56,6 +62,9 @@
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="value != null" >
+        #{value,jdbcType=VARCHAR},
+      </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=INTEGER},
       </if>
@@ -73,6 +82,9 @@
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=VARCHAR},
+      </if>
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
@@ -86,6 +98,7 @@
     update area
     set area_name = #{areaName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
+      value = #{value,jdbcType=VARCHAR},
       is_delete = #{isDelete,jdbcType=INTEGER},
       reserve = #{reserve,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

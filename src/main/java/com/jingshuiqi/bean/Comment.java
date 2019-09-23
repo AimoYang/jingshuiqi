@@ -7,6 +7,8 @@ public class Comment {
 
     private String goodsUuid;
 
+    private String orderUuid;
+
     private String openId;
 
     private Integer level;
@@ -33,6 +35,14 @@ public class Comment {
 
     public void setGoodsUuid(String goodsUuid) {
         this.goodsUuid = goodsUuid == null ? null : goodsUuid.trim();
+    }
+
+    public String getOrderUuid() {
+        return orderUuid;
+    }
+
+    public void setOrderUuid(String orderUuid) {
+        this.orderUuid = orderUuid == null ? null : orderUuid.trim();
     }
 
     public String getOpenId() {

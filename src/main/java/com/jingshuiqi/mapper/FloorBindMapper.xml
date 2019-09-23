@@ -6,9 +6,44 @@
     <result column="goods_uuid" property="goodsUuid" jdbcType="VARCHAR" />
     <result column="floor_id" property="floorId" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="FloorResultMap" type="com.jingshuiqi.vo.IndexFloorInfo" extends="BaseResultMap">
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="show_count" property="showCount" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Base_Column_List" >
     id, goods_uuid, floor_id
   </sql>
+
+  <select id="findFloorBind" resultMap="FloorResultMap" parameterType="java.lang.Integer" >
+    select
+    f.goods_uuid,if(g.deduction_max > 0,1,0) state,g.goods_name, g.show_count, g.thumb, (select min(new_price) from sku as s where s.goods_uuid = g.uuid) price
+    from floor_bind as f
+    left join goods as g on g.uuid = f.goods_uuid
+    where g.is_delete = 0 and g.is_shelf = 1 and f.floor_id = #{id}
+    order by f.id desc
+    limit 6
+  </select>
+
+  <select id="findIndexFloorInfoById" resultMap="FloorResultMap" parameterType="java.lang.Integer" >
+    select
+    f.goods_uuid,if(g.deduction_max > 0,1,0) state,g.goods_name, g.show_count, g.thumb, (select min(new_price) from sku as s where s.goods_uuid = g.uuid) price
+    from floor_bind as f
+    left join goods as g on g.uuid = f.goods_uuid
+    where g.is_delete = 0 and g.is_shelf = 1 and f.floor_id = #{pageObject.id}
+    order by f.id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
+
+  <select id="getIndexFloorInfoByIdRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from floor_bind as f
+    left join goods as g on g.uuid = f.goods_uuid
+    where g.is_delete = 0 and g.is_shelf = 1 and f.floor_id = #{pageObject.id}
+  </select>
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

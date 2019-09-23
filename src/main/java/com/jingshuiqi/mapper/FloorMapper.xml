@@ -10,9 +10,35 @@
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
   </resultMap>
+  <resultMap id="FloorResultMap" type="com.jingshuiqi.vo.IndexFloor" extends="BaseResultMap">
+    <result column="goods_uuid" property="goodsUuid" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
     id, floor_img, floor_title, sort, is_index, is_delete, create_time
   </sql>
+
+  <select id="findIndexFloorInfo" resultMap="FloorResultMap" >
+    select
+    f.*,b.goods_uuid
+    from floor as f
+    left join floor_bind as b on f.id = b.floor_id
+    where is_delete = 0
+    order by sort, id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
+
+  <select id="getIndexFloorRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from floor
+    where is_delete = 0
+  </select>
+
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
