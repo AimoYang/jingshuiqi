@@ -1,5 +1,6 @@
 package com.jingshuiqi.service;
 
+import com.jingshuiqi.bean.Advertisement;
 import com.jingshuiqi.bean.Floor;
 import com.jingshuiqi.bean.Goods;
 import com.jingshuiqi.bean.JsonResult;
@@ -31,6 +32,8 @@ public class BannerService {
     private FloorMapper floorMapper;
     @Autowired
     private FloorBindMapper floorBindMapper;
+    @Autowired
+    private AdvertisementMapper advertisementMapper;
 
     public JsonResult findBannerById(PageObject pageObject) {
         Map<String, Object> map = new HashMap<String, Object>(2);
@@ -49,10 +52,6 @@ public class BannerService {
 
         Map<String, Object> map = new HashMap<String, Object>(2);
         List<IndexFloor> list = floorMapper.findIndexFloorInfo(pageObject);
-        for (IndexFloor floor : list) {
-            List<IndexFloorInfo> indexFloorInfos = floorBindMapper.findFloorBind(floor.getId());
-            floor.setIndexFloorInfos(indexFloorInfos);
-        }
         int row = floorMapper.getIndexFloorRow(pageObject);
         pageObject.setRowCount(row);
         map.put("list", list);
@@ -60,7 +59,7 @@ public class BannerService {
         return ResultUtil.success(map);
     }
 
-    public JsonResult findIndexFloorInfoById(PageObject pageObject) {
+    /*public JsonResult findIndexFloorInfoById(PageObject pageObject) {
         Map<String, Object> map = new HashMap<String, Object>(2);
         List<IndexFloorInfo> list = floorBindMapper.findIndexFloorInfoById(pageObject);
         int row = floorBindMapper.getIndexFloorInfoByIdRow(pageObject);
@@ -68,6 +67,10 @@ public class BannerService {
         map.put("list", list);
         map.put("pageObject", pageObject);
         return ResultUtil.success(map);
-    }
+    }*/
 
+    public JsonResult findBanner() {
+        List<Advertisement> list = advertisementMapper.findBanner();
+        return ResultUtil.success(list);
+    }
 }

@@ -11,6 +11,8 @@ import lombok.Data;
 @Data
 public class IndexFloorInfo extends FloorBind {
 
+    //弃用
+
     private Integer state;
 
     private String goodsName;

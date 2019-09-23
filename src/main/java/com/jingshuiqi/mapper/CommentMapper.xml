@@ -12,11 +12,17 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
+  <resultMap id="CommentResultMap" type="com.jingshuiqi.vo.CommentInfoVo" extends="BaseResultMap">
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="UserResultMap" type="com.jingshuiqi.vo.UserCommentInfoVo" extends="CommentResultMap">
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+  </resultMap>
   <sql id="Base_Column_List" >
     id, goods_uuid, order_uuid, open_id, level, content, reply, create_time, is_delete
   </sql>
 
-  <select id="findGoodsCommentInfo" resultMap="BaseResultMap" >
+  <select id="findGoodsCommentInfo" resultMap="CommentResultMap" >
     select
     c.*, u.nick_name nickName, u.icon
     from comment as c
@@ -39,7 +45,7 @@
     </if>
   </select>
 
-  <select id="findUserCommentInfo" resultMap="BaseResultMap" >
+  <select id="findUserCommentInfo" resultMap="UserResultMap" >
     select
     c.*, u.nick_name nickName, u.icon, p.price, p.thumb, p.product_name productName
     from comment as c

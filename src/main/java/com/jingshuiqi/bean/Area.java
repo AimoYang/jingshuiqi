@@ -3,12 +3,13 @@ package com.jingshuiqi.bean;
 import java.util.Date;
 
 public class Area {
-    //弃用bean
     private Integer id;
 
     private String areaName;
 
     private Date createTime;
+
+    private String value;
 
     private Integer isDelete;
 
@@ -36,6 +37,14 @@ public class Area {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value == null ? null : value.trim();
     }
 
     public Integer getIsDelete() {

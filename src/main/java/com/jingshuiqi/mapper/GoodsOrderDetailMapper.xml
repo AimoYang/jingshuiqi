@@ -11,15 +11,16 @@
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="thumb" property="thumb" jdbcType="VARCHAR" />
     <result column="product_name" property="productName" jdbcType="VARCHAR" />
-    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DOUBLE" />
     <result column="properties" property="properties" jdbcType="VARCHAR" />
     <result column="deduction" property="deduction" jdbcType="INTEGER" />
     <result column="commission" property="commission" jdbcType="DOUBLE" />
     <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="is_refund" property="isRefund" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name, 
-    amount, properties, deduction, commission, status
+    amount, properties, deduction, commission, status, is_refund
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -36,12 +37,14 @@
       goods_uuid, sku_uuid, quantity, 
       price, thumb, product_name, 
       amount, properties, deduction, 
-      commission, status)
+      commission, status, is_refund
+      )
     values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, 
       #{goodsUuid,jdbcType=VARCHAR}, #{skuUuid,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
       #{price,jdbcType=INTEGER}, #{thumb,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
-      #{amount,jdbcType=INTEGER}, #{properties,jdbcType=VARCHAR}, #{deduction,jdbcType=INTEGER}, 
-      #{commission,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER})
+      #{amount,jdbcType=DOUBLE}, #{properties,jdbcType=VARCHAR}, #{deduction,jdbcType=INTEGER}, 
+      #{commission,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{isRefund,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsOrderDetail" >
     insert into goods_order_detail
@@ -88,6 +91,9 @@
       <if test="status != null" >
         status,
       </if>
+      <if test="isRefund != null" >
+        is_refund,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -118,7 +124,7 @@
         #{productName,jdbcType=VARCHAR},
       </if>
       <if test="amount != null" >
-        #{amount,jdbcType=INTEGER},
+        #{amount,jdbcType=DOUBLE},
       </if>
       <if test="properties != null" >
         #{properties,jdbcType=VARCHAR},
@@ -131,6 +137,9 @@
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isRefund != null" >
+        #{isRefund,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -162,7 +171,7 @@
         product_name = #{productName,jdbcType=VARCHAR},
       </if>
       <if test="amount != null" >
-        amount = #{amount,jdbcType=INTEGER},
+        amount = #{amount,jdbcType=DOUBLE},
       </if>
       <if test="properties != null" >
         properties = #{properties,jdbcType=VARCHAR},
@@ -175,6 +184,9 @@
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isRefund != null" >
+        is_refund = #{isRefund,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -189,11 +201,12 @@
       price = #{price,jdbcType=INTEGER},
       thumb = #{thumb,jdbcType=VARCHAR},
       product_name = #{productName,jdbcType=VARCHAR},
-      amount = #{amount,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DOUBLE},
       properties = #{properties,jdbcType=VARCHAR},
       deduction = #{deduction,jdbcType=INTEGER},
       commission = #{commission,jdbcType=DOUBLE},
-      status = #{status,jdbcType=INTEGER}
+      status = #{status,jdbcType=INTEGER},
+      is_refund = #{isRefund,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

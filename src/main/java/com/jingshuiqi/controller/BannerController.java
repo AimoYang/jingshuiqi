@@ -24,6 +24,12 @@ public class BannerController {
     @Autowired
     private BannerService bannerService;
 
+    @ApiOperation(value = "查看广告" , notes = "根据url查看广告")
+    @RequestMapping(value = "findBanner" , method = RequestMethod.POST)
+    public JsonResult findBanner(){
+        return bannerService.findBanner();
+    }
+
     @ApiOperation(value = "查看广告绑定商品信息" , notes = "根据url查看广告绑定商品信息")
     @RequestMapping(value = "findBannerById" , method = RequestMethod.POST)
     public JsonResult findBannerById(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject){
@@ -36,10 +42,10 @@ public class BannerController {
         return bannerService.findIndexFloorInfo(pageObject);
     }
 
-    @ApiOperation(value = "查看某个楼层的全部商品信息" , notes = "根据url查看某个楼层的全部商品信息")
+    /*@ApiOperation(value = "查看某个楼层的全部商品信息" , notes = "根据url查看某个楼层的全部商品信息")
     @RequestMapping(value = "findIndexFloorInfoById" , method = RequestMethod.POST)
     public JsonResult findIndexFloorInfoById(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject){
         return bannerService.findIndexFloorInfoById(pageObject);
-    }
+    }*/
 
 }

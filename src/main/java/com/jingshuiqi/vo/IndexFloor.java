@@ -13,5 +13,5 @@ import java.util.List;
 @Data
 public class IndexFloor extends Floor {
 
-    private List<IndexFloorInfo> indexFloorInfos;
+    private String goodsUuid;
 }
