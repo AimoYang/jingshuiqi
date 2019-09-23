@@ -17,4 +17,6 @@ public interface AgentMapper {
     int updateByPrimaryKey(Agent record);
 
     Agent selectByAreaId(@Param("areaId") Integer areaId);
+
+    Agent selectByOpenId(@Param("openId")String openId);
 }

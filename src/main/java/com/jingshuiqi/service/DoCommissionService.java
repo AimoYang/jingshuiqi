@@ -6,9 +6,12 @@ import com.jingshuiqi.dto.CommissionBean;
 import com.jingshuiqi.dto.TypePage;
 import com.jingshuiqi.dto.UserAgent;
 import com.jingshuiqi.util.ArithUtil;
+import com.jingshuiqi.util.RandomNum;
+import com.jingshuiqi.util.ResultUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -35,6 +38,8 @@ public class DoCommissionService {
     private UserBaseMapper userBaseMapper;
     @Autowired
     private AgentMapper agentMapper;
+    @Autowired
+    private BankCardMapper bankCardMapper;
     /**
      * 计算佣金
      * @param openId 用户openid
@@ -72,6 +77,8 @@ public class DoCommissionService {
             orderCommission.setOrderDetailUuid(orderDetailUuid);
             orderCommission.setCreateTime(now);
             orderCommission.setIsSuccess((short)0);
+            //添加sql
+            orderCommissionMapper.insertSelective(orderCommission);
         }
         List<UserAgent> list = userBaseMapper.selectUserAgent();
         Map<String,String> map = new HashMap<>();
@@ -86,6 +93,8 @@ public class DoCommissionService {
             agentCommission.setType(3);
             agentCommission.setIsSuccess((short)0);
             agentCommission.setOrderDetailUuid(orderDetailUuid);
+            //添加sql
+            agentCommissionMapper.insertSelective(agentCommission);
         }
         //获取地区代理
         Agent agent = agentMapper.selectByAreaId(areaId);
@@ -98,6 +107,8 @@ public class DoCommissionService {
             agentCommission.setType(2);
             agentCommission.setIsSuccess((short)0);
             agentCommission.setOrderDetailUuid(orderDetailUuid);
+            //添加sql
+            agentCommissionMapper.insertSelective(agentCommission);
         }
         return  true;
     }
@@ -210,12 +221,97 @@ public class DoCommissionService {
     public Map<String,Object> findWithdraws(String openId, TypePage page){
         Integer rowCount = withdrawMapper.countWithdraws(openId,page);
         page.setRowCount(rowCount);
-        List<UserBase> list = withdrawMapper.selectWithdraws(openId,page);
+        List<Withdraw> list = withdrawMapper.selectWithdraws(openId,page);
         Map<String, Object> map = new HashMap<String, Object>(2);
         map.put("page", page);
         map.put("info", list);
         return map;
     }
+
+    /**
+     * 获取用户银行卡列表
+     * @param openId
+     * @return
+     */
+    public List<BankCard> findBankCardList(String openId){
+        List<BankCard> list = bankCardMapper.findBankCardList(openId);
+        return list;
+    }
+
+    /**
+     * 添加用户银行卡
+     * @param openId
+     * @param bankCard
+     * @param bankName
+     * @param ownerName
+     * @return
+     */
+    public boolean addBankCard(String openId,String bankCard,String bankName,String ownerName){
+        BankCard b = new BankCard();
+        b.setBankCard(bankCard);
+        b.setBankName(bankName);
+        b.setOpenId(openId);
+        b.setOwnerName(ownerName);
+        b.setCreateTime(new Date());
+        b.setIsDelete(0);
+        if(bankCardMapper.insertSelective(b) > 0){
+            return  true;
+        }
+        return false;
+    }
+
+
+    /**
+     * 提现
+     * @param openId
+     * @param bankCardId
+     * @param money
+     * @return
+     */
+    @Transactional
+    public JsonResult withdrawDeposit(String openId,Integer bankCardId,Double money){
+        UserBase userBase = userBaseMapper.findUserInfo(openId);
+        if(userBase == null){
+            return ResultUtil.fail("该用户不存在");
+        }
+        if(userBase.getUserType() == 0){
+            return ResultUtil.fail("该用户不是代理");
+        }
+        Agent agent = agentMapper.selectByOpenId(openId);
+        if(agent == null){
+            return ResultUtil.fail("该用户不是代理");
+        }
+        Commission commission = commissionMapper.selectByOpenId(openId);
+        if(commission == null){
+            return ResultUtil.fail("无法提现");
+        }
+        if(commission.getRemain().doubleValue() < money.doubleValue()){
+            return ResultUtil.fail("提现金额大于最大提现金额，无法提现");
+        }
+        BankCard bankCard = bankCardMapper.selectByPrimaryKey(bankCardId);
+        if(bankCard == null || !openId.equals(bankCard.getOpenId())){
+            return ResultUtil.fail("请重新选择银行卡");
+        }
+        Withdraw withdraw = new Withdraw();
+        withdraw.setBankCard(bankCard.getBankCard());
+        withdraw.setBankCardId(bankCard.getId());
+        withdraw.setBankName(bankCard.getBankName());
+        withdraw.setCreateTime(new Date());
+        withdraw.setIsDelete(0);
+        withdraw.setMoney(money);
+        withdraw.setOpenId(openId);
+        withdraw.setOwnerName(bankCard.getOwnerName());
+        withdraw.setStatus(0);
+        withdraw.setUuid(RandomNum.getRandomFileName());
+        Double remain = ArithUtil.sub(commission.getRemain(),money);
+        Double waitMoney = ArithUtil.add(commission.getWaitMoney(),money);
+        commission.setRemain(remain);
+        commission.setWaitMoney(waitMoney);
+        commissionMapper.updateByPrimaryKey(commission);
+        withdrawMapper.insertSelective(withdraw);
+        return ResultUtil.success();
+    }
+
 
 
 }

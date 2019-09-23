@@ -403,11 +403,6 @@
     AND `share`.parent_open_id = #{openId}
   </select>
 
-  <sql id="Base_Column_List" >
-    id, open_id, nick_name, icon, name, phone, birth_date, is_enable, create_time, last_login,
-    consume_money, shop_coins, reserve, user_type, is_delete
-  </sql>
-
   <select id="selectMembers" resultMap="BaseResultMap">
     SELECT
         user_base.id,

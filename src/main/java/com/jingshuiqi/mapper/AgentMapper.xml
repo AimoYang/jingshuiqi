@@ -165,4 +165,13 @@
     and area_id = #{areaId}
     limit 1
   </select>
+
+  <select id="selectByOpenId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from agent
+    where is_delete = 0
+    and open_id = #{openId}
+    limit 1
+  </select>
 </mapper>

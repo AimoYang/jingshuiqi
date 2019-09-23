@@ -1,8 +1,8 @@
 package com.jingshuiqi.dao;
 
-import com.jingshuiqi.bean.UserBase;
 import com.jingshuiqi.bean.Withdraw;
 import com.jingshuiqi.dto.TypePage;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface WithdrawMapper {
 
     int updateByPrimaryKey(Withdraw record);
 
-    Integer countWithdraws(String openId, TypePage page);
+    Integer countWithdraws(@Param("openId") String openId,@Param("page") TypePage page);
 
-    List<UserBase> selectWithdraws(String openId, TypePage page);
+    List<Withdraw> selectWithdraws(@Param("openId") String openId,@Param("page") TypePage page);
 }

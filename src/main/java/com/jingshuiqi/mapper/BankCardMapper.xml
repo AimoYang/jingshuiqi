@@ -114,4 +114,12 @@
       is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findBankCardList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bank_card
+    where is_delete = 0
+    and open_id = #{openId}
+  </select>
 </mapper>
