@@ -18,3 +18,28 @@
 2019-09-24 11:09:50,156 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
 2019-09-24 11:09:58,137 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
 2019-09-24 11:10:17,338 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
+2019-09-24 11:15:48,619 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
+### The error may involve com.jingshuiqi.dao.GoodsOrderDetailMapper.getUserOrdersCommentRow
+### The error occurred while executing a query
+### SQL: select     count(1)     from goods_order_detail as d     join in goods_order as g on g.uuid = d.order_uuid     where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0]
+2019-09-24 11:15:56,152 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.jingshuiqi.dao.GoodsOrderDetailMapper.findCancelOrders]
