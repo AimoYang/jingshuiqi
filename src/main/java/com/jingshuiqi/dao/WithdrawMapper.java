@@ -22,4 +22,6 @@ public interface WithdrawMapper {
     Integer countWithdraws(@Param("openId") String openId,@Param("page") TypePage page);
 
     List<Withdraw> selectWithdraws(@Param("openId") String openId,@Param("page") TypePage page);
+
+    Integer countTodayWithdraws(@Param("openId") String openId);
 }

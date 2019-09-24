@@ -296,6 +296,10 @@ public class DoCommissionService {
         if(commission.getRemain().doubleValue() < money.doubleValue()){
             return ResultUtil.fail("提现金额大于最大提现金额，无法提现");
         }
+        Integer row = withdrawMapper.countTodayWithdraws(openId);
+        if(row >  0){
+            return ResultUtil.fail("今天已提现，无法再次提现");
+        }
         BankCard bankCard = bankCardMapper.selectByPrimaryKey(bankCardId);
         if(bankCard == null || !openId.equals(bankCard.getOpenId())){
             return ResultUtil.fail("请重新选择银行卡");
