@@ -75,7 +75,7 @@ public class PayUtil {
 		String nonce_str = strReq;
 
 		// 商品描述根据情况修改
-		String body = "大汉医道";
+		String body = "净水器";
 		// 附加数据
 		String attach = "userId";
 		// 商户订单号
@@ -87,7 +87,7 @@ public class PayUtil {
 		// http://test4.lichangbest.com/pay/notifyServlet
 		// https://xcx.ruiguomeishi.com/pay/notifyServlet
 		// http://www.weixin.qq.com/wxpay/pay.php
-		String notify_url = "http://api.houtianfu.com/pay/notify";
+		String notify_url = "http://api.jinshanzhu.com/pay/notify";
 
 		String trade_type = "JSAPI";
 		SortedMap<String, String> packageParams = new TreeMap<String, String>();

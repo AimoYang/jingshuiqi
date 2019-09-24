@@ -1,6 +1,10 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.AgentCommission;
+import com.jingshuiqi.bean.OrderCommission;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AgentCommissionMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +20,6 @@ public interface AgentCommissionMapper {
     int updateByPrimaryKey(AgentCommission record);
 
     Double sumWaitCalculate(String openId);
+
+    List<AgentCommission> selectByOrderDetailUuid(@Param("orderDetailUuid") String orderDetailUuid);
 }

@@ -174,4 +174,26 @@
       reserve1 = #{reserve1,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByOrderDetailUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from agent_commission
+    where order_detail_uuid = #{orderDetailUuid}
+  </select>
+
+  <select id="sumWaitCalculate" resultType="java.lang.Double">
+   SELECT
+        IFNULL(SUM(agent_commission.commission),0)
+    FROM
+        agent_commission
+    LEFT JOIN goods_order_detail ON goods_order_detail.uuid = agent_commission.order_detail_uuid
+    LEFT JOIN goods_order ON goods_order.uuid = goods_order_detail.order_uuid
+    WHERE
+        goods_order.order_status != 0
+    AND goods_order.order_status != 5
+    and goods_order.is_delete = 0
+    and agent_commission.is_success = 0
+    and agent_commission.agent_open_id = #{openId}
+  </select>
 </mapper>

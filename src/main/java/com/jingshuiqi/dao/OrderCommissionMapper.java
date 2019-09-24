@@ -1,6 +1,7 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.OrderCommission;
+import org.apache.ibatis.annotations.Param;
 
 public interface OrderCommissionMapper {
     int deleteByPrimaryKey(Integer id);
@@ -15,5 +16,9 @@ public interface OrderCommissionMapper {
 
     int updateByPrimaryKey(OrderCommission record);
 
-    Double sumWaitCalculate(String openId);
+    Double sumOneWaitCalculate(@Param("openId") String openId);
+
+    Double sumTwoWaitCalculate(@Param("openId") String openId);
+
+    OrderCommission selectByOrderDetailUuid(@Param("orderDetailUuid") String orderDetailUuid);
 }

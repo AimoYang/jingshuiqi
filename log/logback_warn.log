@@ -18,7 +18,7 @@
 2019-09-24 11:09:50,156 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
 2019-09-24 11:09:58,137 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
 2019-09-24 11:10:17,338 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:15:48,619 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException: 
+2019-09-24 11:15:48,619 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException:
 ### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
     count(1)
     from goods_order_detail as d
@@ -43,3 +43,192 @@
     join in goods_order as g on g.uuid = d.order_uuid
     where d.open_id = ? and g.order_status = 3 and d.is_one = 0]
 2019-09-24 11:15:56,152 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.jingshuiqi.dao.GoodsOrderDetailMapper.findCancelOrders]
+2019-09-23 09:04:16,147 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `com.jingshuiqi.util.PageObject` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (16); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `com.jingshuiqi.util.PageObject` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (16)
+ at [Source: (PushbackInputStream); line: 1, column: 1]]
+2019-09-23 09:06:00,594 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
+2019-09-23 09:30:36,688 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
+2019-09-23 09:32:40,037 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
+2019-09-23 09:34:54,079 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
+2019-09-23 09:35:52,634 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
+2019-09-23 10:03:58,147 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'bannerController' method
+public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBannerById(com.jingshuiqi.util.PageObject)
+to {POST /findBannerById}: There is already 'bannerController' bean method
+public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBanner() mapped.
+2019-09-23 10:06:13,190 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'bannerController' method
+public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBannerById(com.jingshuiqi.util.PageObject)
+to {POST /findBannerById}: There is already 'bannerController' bean method
+public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBanner() mapped.
+2019-09-23 15:44:06,728 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers already contains value for com.jingshuiqi.dao.UserBaseMapper.Base_Column_List
+2019-09-23 15:46:25,591 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers already contains value for com.jingshuiqi.dao.UserBaseMapper.Base_Column_List
+2019-09-23 21:18:44,997 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException:
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list'
+### The error may exist in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT         user_base.id,         user_base.open_id,         user_base.nick_name,         user_base.icon,         user_base.`name`,         user_base.phone,         user_base.birth_date,         user_base.is_enable,         user_base.create_time,         user_base.last_login,         user_base.consume_money,         user_base.shop_coins,         user_base.reserve,         user_base.is_delete,         IFNULL(IF(user_type = 0,user_type,agent_type),0)AS user_type     FROM         user_base     LEFT JOIN `share` ON `share`.open_id = user_base.open_id     WHERE         `share`.is_delete = 0     AND user_base.is_delete = 0     AND `share`.parent_open_id = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list']
+2019-09-23 21:30:49,587 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'page' not found. Available parameters are [arg1, arg0, param1, param2]]
+2019-09-23 21:31:43,953 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException:
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+
+
+    order by goods_order.create_time desc
+    limit ?,?
+### The error may exist in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\GoodsOrderMapper.xml]
+### The error may involve com.jingshuiqi.dao.GoodsOrderMapper.selectMemberOrders
+### The error occurred while executing a query
+### SQL: SELECT               goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,     goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,     goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,     goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,     goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete    , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon     FROM         goods_order     LEFT JOIN user_base ON goods_order.open_id = user_base.open_id     LEFT JOIN `share` on user_base.open_id = `share`.open_id     WHERE         goods_order.is_delete = 0     and `share`.is_delete = 0     and `share`.parent_open_id = ?                 order by goods_order.create_time desc     limit ?,?
+### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+
+
+    order by goods_order.create_time desc
+    limit ?,?
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+
+
+    order by goods_order.create_time desc
+    limit ?,?; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
+
+    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
+    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
+    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
+    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
+    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
+   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
+    FROM
+        goods_order
+    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
+    LEFT JOIN `share` on user_base.open_id = `share`.open_id
+    WHERE
+        goods_order.is_delete = 0
+    and `share`.is_delete = 0
+    and `share`.parent_open_id = ?
+
+
+    order by goods_order.create_time desc
+    limit ?,?]
+2019-09-24 13:28:11,825 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException: 
+### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
+### The error may involve com.jingshuiqi.dao.GoodsOrderDetailMapper.getUserOrdersCommentRow
+### The error occurred while executing a query
+### SQL: select     count(1)     from goods_order_detail as d     join in goods_order as g on g.uuid = d.order_uuid     where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
+    count(1)
+    from goods_order_detail as d
+    join in goods_order as g on g.uuid = d.order_uuid
+    where d.open_id = ? and g.order_status = 3 and d.is_one = 0]
+2019-09-24 13:30:23,542 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.open_id' in 'where clause'
+### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select     count(1)     from goods_order_detail as d     left join goods_order as g on g.uuid = d.order_uuid     where d.open_id = ? and g.order_status = 3 and d.is_one = 0
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.open_id' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.open_id' in 'where clause']
+2019-09-24 14:41:28,478 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-24 14:41:34,140 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-24 14:47:48,419 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-24 15:14:22,702 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-24 15:16:11,141 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'uuid' is not present]
+2019-09-24 15:21:41,156 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'uuid' is not present]
+2019-09-24 15:23:57,981 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-24 15:41:56,628 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select     d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason     from goods_order_detail as d     left join record_refund as r on r.order_uuid = d.uuid     left join goods_order as g on g.uuid = d.order_uuid     where d.is_refund = 1 and d.is_delete = 0 and g.open_id = ?     order by d.id desc     limit ?, ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause']
+2019-09-24 16:10:20,109 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.DoCommissionController.findBankCardList(com.jingshuiqi.dto.TypePage,javax.servlet.http.HttpServletRequest)]
+2019-09-24 16:11:24,959 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2019-09-24 16:19:26,295 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 16:23:01,447 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 16:23:05,285 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2019-09-24 16:24:36,269 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 16:25:19,189 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 16:25:38,262 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2019-09-24 16:28:20,686 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 16:32:47,955 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 16:46:03,684 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2019-09-24 17:05:41,368 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select     d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason     from goods_order_detail as d     left join record_refund as r on r.order_uuid = d.uuid     left join goods_order as g on g.uuid = d.order_uuid     where d.is_refund = 1 and d.is_delete = 0 and g.open_id = ?     order by d.id desc     limit ?, ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause']
+2019-09-24 17:11:23,334 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select     d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason     from goods_order_detail as d     left join record_refund as r on r.order_uuid = d.uuid     left join goods_order as g on g.uuid = d.order_uuid     where d.is_refund = 1 and d.is_delete = 0 and g.open_id = ?     order by d.id desc     limit ?, ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause']
+2019-09-24 17:12:03,825 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 17:23:27,621 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-24 17:43:32,478 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2019-09-24 17:43:47,614 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
+2019-09-24 18:25:41,953 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]

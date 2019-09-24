@@ -45,13 +45,13 @@ public class WeixinUtil {
 	//正式
 	public static final String appId = "wx9de51f80532538c9";
 	public static final String appSecret = "607b3fef8618017de61e2235a0a07a10";
-	public static final String mch_id = "1534649181";
+	public static final String mch_id = "1553291271";
 	public static final String refundURL = "https://api.mch.weixin.qq.com/secapi/pay/refund";
 	public static final String WITHDRAW_URL= "https://api.mch.weixin.qq.com/mmpaymkttransfers/promotion/transfers";
 	//private static Logger log = LoggerFactory.getLogger(WeixinUtil.class);
 	public static String notify_url = "localhost";
 	public static String key = "123456789987654321123456789";
-	public static String partnerkey = "Hwe834rr89ehfw3jeg0whn40gh3g9f03";
+	public static String partnerkey = "cfrogwp5e98ty455894wcq9304tu3ev5";
 	public static final String menu_create_url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESSTOKEN";
 	public static final String access_token_url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
 	public static final String code_access_token_url = " https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";

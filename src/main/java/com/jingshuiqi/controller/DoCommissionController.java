@@ -47,8 +47,8 @@ public class DoCommissionController {
     }
 
     @ApiOperation(value = "获取用户银行卡列表" , notes = "根据url获取用户银行卡列表")
-    @RequestMapping(value = "findBankCardList" , method = RequestMethod.POST)
-    public JsonResult findBankCardList(@ApiParam(value = "分页信息") @RequestBody TypePage page, HttpServletRequest request){
+    @GetMapping(value = "findBankCardList")
+    public JsonResult findBankCardList(HttpServletRequest request){
         String token = request.getHeader("x-access-token");
         return doCommissionService.findBankCardList(token);
     }

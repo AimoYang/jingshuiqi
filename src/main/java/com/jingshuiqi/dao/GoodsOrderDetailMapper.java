@@ -5,6 +5,9 @@ import com.jingshuiqi.util.PageObject;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface GoodsOrderDetailMapper {
     int deleteByPrimaryKey(Integer id);
@@ -28,4 +31,14 @@ public interface GoodsOrderDetailMapper {
     List<GoodsOrderDetail> findCancelOrders(@Param("pageObject")PageObject pageObject);
 
     int getCancelOrdersRow(@Param("pageObject")PageObject pageObject);
+
+    List<GoodsOrderDetail> selectByOrderUuid(@Param("orderUuid") String orderUuid);
+
+    GoodsOrderDetail selectByUuid(@Param("uuid")String uuid);
+
+    void updateOrdersDetailComment(@Param("uuid") String orderUuid);
+
+    int findOrderCommentDetailNum(@Param("uuid") String orderUuid);
+
+    int findRefundOrderDetail(@Param("uuid")String uuid);
 }

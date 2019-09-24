@@ -23,8 +23,8 @@ public class UploadUtils {
 		// ...其他参数参考类注释
 		UploadManager uploadManager = new UploadManager(cfg);
 		// ...生成上传凭证，然后准备上传
-		String accessKey = "-OLnW71ijZk1nXJ-X4pYD0_0HPkGjf-lsY6EsP93";
-		String secretKey = "7zx88N46-MgAYCJtbnITZ2JBiXM_w1Ybc5sYZJnJ";
+		String accessKey = "sywgziTe-WOL3_9Np9LPyuzRI5e0nNiZIv13_Kf9";
+		String secretKey = "A1X-kUGZQjo3IpB5x-TQzfbJhM1NzJaE1DasQRHh";
 		String bucket = "file";
 		// 默认不指定key的情况下，以文件内容的hash值作为文件名
 		String key = UUID.randomUUID().toString().replaceAll("\\-", "");
@@ -36,7 +36,7 @@ public class UploadUtils {
 				Response response = uploadManager.put(stream, key, upToken, null, null);
 				// 解析上传成功的结果
 				DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
-				url = "http://file.houtianfu.com/"+putRet.key;
+				url = "http://file.jinshanzhu.com/"+putRet.key;
 				/*System.out.println(putRet.key);
 				System.out.println(putRet.hash);*/
 			} catch (QiniuException ex) {

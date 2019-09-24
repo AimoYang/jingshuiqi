@@ -35,8 +35,8 @@
     select
     d.*
     from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = #{pageObject.openId} and g.order_status = 3 and d.is_one = 0
+    left join goods_order as g on g.uuid = d.order_uuid
+    where g.open_id = #{pageObject.openId} and g.order_status = 3 and d.is_one = 0
     order by d.id desc
     limit #{pageObject.startIndex}, #{pageObject.pageSize}
   </select>
@@ -45,9 +45,50 @@
     select
     count(1)
     from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = #{pageObject.openId} and g.order_status = 3 and d.is_one = 0
+    left join goods_order as g on g.uuid = d.order_uuid
+    where g.open_id = #{pageObject.openId} and g.order_status = 3 and d.is_one = 0
   </select>
+
+  <select id="findCancelOrders" resultMap="BaseResultMap" >
+    select
+    d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason
+    from goods_order_detail as d
+    left join record_refund as r on r.order_uuid = d.uuid
+    left join goods_order as g on g.uuid = d.order_uuid
+    where d.is_refund = 1 and g.is_delete = 0 and g.open_id = #{pageObject.openId}
+    order by d.id desc
+    limit #{pageObject.startIndex}, #{pageObject.pageSize}
+  </select>
+
+  <select id="getCancelOrdersRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods_order_detail as d
+    left join goods_order as g on g.uuid = d.order_uuid
+    where d.is_refund = 1 and g.is_delete = 0 and g.open_id = #{pageObject.openId}
+  </select>
+
+  <update id="updateOrdersDetailComment" >
+    update goods_order_detail
+    set
+      is_one = 1
+    where uuid = #{uuid}
+  </update>
+
+  <select id="findOrderCommentDetailNum" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods_order_detail
+    where order_uuid = #{uuid} and is_one = 0
+  </select>
+
+  <select id="findRefundOrderDetail" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods_order_detail
+    where order_uuid = #{uuid} and is_refund = 0
+  </select>
+
 
 
 
@@ -248,4 +289,18 @@
       is_one = #{isOne,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByOrderUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods_order_detail
+    where order_uuid = #{orderUuid}
+  </select>
+
+  <select id="selectByUuid" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from goods_order_detail
+    where uuid = #{uuid}
+  </select>
 </mapper>

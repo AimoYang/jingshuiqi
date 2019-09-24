@@ -3,10 +3,15 @@ package com.jingshuiqi.service;
 import com.jingshuiqi.bean.*;
 import com.jingshuiqi.dao.AgentMapper;
 import com.jingshuiqi.dao.AreaMapper;
+import com.jingshuiqi.dao.ShareLinkMapper;
 import com.jingshuiqi.dao.UserBaseMapper;
 import com.jingshuiqi.util.ResultUtil;
+import com.jingshuiqi.util.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Auther: Mr.Yang
@@ -22,9 +27,36 @@ public class UserService {
     private AgentMapper agentMapper;
     @Autowired
     private AreaMapper areaMapper;
+    @Autowired
+    private DoCommissionService doCommissionService;
+    @Autowired
+    private CodeService codeService;
+    @Autowired
+    private ShareLinkMapper shareLinkMapper;
 
     public JsonResult findUserInfo(String token) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
         UserBase userBase = userBaseMapper.findUserInfo(token);
+        if (userBase.getUserType() != 0) {
+            if (userBase.getIsCode() != null) {
+                userBase.setIsCode(codeService.WeCode(userBase.getIsCode()));
+            }else {
+                ShareLink shareLink = shareLinkMapper.findBindUuid(userBase.getOpenId());
+                if (shareLink == null) {
+                    userBase.setBindUuid(UUIDGenerator.generate());
+                    ShareLink shareLink2 = new ShareLink();
+                    shareLink2.setOpenid(userBase.getOpenId());
+                    shareLink2.setUuid(userBase.getBindUuid());
+                    shareLinkMapper.saveBindUuid(shareLink2);
+                    userBase.setIsCode(codeService.Code("http://weixin.houtianfu.com?state=" + userBase.getBindUuid()));
+                    userBaseMapper.updateUserInfo(userBase);
+                }else {
+                    userBase.setIsCode(codeService.Code("http://weixin.houtianfu.com?state=" + shareLink.getUuid()));
+                    userBaseMapper.updateUserInfo(userBase);
+                }
+                userBase.setIsCode(codeService.WeCode(userBase.getIsCode()));
+            }
+        }
         userBase.setReserve(null);
         if (userBase.getUserType() == 1){
             Agent agent = agentMapper.findAgent(userBase.getOpenId());
@@ -34,7 +66,10 @@ public class UserService {
                 userBase.setReserve(address);
             }
         }
-        return ResultUtil.success(userBase);
+        JsonResult r = doCommissionService.findCommission(token);
+        map.put("UserBase",userBase);
+        map.put("Commission",r.getData());
+        return ResultUtil.success(map);
     }
 
 }

@@ -165,6 +165,9 @@ public class GoodsService {
 
     public JsonResult findGiftGoodsInfo() {
         Goods goods = goodsMapper.findGiftGoodsInfo();
+        if (goods == null){
+            return ResultUtil.fail("暂无大礼包商品");
+        }
         goods.setSkus(skuMapper.findSku(goods.getUuid()));
         return ResultUtil.success(goods);
     }

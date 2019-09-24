@@ -1,7 +1,9 @@
 package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.GoodsOrder;
+import com.jingshuiqi.bean.GoodsOrderDetail;
 import com.jingshuiqi.bean.JsonResult;
+import com.jingshuiqi.bean.RecordRefund;
 import com.jingshuiqi.form.ListId;
 import com.jingshuiqi.service.OrdersService;
 import com.jingshuiqi.util.PageObject;
@@ -60,6 +62,13 @@ public class OrdersController {
         String token = request.getHeader("x-access-token");
         goodsOrder.setOpenId(token);
         return ordersService.updateState(goodsOrder);
+    }
+
+    @ApiOperation(value = "申请订单退款", notes = "申请订单退款")
+    @RequestMapping(value = "refundOrderState", method = RequestMethod.POST)
+    public JsonResult refundOrderState(
+            @ApiParam("订单uuid,state") @RequestBody RecordRefund recordRefund, HttpServletRequest request) {
+        return ordersService.refundOrderState(recordRefund);
     }
 
     @ApiOperation(value = "查看我的各个状态商品订单" , notes = "根据url查看我的各个状态商品订单")

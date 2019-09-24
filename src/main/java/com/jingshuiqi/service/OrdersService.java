@@ -54,6 +54,8 @@ public class OrdersService {
     private AreaMapper areaMapper;
     @Autowired
     private UserBaseMapper userBaseMapper;
+    @Autowired
+    private RecordRefundMapper recordRefundMapper;
 
     public JsonResult payOrder(String url, String uuid , HttpServletRequest request , HttpServletResponse response) {
         GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(uuid);
@@ -114,7 +116,7 @@ public class OrdersService {
                         return ResultUtil.fail("清除购物车失败");
                     }
                 }
-                doCommissionService.calculateCommission(uuid,goodsOrder.getOpenId(),sku.getId(),goodsOrderDetail.getQuantity(),area.getId());
+                doCommissionService.calculateCommission(uuid,goodsOrder.getOpenId(),sku.getId(),goodsOrderDetail.getQuantity(),area == null ? null : area.getId());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -131,7 +133,7 @@ public class OrdersService {
         if (rows <= 0) {
             return ResultUtil.fail("生成订单失败");
         }
-        return ResultUtil.success();
+        return ResultUtil.success(goodsOrder);
     }
 
 
@@ -143,6 +145,14 @@ public class OrdersService {
         goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder);
         try {
             for (GoodsOrderDetail goodsOrderDetail : ordersDetailsList) {
+                Goods goods = goodsMapper.findGoodsInfoByUuid(goodsOrderDetail.getGoodsUuid());
+                if (goods == null) {
+                    logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
+                    return;
+                }
+                if (goods.getGoodsType() == 2){
+                    return;
+                }
                 Sku sku = skuMapper.findSkuByUuid(goodsOrderDetail.getSkuUuid());
                 if (sku == null){
                     logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
@@ -150,11 +160,7 @@ public class OrdersService {
                 }
                 sku.setStock(sku.getStock()-goodsOrderDetail.getQuantity());
                 skuMapper.updateByPrimaryKeySelective(sku);
-                Goods goods = goodsMapper.findGoodsInfoByUuid(goodsOrderDetail.getGoodsUuid());
-                if (goods == null) {
-                    logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
-                    return;
-                }
+
                 GoodsWithBLOBs goodsWithBLOBs = new GoodsWithBLOBs();
                 goodsWithBLOBs.setId(goods.getId());
                 goodsWithBLOBs.setShowCount(goods.getShowCount() + goodsOrderDetail.getQuantity());
@@ -200,9 +206,20 @@ public class OrdersService {
     }
 
     public JsonResult findOrderFor(String uuid) {
-        GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(uuid);
-        goodsOrder.setGoodsOrderDetails(goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid()));
-        return ResultUtil.success(goodsOrder);
+        if (uuid.startsWith("Zi")){
+            GoodsOrderDetail goodsOrderDetail = goodsOrderDetailMapper.selectByUuid(uuid);
+            if (goodsOrderDetail.getIsRefund() == 1){
+                RecordRefund recordRefund = recordRefundMapper.selectByOrderUuid(uuid);
+                BeanUtils.copyProperties(recordRefund,goodsOrderDetail);
+            }
+            GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(goodsOrderDetail.getOrderUuid());
+            goodsOrder.setGoodsOrderDetails(Arrays.asList(goodsOrderDetail));
+            return ResultUtil.success(goodsOrder);
+        }else {
+            GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(uuid);
+            goodsOrder.setGoodsOrderDetails(goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid()));
+            return ResultUtil.success(goodsOrder);
+        }
     }
 
     public JsonResult updateState(GoodsOrder goodsOrder) {
@@ -216,6 +233,7 @@ public class OrdersService {
             }else {
                 goodsOrder2.setOrderStatus(5);
                 goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder2);
+                return ResultUtil.success();
             }
         }
         if (goodsOrder.getOrderStatus() == 3){
@@ -260,4 +278,35 @@ public class OrdersService {
         return ResultUtil.success(map);
     }
 
+    @Transactional(rollbackFor = Exception.class)
+    public JsonResult refundOrderState(RecordRefund recordRefund) {
+        GoodsOrderDetail goodsOrderDetail = goodsOrderDetailMapper.selectByUuid(recordRefund.getOrderUuid());
+        if (goodsOrderDetail.getIsRefund() != 0){
+            return ResultUtil.fail("订单已被处理");
+        }
+        GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(goodsOrderDetail.getOrderUuid());
+        if (goodsOrder.getOrderStatus() != 1 && goodsOrder.getOrderStatus() != 2 && goodsOrder.getOrderStatus() != 6){
+            return ResultUtil.fail("无法退单");
+        }
+        recordRefund.setIsSuccess(0);
+        recordRefund.setCreateTime(new Date());
+        goodsOrderDetail.setIsRefund(1);
+        goodsOrderDetail.setStatus(1);
+        try {
+            recordRefundMapper.insertSelective(recordRefund);
+            goodsOrderDetailMapper.updateByPrimaryKeySelective(goodsOrderDetail);
+            int row = goodsOrderDetailMapper.findRefundOrderDetail(goodsOrder.getUuid());
+            if (row > 0){
+                goodsOrder.setOrderStatus(6);
+            }else {
+                goodsOrder.setOrderStatus(4);
+            }
+            goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder);
+        }catch (Exception e){
+            e.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return ResultUtil.fail("申请失败");
+        }
+        return ResultUtil.success();
+    }
 }

@@ -17,10 +17,11 @@
     <result column="reserve" property="reserve" jdbcType="VARCHAR" />
     <result column="user_type" property="userType" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="is_code" property="isCode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, open_id, nick_name, icon, name, phone, birth_date, is_enable, create_time, last_login, 
-    consume_money, shop_coins, reserve, user_type, is_delete
+    id, open_id, nick_name, icon, name, phone, birth_date, is_enable, create_time, last_login,
+    consume_money, shop_coins, reserve, user_type, is_delete, is_code
   </sql>
 
   <select id="findUserInfo" resultMap="BaseResultMap" >
@@ -78,6 +79,9 @@
       <if test="isDelete != null" >
         is_delete,
       </if>
+      <if test="isCode != null" >
+        is_code,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -125,6 +129,9 @@
       <if test="isDelete != null" >
         #{isDelete,jdbcType=INTEGER},
       </if>
+      <if test="isCode != null" >
+        #{isCode,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
 
@@ -170,6 +177,9 @@
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
+      <if test="isCode != null" >
+        is_code = #{isCode,jdbcType=VARCHAR},
+      </if>
     </set>
     where open_id = #{openId}
   </update>
@@ -181,7 +191,7 @@
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from user_base
     where id = #{id,jdbcType=INTEGER}
@@ -195,12 +205,14 @@
       icon, name, phone, birth_date, 
       is_enable, create_time, last_login, 
       consume_money, shop_coins, reserve, 
-      user_type, is_delete)
-    values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
-      #{icon,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{birthDate,jdbcType=TIMESTAMP}, 
-      #{isEnable,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastLogin,jdbcType=TIMESTAMP}, 
-      #{consumeMoney,jdbcType=DOUBLE}, #{shopCoins,jdbcType=INTEGER}, #{reserve,jdbcType=VARCHAR}, 
-      #{userType,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER})
+      user_type, is_delete, is_code
+      )
+    values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
+      #{icon,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{birthDate,jdbcType=TIMESTAMP},
+      #{isEnable,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastLogin,jdbcType=TIMESTAMP},
+      #{consumeMoney,jdbcType=DOUBLE}, #{shopCoins,jdbcType=INTEGER}, #{reserve,jdbcType=VARCHAR},
+      #{userType,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{isCode,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.UserBase" >
     insert into user_base
@@ -250,6 +262,9 @@
       <if test="isDelete != null" >
         is_delete,
       </if>
+      <if test="isCode != null" >
+        is_code,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -296,6 +311,9 @@
       </if>
       <if test="isDelete != null" >
         #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="isCode != null" >
+        #{isCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -344,6 +362,9 @@
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
+      <if test="isCode != null" >
+        is_code = #{isCode,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -362,7 +383,8 @@
       shop_coins = #{shopCoins,jdbcType=INTEGER},
       reserve = #{reserve,jdbcType=VARCHAR},
       user_type = #{userType,jdbcType=INTEGER},
-      is_delete = #{isDelete,jdbcType=INTEGER}
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      is_code = #{isCode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -419,7 +441,7 @@
         user_base.shop_coins,
         user_base.reserve,
         user_base.is_delete,
-        IFNULL(IF(user_type = 0,user_type,agent_type),0)AS user_type
+        IFNULL(IF(user_type = 0,user_type,(SELECT agent_type FROM agent WHERE agent.open_id = user_base.open_id and agent.is_delete = 0 limit 1)),0)AS user_type
     FROM
         user_base
     LEFT JOIN `share` ON `share`.open_id = user_base.open_id

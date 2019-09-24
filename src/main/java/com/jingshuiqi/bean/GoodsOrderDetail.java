@@ -33,6 +33,46 @@ public class GoodsOrderDetail {
 
     private Integer isOne;
 
+    private String refundReason;
+
+    private Integer refundNum;
+
+    private String refundFee;
+
+    private String refuseReason;
+
+    public String getRefundReason() {
+        return refundReason;
+    }
+
+    public void setRefundReason(String refundReason) {
+        this.refundReason = refundReason;
+    }
+
+    public Integer getRefundNum() {
+        return refundNum;
+    }
+
+    public void setRefundNum(Integer refundNum) {
+        this.refundNum = refundNum;
+    }
+
+    public String getRefundFee() {
+        return refundFee;
+    }
+
+    public void setRefundFee(String refundFee) {
+        this.refundFee = refundFee;
+    }
+
+    public String getRefuseReason() {
+        return refuseReason;
+    }
+
+    public void setRefuseReason(String refuseReason) {
+        this.refuseReason = refuseReason;
+    }
+
     public Integer getId() {
         return id;
     }

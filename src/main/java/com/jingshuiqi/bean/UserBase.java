@@ -33,6 +33,8 @@ public class UserBase {
 
     private Integer isDelete;
 
+    private String isCode;
+
     private String bindUuid;
 
     public String getBindUuid() {
@@ -161,5 +163,13 @@ public class UserBase {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getIsCode() {
+        return isCode;
+    }
+
+    public void setIsCode(String isCode) {
+        this.isCode = isCode == null ? null : isCode.trim();
     }
 }
