@@ -209,4 +209,13 @@
     order by create_time desc
     limit #{page.startIndex},#{page.pageSize}
   </select>
+
+  <select id="countTodayWithdraws" resultType="java.lang.Integer">
+    select
+      count(1)
+    from withdraw
+    where is_delete = 0
+    and  open_id = #{openId}
+    and to_days(create_time) = to_days(now())
+  </select>
 </mapper>
