@@ -58,6 +58,13 @@
     where id = #{id}
   </update>
 
+  <update id="deleteAddress" >
+    update address
+    set
+      is_delete = 1
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select

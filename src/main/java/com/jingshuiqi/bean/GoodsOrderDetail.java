@@ -31,6 +31,8 @@ public class GoodsOrderDetail {
 
     private Integer isRefund;
 
+    private Integer isOne;
+
     public Integer getId() {
         return id;
     }
@@ -149,5 +151,13 @@ public class GoodsOrderDetail {
 
     public void setIsRefund(Integer isRefund) {
         this.isRefund = isRefund;
+    }
+
+    public Integer getIsOne() {
+        return isOne;
+    }
+
+    public void setIsOne(Integer isOne) {
+        this.isOne = isOne;
     }
 }

@@ -46,4 +46,10 @@ public interface GoodsMapper {
     int getHotGoodsInfoRow(@Param("pageObject")PageObject pageObject);
 
     List<Goods> findRecommendGoodsInfo();
+
+    List<Goods> findExchangeGoodsInfo(@Param("pageObject")PageObject pageObject);
+
+    int getExchangeGoodsInfoRow(@Param("pageObject")PageObject pageObject);
+
+    Goods findGiftGoodsInfo();
 }

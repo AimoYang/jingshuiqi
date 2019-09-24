@@ -10,6 +10,7 @@
     <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
     <result column="receiver_phone" property="receiverPhone" jdbcType="CHAR" />
     <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
+    <result column="address_id" property="addressId" jdbcType="INTEGER" />
     <result column="buyer_message" property="buyerMessage" jdbcType="VARCHAR" />
     <result column="freight" property="freight" jdbcType="INTEGER" />
     <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
@@ -21,12 +22,55 @@
     <result column="pay_type" property="payType" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uuid, open_id, order_price, actual_price, receiver_name, receiver_phone, receiver_address, 
-    buyer_message, freight, order_status, is_comment, pay_uuid, pay_time, delivery_time, 
-    trade_successful_time, pay_type, create_time, is_delete
+    address_id, buyer_message, freight, order_status, is_comment, pay_uuid, pay_time, 
+    delivery_time, trade_successful_time, pay_type, create_time, is_delete, reserve
   </sql>
+
+  <select id="findOrdersByUuid" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from goods_order
+    where uuid = #{uuid} and is_delete = 0
+  </select>
+
+  <select id="findUserOrdersInfo" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from goods_order
+    where is_delete = 0 and open_id = #{pageObject.openId}
+    <if test="pageObject.id == '0'.toString()">
+      and order_status = 0
+    </if>
+    <if test="pageObject.id != null and pageObject.id != ''">
+      and order_status = #{pageObject.id}
+    </if>
+    <if test="pageObject.id == 2">
+      and order_status = 6
+    </if>
+  </select>
+
+  <select id="getUserOrdersRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods_order
+    where is_delete = 0 and open_id = #{pageObject.openId}
+    <if test="pageObject.id == '0'.toString()">
+      and order_status = 0
+    </if>
+    <if test="pageObject.id != null and pageObject.id != ''">
+      and order_status = #{pageObject.id}
+    </if>
+    <if test="pageObject.id == 2">
+      and order_status = 6
+    </if>
+  </select>
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -40,18 +84,20 @@
   <insert id="insert" parameterType="com.jingshuiqi.bean.GoodsOrder" >
     insert into goods_order (id, uuid, open_id, 
       order_price, actual_price, receiver_name, 
-      receiver_phone, receiver_address, buyer_message, 
-      freight, order_status, is_comment, 
-      pay_uuid, pay_time, delivery_time, 
-      trade_successful_time, pay_type, create_time, 
-      is_delete)
+      receiver_phone, receiver_address, address_id, 
+      buyer_message, freight, order_status, 
+      is_comment, pay_uuid, pay_time, 
+      delivery_time, trade_successful_time, 
+      pay_type, create_time, is_delete, 
+      reserve)
     values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
       #{orderPrice,jdbcType=DOUBLE}, #{actualPrice,jdbcType=DOUBLE}, #{receiverName,jdbcType=VARCHAR}, 
-      #{receiverPhone,jdbcType=CHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{buyerMessage,jdbcType=VARCHAR}, 
-      #{freight,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, #{isComment,jdbcType=INTEGER}, 
-      #{payUuid,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, #{deliveryTime,jdbcType=TIMESTAMP}, 
-      #{tradeSuccessfulTime,jdbcType=TIMESTAMP}, #{payType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{isDelete,jdbcType=INTEGER})
+      #{receiverPhone,jdbcType=CHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{addressId,jdbcType=INTEGER}, 
+      #{buyerMessage,jdbcType=VARCHAR}, #{freight,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, 
+      #{isComment,jdbcType=INTEGER}, #{payUuid,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{deliveryTime,jdbcType=TIMESTAMP}, #{tradeSuccessfulTime,jdbcType=TIMESTAMP}, 
+      #{payType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}, 
+      #{reserve,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsOrder" >
     insert into goods_order
@@ -79,6 +125,9 @@
       </if>
       <if test="receiverAddress != null" >
         receiver_address,
+      </if>
+      <if test="addressId != null" >
+        address_id,
       </if>
       <if test="buyerMessage != null" >
         buyer_message,
@@ -113,6 +162,9 @@
       <if test="isDelete != null" >
         is_delete,
       </if>
+      <if test="reserve != null" >
+        reserve,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -138,6 +190,9 @@
       </if>
       <if test="receiverAddress != null" >
         #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null" >
+        #{addressId,jdbcType=INTEGER},
       </if>
       <if test="buyerMessage != null" >
         #{buyerMessage,jdbcType=VARCHAR},
@@ -172,6 +227,9 @@
       <if test="isDelete != null" >
         #{isDelete,jdbcType=INTEGER},
       </if>
+      <if test="reserve != null" >
+        #{reserve,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.jingshuiqi.bean.GoodsOrder" >
@@ -197,6 +255,9 @@
       </if>
       <if test="receiverAddress != null" >
         receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="addressId != null" >
+        address_id = #{addressId,jdbcType=INTEGER},
       </if>
       <if test="buyerMessage != null" >
         buyer_message = #{buyerMessage,jdbcType=VARCHAR},
@@ -231,6 +292,9 @@
       <if test="isDelete != null" >
         is_delete = #{isDelete,jdbcType=INTEGER},
       </if>
+      <if test="reserve != null" >
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -243,6 +307,7 @@
       receiver_name = #{receiverName,jdbcType=VARCHAR},
       receiver_phone = #{receiverPhone,jdbcType=CHAR},
       receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+      address_id = #{addressId,jdbcType=INTEGER},
       buyer_message = #{buyerMessage,jdbcType=VARCHAR},
       freight = #{freight,jdbcType=INTEGER},
       order_status = #{orderStatus,jdbcType=INTEGER},
@@ -253,7 +318,8 @@
       trade_successful_time = #{tradeSuccessfulTime,jdbcType=TIMESTAMP},
       pay_type = #{payType,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      is_delete = #{isDelete,jdbcType=INTEGER}
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      reserve = #{reserve,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

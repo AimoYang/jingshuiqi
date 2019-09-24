@@ -19,4 +19,6 @@ public interface SkuMapper {
     int updateByPrimaryKey(Sku record);
 
     List<Sku> findSku(@Param("uuid") String uuid);
+
+    Sku findSkuByUuid(@Param("skuUuid")String skuUuid);
 }

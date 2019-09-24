@@ -185,4 +185,28 @@
       bank_card_id = #{bankCardId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="countWithdraws" resultType="java.lang.Integer">
+    select
+      count(1)
+    from withdraw
+    where is_delete = 0
+    and  open_id = #{openId}
+    <if test="page.type == 0 or page.type == 1 or page.type == 2 ">
+      and status = #{page.type}
+    </if>
+  </select>
+
+  <select id="selectWithdraws" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from withdraw
+    where is_delete = 0
+    and  open_id = #{openId}
+    <if test="page.type == 0 or page.type == 1 or page.type == 2 ">
+      and status = #{page.type}
+    </if>
+    order by create_time desc
+    limit #{page.startIndex},#{page.pageSize}
+  </select>
 </mapper>

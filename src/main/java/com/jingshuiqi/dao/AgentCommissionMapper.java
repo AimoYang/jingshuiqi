@@ -14,4 +14,6 @@ public interface AgentCommissionMapper {
     int updateByPrimaryKeySelective(AgentCommission record);
 
     int updateByPrimaryKey(AgentCommission record);
+
+    Double sumWaitCalculate(String openId);
 }

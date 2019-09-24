@@ -176,7 +176,32 @@
     where is_delete = 0 and is_shelf = 1 and is_recommend = 1
   </select>
 
+  <select id="findExchangeGoodsInfo" resultMap="ResultMapWithBLOBs" >
+    select
+    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
+    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    from goods
+    where is_delete = 0 and is_shelf = 1 and goods_type = 1
+    order by sort, id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
+  </select>
 
+  <select id="getExchangeGoodsInfoRow" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods
+    where is_delete = 0 and is_shelf = 1 and goods_type = 1
+  </select>
+
+  <select id="findGiftGoodsInfo" resultMap="ResultMapWithBLOBs" >
+    select
+    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
+    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    from goods
+    where is_delete = 0 and is_shelf = 1 and goods_type = 2
+    order by id desc
+    limit 1
+  </select>
 
 
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >

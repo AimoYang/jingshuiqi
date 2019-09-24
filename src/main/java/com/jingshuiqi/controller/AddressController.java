@@ -56,6 +56,12 @@ public class AddressController {
         return addressService.updateAddressInfo(address);
     }
 
+    @ApiOperation(value = "更新我的地址信息" , notes = "根据url更新我的地址信息")
+    @RequestMapping(value = "deleteAddress" , method = RequestMethod.POST)
+    public JsonResult deleteAddress(@ApiParam(value = "地址信息") @RequestParam("id") Integer id, HttpServletRequest request){
+        return addressService.deleteAddress(id);
+    }
+
     @ApiOperation(value = "更新个人默认地址信息" , notes = "根据url更新个人默认地址信息")
     @RequestMapping(value = "updateDefaultAddressInfo" , method = RequestMethod.POST)
     public JsonResult updateDefaultAddressInfo(@ApiParam(value = "地址的id") @RequestParam("id") Integer id ,HttpServletRequest request){

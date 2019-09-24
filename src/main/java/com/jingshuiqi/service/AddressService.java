@@ -95,4 +95,11 @@ public class AddressService {
         return ResultUtil.success();
     }
 
+    public JsonResult deleteAddress(Integer id) {
+        int row = addressMapper.deleteAddress(id);
+        if (row <= 0){
+            return ResultUtil.fail("更新失败");
+        }
+        return ResultUtil.success();
+    }
 }

@@ -25,4 +25,6 @@ public interface GoodsCartMapper {
     List<ShopGoodsInfo> findGoodsCart(@Param("pageObject") PageObject pageObject);
 
     int getGoodsCartRow(@Param("pageObject") PageObject pageObject);
+
+    int deleteGoodCart(@Param("goodsUuid")String goodsUuid, @Param("skuUuid")String skuUuid, @Param("openId")String openId);
 }

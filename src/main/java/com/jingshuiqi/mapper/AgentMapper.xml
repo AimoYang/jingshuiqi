@@ -158,4 +158,28 @@
       is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByAreaId" resultMap="BaseResultMap" >
+   SELECT
+        agent.*
+    FROM
+        agent
+    LEFT JOIN user_base ON user_base.open_id = agent.open_id
+    WHERE
+        agent.is_delete = 0
+    AND user_base.is_delete = 0
+    AND agent_type != 1
+    AND user_base.user_type = 1
+    and area_id = #{areaId}
+    limit 1
+  </select>
+
+  <select id="selectByOpenId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from agent
+    where is_delete = 0
+    and open_id = #{openId}
+    limit 1
+  </select>
 </mapper>

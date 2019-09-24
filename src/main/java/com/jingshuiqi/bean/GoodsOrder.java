@@ -20,6 +20,8 @@ public class GoodsOrder {
 
     private String receiverAddress;
 
+    private Integer addressId;
+
     private String buyerMessage;
 
     private Integer freight;
@@ -41,6 +43,8 @@ public class GoodsOrder {
     private Date createTime;
 
     private Integer isDelete;
+
+    private String reserve;
 
     private List<GoodsOrderDetail> goodsOrderDetails;
 
@@ -114,6 +118,14 @@ public class GoodsOrder {
 
     public void setReceiverAddress(String receiverAddress) {
         this.receiverAddress = receiverAddress == null ? null : receiverAddress.trim();
+    }
+
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     public String getBuyerMessage() {
@@ -202,5 +214,13 @@ public class GoodsOrder {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
+    }
+
+    public String getReserve() {
+        return reserve;
+    }
+
+    public void setReserve(String reserve) {
+        this.reserve = reserve == null ? null : reserve.trim();
     }
 }

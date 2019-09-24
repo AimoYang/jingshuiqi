@@ -2,7 +2,9 @@ package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.GoodsOrder;
 import com.jingshuiqi.bean.JsonResult;
+import com.jingshuiqi.form.ListId;
 import com.jingshuiqi.service.OrdersService;
+import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -36,6 +38,52 @@ public class OrdersController {
         String token = request.getHeader("x-access-token");
         goodsOrder.setOpenId(token);
         return ordersService.saveOrderCheck(goodsOrder);
+    }
+
+    @ApiOperation(value = "添加购物车订单" , notes = "添加购物车订单")
+    @RequestMapping(value = "saveOrderShop" , method = RequestMethod.POST)
+    public JsonResult saveOrderShop(@ApiParam(value = "购物车id的list") @RequestBody ListId listId,HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        return ordersService.saveOrderShop(token,listId);
+    }
+
+    @ApiOperation(value = "查看订单详情信息" , notes = "查看订单详情信息")
+    @RequestMapping(value = "findOrderFor" , method = RequestMethod.POST)
+    public JsonResult findOrderFor(@ApiParam(value = "总订单的uuid")@RequestParam("uuid") String uuid ,HttpServletRequest request){
+        return ordersService.findOrderFor(uuid);
+    }
+
+    @ApiOperation(value = "更新订单状态", notes = "更新订单状态")
+    @RequestMapping(value = "updateOrderState", method = RequestMethod.POST)
+    public JsonResult updateOrderState(
+            @ApiParam("订单uuid,state") @RequestBody GoodsOrder goodsOrder, HttpServletRequest request) {
+        String token = request.getHeader("x-access-token");
+        goodsOrder.setOpenId(token);
+        return ordersService.updateState(goodsOrder);
+    }
+
+    @ApiOperation(value = "查看我的各个状态商品订单" , notes = "根据url查看我的各个状态商品订单")
+    @RequestMapping(value = "findUserOrdersInfo" , method = RequestMethod.POST)
+    public JsonResult findUserOrdersInfo(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        pageObject.setOpenId(token);
+        return ordersService.findUserOrdersInfo(pageObject);
+    }
+
+    @ApiOperation(value = "查看我的待评价商品订单" , notes = "根据url查看我的待评价商品订单")
+    @RequestMapping(value = "findUserOrdersComment" , method = RequestMethod.POST)
+    public JsonResult findUserOrdersComment(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        pageObject.setOpenId(token);
+        return ordersService.findUserOrdersComment(pageObject);
+    }
+
+    @ApiOperation(value = "查看我的已取消商品订单" , notes = "根据url查看我的已取消商品订单")
+    @RequestMapping(value = "findCancelOrders" , method = RequestMethod.POST)
+    public JsonResult findCancelOrders(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        pageObject.setOpenId(token);
+        return ordersService.findCancelOrders(pageObject);
     }
 
 }

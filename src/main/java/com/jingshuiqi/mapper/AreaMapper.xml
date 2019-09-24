@@ -21,6 +21,14 @@
     where a.id = #{id}
   </select>
 
+  <select id="findArea" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from area
+    where value = #{addressArea}
+  </select>
+
+
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

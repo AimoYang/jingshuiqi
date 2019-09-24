@@ -161,4 +161,13 @@
       is_delete = #{isDelete,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByOpenId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from commission
+    where is_delete = 0
+    and open_id = #{openId}
+    limit 1
+  </select>
 </mapper>

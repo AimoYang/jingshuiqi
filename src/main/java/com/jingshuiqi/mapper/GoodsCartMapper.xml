@@ -51,6 +51,14 @@
   </select>
 
 
+  <update id="deleteGoodCart" parameterType="com.jingshuiqi.bean.GoodsCart" >
+    update goods_cart
+    set
+      is_delete = 1
+    where open_id = #{openId} and goods_uuid = #{goodsUuid} and sku_uuid = #{skuUuid}
+  </update>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

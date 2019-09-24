@@ -150,4 +150,22 @@ public class GoodsService {
         }
     }
 
+    public JsonResult findExchangeGoodsInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<Goods> list = goodsMapper.findExchangeGoodsInfo(pageObject);
+        int row = goodsMapper.getExchangeGoodsInfoRow(pageObject);
+        for (Goods goods : list) {
+            goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findGiftGoodsInfo() {
+        Goods goods = goodsMapper.findGiftGoodsInfo();
+        goods.setSkus(skuMapper.findSku(goods.getUuid()));
+        return ResultUtil.success(goods);
+    }
 }

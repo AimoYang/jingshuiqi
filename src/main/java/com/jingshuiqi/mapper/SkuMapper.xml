@@ -29,6 +29,13 @@
     order by new_price
   </select>
 
+  <select id="findSkuByUuid" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from sku
+    where uuid = #{skuUuid}
+  </select>
+
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

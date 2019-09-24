@@ -1,6 +1,7 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.Area;
+import org.apache.ibatis.annotations.Param;
 
 public interface AreaMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +17,6 @@ public interface AreaMapper {
     int updateByPrimaryKey(Area record);
 
     String findAddress(Integer id);
+
+    Area findArea(@Param("addressArea") String addressArea);
 }

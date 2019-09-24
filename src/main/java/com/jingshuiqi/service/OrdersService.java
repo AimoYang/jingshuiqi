@@ -1,22 +1,27 @@
 package com.jingshuiqi.service;
 
 import com.jingshuiqi.bean.*;
+import com.jingshuiqi.controller.OrdersController;
 import com.jingshuiqi.dao.*;
-import com.jingshuiqi.util.DateUtil;
+import com.jingshuiqi.form.ListId;
+import com.jingshuiqi.util.ArithUtil;
+import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.RandomNum;
 import com.jingshuiqi.util.ResultUtil;
 import com.jingshuiqi.util.pay.PayUtil;
 import com.jingshuiqi.util.pay.Sha1Util;
+import com.jingshuiqi.vo.OrderGoods;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Auther: Mr.Yang
@@ -25,6 +30,9 @@ import java.util.Map;
  */
 @Service
 public class OrdersService {
+
+    protected static final Logger logger = LoggerFactory
+            .getLogger(OrdersController.class);
 
     @Autowired
     private GoodsOrderMapper goodsOrderMapper;
@@ -38,6 +46,14 @@ public class OrdersService {
     private GoodsMapper goodsMapper;
     @Autowired
     private GoodsCartMapper goodsCartMapper;
+    @Autowired
+    private DoCommissionService doCommissionService;
+    @Autowired
+    private AddressMapper addressMapper;
+    @Autowired
+    private AreaMapper areaMapper;
+    @Autowired
+    private UserBaseMapper userBaseMapper;
 
     public JsonResult payOrder(String url, String uuid , HttpServletRequest request , HttpServletResponse response) {
         GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(uuid);
@@ -55,21 +71,28 @@ public class OrdersService {
         return ResultUtil.success(map);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public JsonResult saveOrderCheck(GoodsOrder goodsOrder) {
 
         goodsOrder.setOrderPrice((double)0);
         String orderUuid = RandomNum.getRandomFileName();
         goodsOrder.setUuid(orderUuid);
         goodsOrder.setPayUuid(orderUuid);
+        Address address = addressMapper.selectByPrimaryKey(goodsOrder.getAddressId());
+        goodsOrder.setReceiverAddress(address.getAddressDetail());
+        goodsOrder.setReceiverName(address.getName());
+        goodsOrder.setReceiverPhone(address.getPhone());
+        Area area = areaMapper.findArea(address.getAddressArea());
         List<GoodsOrderDetail> list = goodsOrder.getGoodsOrderDetails();
         try {
             for (GoodsOrderDetail goodsOrderDetail : list) {
+                System.out.print("1----------------------");
                 Sku sku = skuMapper.findSkuByUuid(goodsOrderDetail.getSkuUuid());
                 if (sku.getStock() < goodsOrderDetail.getQuantity()) {
                     return ResultUtil.fail("库存不足");
                 }
 
-                Goods goods = goodsMapper.findGoodsInfoByUuid(goodsOrderDetail.getUuid());
+                Goods goods = goodsMapper.findGoodsInfoByUuid(sku.getGoodsUuid());
                 if (goods == null) {
                     return ResultUtil.fail("该商品失效");
                 }
@@ -78,79 +101,163 @@ public class OrdersService {
                 goodsOrderDetail.setThumb(goods.getThumb());
                 goodsOrderDetail.setProductName(goods.getGoodsName());
                 goodsOrderDetail.setPrice(sku.getNewPrice());
-                goodsOrderDetail.setAmount(sku.getNewPrice() * goodsOrderDetail.getQuantity());
+                goodsOrderDetail.setAmount(sku.getNewPrice() * goodsOrderDetail.getQuantity()-goodsOrderDetail.getDeduction());
                 goodsOrderDetail.setUuid(uuid);
                 goodsOrderDetail.setOrderUuid(orderUuid);
                 goodsOrderDetail.setProperties(sku.getProperties());
                 goodsOrderDetail.setStatus(0);
                 goodsOrder.setOrderPrice(goodsOrder.getOrderPrice() + goodsOrderDetail.getAmount());
-
-            }
-        }catch (Exception e){
-
-        }
-        return null;
-
-           /* if (goodsOrder.get > 0) {
-                int row = goodsCartDao.deleteGoodCart(productOrderDetail.getGoodsUuid(), productOrderDetail.getSkuId(), productOrder.getOpenId());
-                if (row> 0) {
-                    r.setResult(StatusCode.SUCCESS);
-                    r.setMsg("OK");
-                }else {
-                    r.setResult(StatusCode.FAIL);
-                    r.setMsg("清除购物车失败");
-                    return r;
+                goodsOrderDetailMapper.insertSelective(goodsOrderDetail);
+                if (goodsOrder.getReserve() != null) {
+                    int row = goodsCartMapper.deleteGoodCart(goodsOrderDetail.getGoodsUuid(), goodsOrderDetail.getSkuUuid(), goodsOrder.getOpenId());
+                    if (row <= 0) {
+                        return ResultUtil.fail("清除购物车失败");
+                    }
                 }
+                doCommissionService.calculateCommission(uuid,goodsOrder.getOpenId(),sku.getId(),goodsOrderDetail.getQuantity(),area.getId());
             }
-                productOrderDetailDao.insertSelective(productOrderDetail);
-
         } catch (Exception e) {
             e.printStackTrace();
-            r.setResult(StatusCode.FAIL);
-            r.setMsg("订单生成失败");
-            return r;
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return ResultUtil.fail("订单生成失败");
         }
-        productOrder.setOrderStatusPrefix(null);
-        productOrder.setOrderPrice(ArithUtil.fun(productOrder.getOrderPrice()));
-        productOrder.setActualPrice(productOrder.getOrderPrice());
-        productOrder.setProductOrderDetails(list);
-        productOrder.setCreateTime(new Date());
+        goodsOrder.setIsComment(0);
+        goodsOrder.setOrderPrice(ArithUtil.fun(goodsOrder.getOrderPrice()));
+        goodsOrder.setActualPrice(goodsOrder.getOrderPrice());
+        goodsOrder.setGoodsOrderDetails(list);
+        goodsOrder.setCreateTime(new Date());
 
-        if (productOrder.getDistributionType() == 0) {
-            Address address = addressDao.selectByPrimaryKey(productOrder.getAddressId());
-            Estate estate = estateDao.selectByPrimaryKey(address.getEstateId());
-            productOrder.setNameSelf(address.getName());
-            productOrder.setPhoneSelf(address.getPhone());
-            productOrder.setAddress(estate.getEstateName()+address.getAddressDetail());
-        }else {
-            Shop shop = shopDao.selectByPrimaryKey(productOrder.getShopId());
-            Kefu kefu = kefuDao.findKeFu(productOrder.getShopId());
-            if (kefu != null) {
-                if (kefu.getKefuPhone() != null) {
-                    productOrder.setAddress(shop.getShopName() + "(联系电话："+ kefu.getKefuPhone() + ") - " + shop.getShopAdress());
-                }
-            }
+        int rows = goodsOrderMapper.insertSelective(goodsOrder);
+        if (rows <= 0) {
+            return ResultUtil.fail("生成订单失败");
         }
-        int row = productOrderDao.findOrdersTime();
-        productOrder.setTodayOn(row + 1);
-
-        int rows = productOrderDao.insertSelective(productOrder);
-        if (rows> 0) {
-            r.setResult(StatusCode.SUCCESS);
-            r.setMsg("OK");
-        }else {
-            r.setResult(StatusCode.FAIL);
-            r.setMsg("生成订单失败");
-            return r;
-        }
-
-        r.setResult(StatusCode.SUCCESS);
-        r.setMsg("OK");
-        r.setData(productOrder);
-        return r;*/
+        return ResultUtil.success();
     }
 
 
     public void updateGoodsNumber(String orderNum) {
+        GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(orderNum);
+        List<GoodsOrderDetail> ordersDetailsList = goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid());
+        goodsOrder.setOrderStatus(1);
+        goodsOrder.setTradeSuccessfulTime(new Date());
+        goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder);
+        try {
+            for (GoodsOrderDetail goodsOrderDetail : ordersDetailsList) {
+                Sku sku = skuMapper.findSkuByUuid(goodsOrderDetail.getSkuUuid());
+                if (sku == null){
+                    logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
+                    return;
+                }
+                sku.setStock(sku.getStock()-goodsOrderDetail.getQuantity());
+                skuMapper.updateByPrimaryKeySelective(sku);
+                Goods goods = goodsMapper.findGoodsInfoByUuid(goodsOrderDetail.getGoodsUuid());
+                if (goods == null) {
+                    logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
+                    return;
+                }
+                GoodsWithBLOBs goodsWithBLOBs = new GoodsWithBLOBs();
+                goodsWithBLOBs.setId(goods.getId());
+                goodsWithBLOBs.setShowCount(goods.getShowCount() + goodsOrderDetail.getQuantity());
+                goodsMapper.updateByPrimaryKeySelective(goodsWithBLOBs);
+            }
+        } catch (Exception e) {
+            logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
+        }
     }
+
+    public JsonResult saveOrderShop(String token,ListId listId) {
+        double freight = 0;
+        UserBase userBase = userBaseMapper.findUserInfo(token);
+        int deductionMax = userBase.getShopCoins();
+        double allPrice = 0;
+        List<OrderGoods> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<String, Object>(3);
+        for (Integer id : listId.getId()) {
+            OrderGoods orderGoods = new OrderGoods();
+            GoodsCart goodsCart = goodsCartMapper.selectByPrimaryKey(id);
+            Goods goods = goodsMapper.findGoodsInfoByUuid(goodsCart.getGoodsUuid());
+            BeanUtils.copyProperties(goods,orderGoods);
+            orderGoods.setSku(skuMapper.findSkuByUuid(goodsCart.getSkuUuid()));
+            orderGoods.setQuantity(goodsCart.getQuantity());
+            allPrice = allPrice + (orderGoods.getQuantity()*orderGoods.getSku().getNewPrice());
+            list.add(orderGoods);
+        }
+        map.put("list",list);
+        for  ( int  i  =   0 ; i  <  list.size()  -   1 ; i ++ )  {
+            for  ( int  j  =  list.size()  -   1 ; j  >  i; j -- )  {
+                if  (list.get(j).getUuid() == list.get(i).getUuid())  {
+                    list.remove(j);
+                }
+            }
+        }
+        for (OrderGoods orderGoods : list){
+            freight = freight + orderGoods.getFreight();
+        }
+        map.put("freight",freight);
+        map.put("deductionMax",deductionMax);
+        map.put("allPrice",allPrice);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findOrderFor(String uuid) {
+        GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(uuid);
+        goodsOrder.setGoodsOrderDetails(goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid()));
+        return ResultUtil.success(goodsOrder);
+    }
+
+    public JsonResult updateState(GoodsOrder goodsOrder) {
+        GoodsOrder goodsOrder2 = goodsOrderMapper.findOrdersByUuid(goodsOrder.getUuid());
+        if (goodsOrder2 == null){
+            return ResultUtil.fail("订单失效");
+        }
+        if (goodsOrder.getOrderStatus() == 5){
+            if (goodsOrder2.getOrderStatus() > 0){
+                return ResultUtil.fail("订单已付款，无法取消");
+            }else {
+                goodsOrder2.setOrderStatus(5);
+                goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder2);
+            }
+        }
+        if (goodsOrder.getOrderStatus() == 3){
+
+        }
+        return ResultUtil.success();
+    }
+
+    public JsonResult findUserOrdersComment(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<>(2);
+        int row = goodsOrderDetailMapper.getUserOrdersCommentRow(pageObject);
+        List<GoodsOrderDetail> list = goodsOrderDetailMapper.findOrderCommentDetail(pageObject);
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findUserOrdersInfo(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<>(2);
+        if (pageObject.getId() == -1){
+            pageObject.setId(null);
+        }
+        List<GoodsOrder> list = goodsOrderMapper.findUserOrdersInfo(pageObject);
+        int row = goodsOrderMapper.getUserOrdersRow(pageObject);
+        for (GoodsOrder goodsOrder : list) {
+            goodsOrder.setGoodsOrderDetails(goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid()));
+        }
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
+    public JsonResult findCancelOrders(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<>(2);
+        List<GoodsOrderDetail> list = goodsOrderDetailMapper.findCancelOrders(pageObject);
+        int row = goodsOrderDetailMapper.getCancelOrdersRow(pageObject);
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
+
 }

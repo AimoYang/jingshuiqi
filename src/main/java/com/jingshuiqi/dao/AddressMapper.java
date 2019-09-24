@@ -28,4 +28,6 @@ public interface AddressMapper {
     int updateAddressInfoForZero(@Param("openId")String openId);
 
     int updateDefaultAddressInfo(@Param("id")Integer id);
+
+    int deleteAddress(@Param("id")Integer id);
 }

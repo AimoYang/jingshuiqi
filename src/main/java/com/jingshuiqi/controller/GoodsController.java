@@ -67,6 +67,18 @@ public class GoodsController {
         return goodsService.findHotGoodsInfo(pageObject);
     }
 
+    @ApiOperation(value = "查看兑换的商品" , notes = "根据url查看热卖中的商品")
+    @RequestMapping(value = "findExchangeGoodsInfo" , method = RequestMethod.POST)
+    public JsonResult findExchangeGoodsInfo(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject){
+        return goodsService.findExchangeGoodsInfo(pageObject);
+    }
+
+    @ApiOperation(value = "查看大礼包商品" , notes = "根据url查看大礼包商品")
+    @RequestMapping(value = "findGiftGoodsInfo" , method = RequestMethod.POST)
+    public JsonResult findGiftGoodsInfo(){
+        return goodsService.findGiftGoodsInfo();
+    }
+
     @ApiOperation(value = "查看购物车推荐中的商品" , notes = "根据url查看购物车推荐中的商品")
     @RequestMapping(value = "findRecommendGoodsInfo" , method = RequestMethod.POST)
     public JsonResult findRecommendGoodsInfo(){
