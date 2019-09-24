@@ -100,19 +100,21 @@ public class DoCommissionService {
             //添加sql
             agentCommissionMapper.insertSelective(agentCommission);
         }
-        //获取地区代理
-        Agent agent = agentMapper.selectByAreaId(areaId);
-        if(agent != null){
-            AgentCommission agentCommission = new AgentCommission();
-            agentCommission.setAgentOpenId(agent.getOpenId());
-            Double commission = ArithUtil.mul(sku.getCityCommission(),quantity);
-            agentCommission.setCommission(commission);
-            agentCommission.setCreateTime(now);
-            agentCommission.setType(2);
-            agentCommission.setIsSuccess((short)0);
-            agentCommission.setOrderDetailUuid(orderDetailUuid);
-            //添加sql
-            agentCommissionMapper.insertSelective(agentCommission);
+        if(areaId != null){
+            //获取地区代理
+            Agent agent = agentMapper.selectByAreaId(areaId);
+            if(agent != null){
+                AgentCommission agentCommission = new AgentCommission();
+                agentCommission.setAgentOpenId(agent.getOpenId());
+                Double commission = ArithUtil.mul(sku.getCityCommission(),quantity);
+                agentCommission.setCommission(commission);
+                agentCommission.setCreateTime(now);
+                agentCommission.setType(2);
+                agentCommission.setIsSuccess((short)0);
+                agentCommission.setOrderDetailUuid(orderDetailUuid);
+                //添加sql
+                agentCommissionMapper.insertSelective(agentCommission);
+            }
         }
         return  true;
     }
