@@ -21,4 +21,6 @@ public interface OrderCommissionMapper {
     Double sumTwoWaitCalculate(@Param("openId") String openId);
 
     OrderCommission selectByOrderDetailUuid(@Param("orderDetailUuid") String orderDetailUuid);
+
+    OrderCommission findCommission(@Param("uuid") String uuid);
 }

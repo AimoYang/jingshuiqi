@@ -9,7 +9,7 @@
     <result column="quantity" property="quantity" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="SMALLINT" />
   </resultMap>
-  <resultMap id="ShopResultMap" type="com.jingshuiqi.vo.ShopGoodsInfo" >
+  <resultMap id="ShopResultMap" type="com.jingshuiqi.vo.ShopGoodsInfo" extends="BaseResultMap">
     <result column="thumb" property="thumb" jdbcType="VARCHAR" />
     <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
     <result column="properties" property="properties" jdbcType="VARCHAR" />
@@ -57,6 +57,17 @@
       is_delete = 1
     where open_id = #{openId} and goods_uuid = #{goodsUuid} and sku_uuid = #{skuUuid}
   </update>
+
+  <select id="findGoodsCartNum" resultType="java.lang.Integer" >
+    select
+    sum(quantity)
+    from goods_cart as c
+    left join goods as g on g.uuid = c.goods_uuid
+    left join sku as s on c.sku_uuid = s.uuid
+    where c.is_delete = 0 and c.open_id = #{openId}
+    and g.is_shelf = 1 and g.is_delete = 0 and s.is_delete = 0
+  </select>
+
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

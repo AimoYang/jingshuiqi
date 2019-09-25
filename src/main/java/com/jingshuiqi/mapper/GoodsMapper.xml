@@ -2,42 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jingshuiqi.dao.GoodsMapper" >
   <resultMap id="BaseResultMap" type="com.jingshuiqi.bean.Goods" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
-    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
-    <result column="one_sort_id" property="oneSortId" jdbcType="INTEGER" />
-    <result column="show_count" property="showCount" jdbcType="INTEGER" />
-    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
-    <result column="pictures" property="pictures" jdbcType="VARCHAR" />
-    <result column="goods_create_time" property="goodsCreateTime" jdbcType="TIMESTAMP" />
-    <result column="goods_update_time" property="goodsUpdateTime" jdbcType="TIMESTAMP" />
-    <result column="is_shelf" property="isShelf" jdbcType="INTEGER" />
-    <result column="cover_img" property="coverImg" jdbcType="VARCHAR" />
-    <result column="goods_video" property="goodsVideo" jdbcType="VARCHAR" />
-    <result column="video_type" property="videoType" jdbcType="INTEGER" />
-    <result column="deduction_max" property="deductionMax" jdbcType="INTEGER" />
-    <result column="deduction_by" property="deductionBy" jdbcType="INTEGER" />
-    <result column="logo_name" property="logoName" jdbcType="VARCHAR" />
-    <result column="logo_img" property="logoImg" jdbcType="VARCHAR" />
-    <result column="goods_type" property="goodsType" jdbcType="INTEGER" />
-    <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="freight" property="freight" jdbcType="DOUBLE" />
-    <result column="is_one" property="isOne" jdbcType="INTEGER" />
-    <result column="is_hot" property="isHot" jdbcType="INTEGER" />
-    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
-    <result column="is_recommend" property="isRecommend" jdbcType="INTEGER" />
-    <result column="reserve" property="reserve" jdbcType="VARCHAR" />
-  </resultMap>
+  <id column="id" property="id" jdbcType="INTEGER" />
+  <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+  <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+  <result column="one_sort_id" property="oneSortId" jdbcType="INTEGER" />
+  <result column="show_count" property="showCount" jdbcType="INTEGER" />
+  <result column="thumb" property="thumb" jdbcType="VARCHAR" />
+  <result column="pictures" property="pictures" jdbcType="VARCHAR" />
+  <result column="goods_create_time" property="goodsCreateTime" jdbcType="TIMESTAMP" />
+  <result column="goods_update_time" property="goodsUpdateTime" jdbcType="TIMESTAMP" />
+  <result column="is_shelf" property="isShelf" jdbcType="INTEGER" />
+  <result column="cover_img" property="coverImg" jdbcType="VARCHAR" />
+  <result column="goods_video" property="goodsVideo" jdbcType="VARCHAR" />
+  <result column="video_type" property="videoType" jdbcType="INTEGER" />
+  <result column="deduction_max" property="deductionMax" jdbcType="INTEGER" />
+  <result column="deduction_by" property="deductionBy" jdbcType="INTEGER" />
+  <result column="logo_name" property="logoName" jdbcType="VARCHAR" />
+  <result column="logo_img" property="logoImg" jdbcType="VARCHAR" />
+  <result column="goods_type" property="goodsType" jdbcType="INTEGER" />
+  <result column="sort" property="sort" jdbcType="INTEGER" />
+  <result column="freight" property="freight" jdbcType="DOUBLE" />
+  <result column="ad_image" property="adImage" jdbcType="VARCHAR" />
+  <result column="is_one" property="isOne" jdbcType="INTEGER" />
+  <result column="is_hot" property="isHot" jdbcType="INTEGER" />
+  <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  <result column="is_recommend" property="isRecommend" jdbcType="INTEGER" />
+  <result column="reserve" property="reserve" jdbcType="VARCHAR" />
+</resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.jingshuiqi.bean.GoodsWithBLOBs" extends="BaseResultMap" >
     <result column="details" property="details" jdbcType="LONGVARCHAR" />
     <result column="specification" property="specification" jdbcType="LONGVARCHAR" />
     <result column="after_sales" property="afterSales" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, goods_create_time, 
-    goods_update_time, is_shelf, cover_img, goods_video, video_type, deduction_max, deduction_by, 
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend, 
-    reserve
+    id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, goods_create_time,
+    goods_update_time, is_shelf, cover_img, goods_video, video_type, deduction_max, deduction_by,
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete,
+    is_recommend, reserve
   </sql>
   <sql id="Blob_Column_List" >
     details, specification, after_sales
@@ -74,7 +75,7 @@
   <select id="findOneGoodsInfo" resultMap="ResultMapWithBLOBs" >
     select
     id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete, is_recommend
     from goods
     where is_delete = 0 and is_shelf = 1 and one_sort_id = #{pageObject.id}
     order by sort, id desc
@@ -91,7 +92,7 @@
   <select id="findAllGoodsInfo" resultMap="ResultMapWithBLOBs" >
     select
     id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete, is_recommend
     from goods
     where is_delete = 0 and is_shelf = 1
     <if test="pageObject.name != null and pageObject.name != ''">
@@ -135,7 +136,7 @@
   <select id="findBannerById" resultMap="ResultMapWithBLOBs" >
     select
     g.id, g.uuid, g.goods_name, g.one_sort_id, g.show_count, g.thumb, g.pictures, g.is_shelf, g.deduction_max, g.deduction_by,
-    g.logo_name, g.logo_img, g.goods_type, g.sort, g.freight, g.is_one, g.is_hot, g.is_delete, g.is_recommend
+    g.logo_name, g.logo_img, g.goods_type, g.sort, g.freight, g.ad_image,g.is_one, g.is_hot, g.is_delete, g.is_recommend
     from goods as g
     left join re_advertisement_goods as r on r.goods_uuid = g.uuid
     where g.is_delete = 0 and g.is_shelf = 1 and r.advertisement_id = #{pageObject.id}
@@ -154,7 +155,7 @@
   <select id="findHotGoodsInfo" resultMap="ResultMapWithBLOBs" >
     select
     id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete, is_recommend
     from goods
     where is_delete = 0 and is_shelf = 1 and is_hot = 1
     order by sort, id desc
@@ -171,7 +172,7 @@
   <select id="findRecommendGoodsInfo" resultMap="ResultMapWithBLOBs" >
     select
     id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete, is_recommend
     from goods
     where is_delete = 0 and is_shelf = 1 and is_recommend = 1
   </select>
@@ -179,7 +180,7 @@
   <select id="findExchangeGoodsInfo" resultMap="ResultMapWithBLOBs" >
     select
     id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete, is_recommend
     from goods
     where is_delete = 0 and is_shelf = 1 and goods_type = 1
     order by sort, id desc
@@ -196,7 +197,7 @@
   <select id="findGiftGoodsInfo" resultMap="ResultMapWithBLOBs" >
     select
     id, uuid, goods_name, one_sort_id, show_count, thumb, pictures, is_shelf, deduction_max, deduction_by,
-    logo_name, logo_img, goods_type, sort, freight, is_one, is_hot, is_delete, is_recommend
+    logo_name, logo_img, goods_type, sort, freight, ad_image, is_one, is_hot, is_delete, is_recommend
     from goods
     where is_delete = 0 and is_shelf = 1 and goods_type = 2
     order by id desc
@@ -205,7 +206,7 @@
 
 
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -223,20 +224,20 @@
       is_shelf, cover_img, goods_video, 
       video_type, deduction_max, deduction_by, 
       logo_name, logo_img, goods_type, 
-      sort, freight, is_one, 
-      is_hot, is_delete, is_recommend, 
-      reserve, details, specification, 
-      after_sales)
-    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR}, 
-      #{oneSortId,jdbcType=INTEGER}, #{showCount,jdbcType=INTEGER}, #{thumb,jdbcType=VARCHAR}, 
-      #{pictures,jdbcType=VARCHAR}, #{goodsCreateTime,jdbcType=TIMESTAMP}, #{goodsUpdateTime,jdbcType=TIMESTAMP}, 
-      #{isShelf,jdbcType=INTEGER}, #{coverImg,jdbcType=VARCHAR}, #{goodsVideo,jdbcType=VARCHAR}, 
-      #{videoType,jdbcType=INTEGER}, #{deductionMax,jdbcType=INTEGER}, #{deductionBy,jdbcType=INTEGER}, 
-      #{logoName,jdbcType=VARCHAR}, #{logoImg,jdbcType=VARCHAR}, #{goodsType,jdbcType=INTEGER}, 
-      #{sort,jdbcType=INTEGER}, #{freight,jdbcType=DOUBLE}, #{isOne,jdbcType=INTEGER}, 
-      #{isHot,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{isRecommend,jdbcType=INTEGER}, 
-      #{reserve,jdbcType=VARCHAR}, #{details,jdbcType=LONGVARCHAR}, #{specification,jdbcType=LONGVARCHAR}, 
-      #{afterSales,jdbcType=LONGVARCHAR})
+      sort, freight, ad_image,
+      is_one, is_hot, is_delete,
+      is_recommend, reserve, details,
+      specification, after_sales)
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{goodsName,jdbcType=VARCHAR},
+      #{oneSortId,jdbcType=INTEGER}, #{showCount,jdbcType=INTEGER}, #{thumb,jdbcType=VARCHAR},
+      #{pictures,jdbcType=VARCHAR}, #{goodsCreateTime,jdbcType=TIMESTAMP}, #{goodsUpdateTime,jdbcType=TIMESTAMP},
+      #{isShelf,jdbcType=INTEGER}, #{coverImg,jdbcType=VARCHAR}, #{goodsVideo,jdbcType=VARCHAR},
+      #{videoType,jdbcType=INTEGER}, #{deductionMax,jdbcType=INTEGER}, #{deductionBy,jdbcType=INTEGER},
+      #{logoName,jdbcType=VARCHAR}, #{logoImg,jdbcType=VARCHAR}, #{goodsType,jdbcType=INTEGER},
+      #{sort,jdbcType=INTEGER}, #{freight,jdbcType=DOUBLE}, #{adImage,jdbcType=VARCHAR},
+      #{isOne,jdbcType=INTEGER}, #{isHot,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER},
+      #{isRecommend,jdbcType=INTEGER}, #{reserve,jdbcType=VARCHAR}, #{details,jdbcType=LONGVARCHAR},
+      #{specification,jdbcType=LONGVARCHAR}, #{afterSales,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsWithBLOBs" >
     insert into goods
@@ -300,6 +301,9 @@
       </if>
       <if test="freight != null" >
         freight,
+      </if>
+      <if test="adImage != null" >
+        ad_image,
       </if>
       <if test="isOne != null" >
         is_one,
@@ -387,6 +391,9 @@
       <if test="freight != null" >
         #{freight,jdbcType=DOUBLE},
       </if>
+      <if test="adImage != null" >
+        #{adImage,jdbcType=VARCHAR},
+      </if>
       <if test="isOne != null" >
         #{isOne,jdbcType=INTEGER},
       </if>
@@ -473,6 +480,9 @@
       <if test="freight != null" >
         freight = #{freight,jdbcType=DOUBLE},
       </if>
+      <if test="adImage != null" >
+        ad_image = #{adImage,jdbcType=VARCHAR},
+      </if>
       <if test="isOne != null" >
         is_one = #{isOne,jdbcType=INTEGER},
       </if>
@@ -521,6 +531,7 @@
       goods_type = #{goodsType,jdbcType=INTEGER},
       sort = #{sort,jdbcType=INTEGER},
       freight = #{freight,jdbcType=DOUBLE},
+      ad_image = #{adImage,jdbcType=VARCHAR},
       is_one = #{isOne,jdbcType=INTEGER},
       is_hot = #{isHot,jdbcType=INTEGER},
       is_delete = #{isDelete,jdbcType=INTEGER},
@@ -529,34 +540,6 @@
       details = #{details,jdbcType=LONGVARCHAR},
       specification = #{specification,jdbcType=LONGVARCHAR},
       after_sales = #{afterSales,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.jingshuiqi.bean.Goods" >
-    update goods
-    set uuid = #{uuid,jdbcType=VARCHAR},
-      goods_name = #{goodsName,jdbcType=VARCHAR},
-      one_sort_id = #{oneSortId,jdbcType=INTEGER},
-      show_count = #{showCount,jdbcType=INTEGER},
-      thumb = #{thumb,jdbcType=VARCHAR},
-      pictures = #{pictures,jdbcType=VARCHAR},
-      goods_create_time = #{goodsCreateTime,jdbcType=TIMESTAMP},
-      goods_update_time = #{goodsUpdateTime,jdbcType=TIMESTAMP},
-      is_shelf = #{isShelf,jdbcType=INTEGER},
-      cover_img = #{coverImg,jdbcType=VARCHAR},
-      goods_video = #{goodsVideo,jdbcType=VARCHAR},
-      video_type = #{videoType,jdbcType=INTEGER},
-      deduction_max = #{deductionMax,jdbcType=INTEGER},
-      deduction_by = #{deductionBy,jdbcType=INTEGER},
-      logo_name = #{logoName,jdbcType=VARCHAR},
-      logo_img = #{logoImg,jdbcType=VARCHAR},
-      goods_type = #{goodsType,jdbcType=INTEGER},
-      sort = #{sort,jdbcType=INTEGER},
-      freight = #{freight,jdbcType=DOUBLE},
-      is_one = #{isOne,jdbcType=INTEGER},
-      is_hot = #{isHot,jdbcType=INTEGER},
-      is_delete = #{isDelete,jdbcType=INTEGER},
-      is_recommend = #{isRecommend,jdbcType=INTEGER},
-      reserve = #{reserve,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

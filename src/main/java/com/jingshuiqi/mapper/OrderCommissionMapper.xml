@@ -22,6 +22,17 @@
     actual_parent_commission, actual_grandpa_commission, is_success, create_time, do_time, 
     do_type, reserve, reserve1
   </sql>
+
+  <select id="findCommission" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from order_commission
+    where order_detail_uuid = #{uuid}
+  </select>
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

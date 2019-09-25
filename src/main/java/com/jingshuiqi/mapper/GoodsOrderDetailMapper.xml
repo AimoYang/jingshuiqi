@@ -20,7 +20,7 @@
     <result column="is_one" property="isOne" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name, 
+    id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name,
     amount, properties, deduction, commission, status, is_refund, is_one
   </sql>
 
@@ -89,11 +89,20 @@
     where order_uuid = #{uuid} and is_refund = 0
   </select>
 
+  <select id="findRefundNowOrder" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from goods_order_detail
+    where order_uuid = #{uuid} and status = 1
+  </select>
+
+
+
 
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from goods_order_detail
     where id = #{id,jdbcType=INTEGER}
@@ -109,11 +118,11 @@
       amount, properties, deduction, 
       commission, status, is_refund, 
       is_one)
-    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, 
-      #{goodsUuid,jdbcType=VARCHAR}, #{skuUuid,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER}, 
-      #{price,jdbcType=DOUBLE}, #{thumb,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, 
-      #{amount,jdbcType=DOUBLE}, #{properties,jdbcType=VARCHAR}, #{deduction,jdbcType=INTEGER}, 
-      #{commission,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{isRefund,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR},
+      #{goodsUuid,jdbcType=VARCHAR}, #{skuUuid,jdbcType=VARCHAR}, #{quantity,jdbcType=INTEGER},
+      #{price,jdbcType=DOUBLE}, #{thumb,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR},
+      #{amount,jdbcType=DOUBLE}, #{properties,jdbcType=VARCHAR}, #{deduction,jdbcType=INTEGER},
+      #{commission,jdbcType=DOUBLE}, #{status,jdbcType=INTEGER}, #{isRefund,jdbcType=INTEGER},
       #{isOne,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.GoodsOrderDetail" >

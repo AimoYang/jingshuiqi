@@ -2,6 +2,7 @@ package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.BankCard;
 import com.jingshuiqi.bean.JsonResult;
+import com.jingshuiqi.dto.TypeDatePage;
 import com.jingshuiqi.dto.TypePage;
 import com.jingshuiqi.service.DoCommissionService;
 import com.jingshuiqi.util.PageObject;
@@ -30,6 +31,13 @@ public class DoCommissionController {
     public JsonResult findCommission(HttpServletRequest request){
         String token = request.getHeader("x-access-token");
         return doCommissionService.findCommission(token);
+    }
+
+    @ApiOperation(value = "获取成员订单" , notes = "根据url获取成员订单")
+    @RequestMapping(value = "findMemberOrders" , method = RequestMethod.POST)
+    public JsonResult findMemberOrders(@ApiParam(value = "分页信息") @RequestBody TypeDatePage page, HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        return doCommissionService.findMemberOrders(token,page);
     }
 
     @ApiOperation(value = "获取团队成员" , notes = "根据url获取团队成员")

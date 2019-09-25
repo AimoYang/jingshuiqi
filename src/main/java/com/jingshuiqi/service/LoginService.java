@@ -70,6 +70,11 @@ public class LoginService {
 			r.setMsg("绑定错误");
 			return r;
 		}
+		if (ShareCheck(token,oneOpenid)){
+			r.setResult(StatusCode.FAIL);
+			r.setMsg("绑定错误");
+			return r;
+		}
 		if (share != null) {
 			r.setResult(StatusCode.FAIL);
 			r.setMsg("已绑定");
@@ -82,13 +87,13 @@ public class LoginService {
 				return r;
 			}
 
+
 			Share share2 = new Share();
 
 			share2.setOpenId(token);
 			share2.setParentOpenId(oneOpenid);
 			share2.setCreateTime(new Date());
-			
-			
+
 			try {
 				shareDao.saveShareBind(share2);
 			} catch (Exception e) {
@@ -204,6 +209,17 @@ public class LoginService {
 		UserBase userBase = WeixinUtil.findUserBase(accessToken.getToken(), accessToken.getOpenid());
 		r = updateUserInfo(userBase);
 		return r;
+	}
+
+	public boolean ShareCheck(String token,String oneOpenId){
+		Share share = shareDao.findUserInfoForBind(oneOpenId);
+		if (share.getParentOpenId() == null){
+			return false;
+		}else if(token.equals(share.getParentOpenId())){
+			return true;
+		}else {
+			return ShareCheck(token,share.getParentOpenId());
+		}
 	}
 	
 	

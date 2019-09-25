@@ -35,5 +35,7 @@ public interface GoodsOrderMapper {
 
     List<GoodsOrderBean> selectMemberRefundOrders(@Param("openId") String openId, @Param("page")TypeDatePage page);
 
-    void updateOrdersComment(String orderUuid);
+    void updateOrdersComment(@Param("uuid") String orderUuid);
+
+    void deleteOrder(GoodsOrder goodsOrder);
 }

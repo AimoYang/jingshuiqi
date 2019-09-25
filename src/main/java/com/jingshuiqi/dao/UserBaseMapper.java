@@ -20,7 +20,7 @@ public interface UserBaseMapper {
 
     int updateByPrimaryKey(UserBase record);
 
-    UserBase findUserInfo(@Param("openid") String oneOpenid);
+    UserBase findUserInfo(@Param("openid") String openId);
 
     int updateUserInfo(UserBase userBase);
 
@@ -31,4 +31,8 @@ public interface UserBaseMapper {
     Integer countMembers(@Param("openId") String openId);
 
     List<UserBase> selectMembers(@Param("openId") String openId);
+
+    List<UserBase> findIndexOrderFor();
+
+    void updateAddCoins(@Param("allCoins") Integer allCoins, @Param("openId")String openId);
 }

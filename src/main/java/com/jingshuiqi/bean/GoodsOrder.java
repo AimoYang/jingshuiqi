@@ -26,6 +26,8 @@ public class GoodsOrder {
 
     private Integer freight;
 
+    private Integer orderStatusPrefix;
+
     private Integer orderStatus;
 
     private Integer isComment;
@@ -38,15 +40,63 @@ public class GoodsOrder {
 
     private Date tradeSuccessfulTime;
 
+    private Integer orderType;
+
     private Integer payType;
 
     private Date createTime;
 
     private Integer isDelete;
 
+    private String code;
+
+    private Integer state;
+
     private String reserve;
 
+    private Integer allCoins;
+
+    public Integer getAllCoins() {
+        return allCoins;
+    }
+
+    public void setAllCoins(Integer allCoins) {
+        this.allCoins = allCoins;
+    }
+
     private List<GoodsOrderDetail> goodsOrderDetails;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getOrderType() {
+        return orderType;
+    }
+
+    public void setOrderType(Integer orderType) {
+        this.orderType = orderType;
+    }
+
+    public Integer getOrderStatusPrefix() {
+        return orderStatusPrefix;
+    }
+
+    public void setOrderStatusPrefix(Integer orderStatusPrefix) {
+        this.orderStatusPrefix = orderStatusPrefix;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
 
     public List<GoodsOrderDetail> getGoodsOrderDetails() {
         return goodsOrderDetails;

@@ -2,6 +2,7 @@ package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.GoodsCart;
 import com.jingshuiqi.bean.JsonResult;
+import com.jingshuiqi.form.ListId;
 import com.jingshuiqi.form.ShopGoodsForm;
 import com.jingshuiqi.service.ShopCarService;
 import com.jingshuiqi.util.PageObject;
@@ -42,6 +43,12 @@ public class ShopCarController {
         String token = request.getHeader("x-access-token");
         goodsCart.setOpenId(token);
         return shopCarService.updateGoodsCart(goodsCart);
+    }
+
+    @ApiOperation(value = "删除购物车" , notes = "删除购物车")
+    @RequestMapping(value = "deleteShopCar" , method = RequestMethod.POST)
+    public JsonResult deleteShopCar(@ApiParam("购物车id的list") @RequestBody ListId id, HttpServletRequest request){
+        return shopCarService.deleteShopCar(id);
     }
 
     @ApiOperation(value = "显示购物车" , notes = "显示购物车")

@@ -37,7 +37,7 @@ public class GoodsOrderDetail {
 
     private Integer refundNum;
 
-    private String refundFee;
+    private Double refundFee;
 
     private String refuseReason;
 
@@ -57,11 +57,11 @@ public class GoodsOrderDetail {
         this.refundNum = refundNum;
     }
 
-    public String getRefundFee() {
+    public Double getRefundFee() {
         return refundFee;
     }
 
-    public void setRefundFee(String refundFee) {
+    public void setRefundFee(Double refundFee) {
         this.refundFee = refundFee;
     }
 

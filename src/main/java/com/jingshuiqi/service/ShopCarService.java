@@ -3,6 +3,7 @@ package com.jingshuiqi.service;
 import com.jingshuiqi.bean.GoodsCart;
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.dao.GoodsCartMapper;
+import com.jingshuiqi.form.ListId;
 import com.jingshuiqi.form.ShopGoodsForm;
 import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.ResultUtil;
@@ -60,11 +61,11 @@ public class ShopCarService {
     public JsonResult showGoodsCart(PageObject pageObject) {
         Map<String, Object> map = new HashMap<String, Object>(3);
         List<ShopGoodsInfo> list = goodsCartMapper.findGoodsCart(pageObject);
-        int total = 0;
-        for (ShopGoodsInfo shopGoodsInfo : list) {
-            total = total + shopGoodsInfo.getQuantity();
-        }
         int row = goodsCartMapper.getGoodsCartRow(pageObject);
+        Integer total = goodsCartMapper.findGoodsCartNum(pageObject.getOpenId());
+        if (total == null){
+            total = 0;
+        }
         pageObject.setRowCount(row);
         map.put("total", total);
         map.put("list", list);
@@ -72,4 +73,13 @@ public class ShopCarService {
         return ResultUtil.success(map);
     }
 
+    public JsonResult deleteShopCar(ListId id) {
+        for (Integer i : id.getId()) {
+            GoodsCart goodsCart = new GoodsCart();
+            goodsCart.setId(i);
+            goodsCart.setIsDelete((short)1);
+            goodsCartMapper.updateByPrimaryKeySelective(goodsCart);
+        }
+        return ResultUtil.success();
+    }
 }

@@ -1,6 +1,9 @@
 package com.jingshuiqi.dao;
 
 import com.jingshuiqi.bean.ExchangeCode;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
 
 public interface ExchangeCodeMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,8 @@ public interface ExchangeCodeMapper {
     int updateByPrimaryKeySelective(ExchangeCode record);
 
     int updateByPrimaryKey(ExchangeCode record);
+
+    int findCode(@Param("code") String code, @Param("goodsUuid") String goodsUuid);
+
+    int reCode(@Param("code")String code, @Param("date") Date date);
 }

@@ -18,6 +18,39 @@
     id, open_id, all_money, remain, wait_money, already_money, common_money, city_money, 
     team_money, reserve, is_delete
   </sql>
+
+  <update id="updateIncome" >
+    update commission
+    set
+      all_money = all_money + #{Commission},
+      remain = remain + #{Commission},
+      common_money = common_money + #{Commission}
+    where open_id = #{openId}
+  </update>
+
+  <update id="updateCity" >
+    update commission
+    set
+      all_money = all_money + #{Commission},
+      remain = remain + #{Commission},
+      city_money = city_money + #{Commission}
+    where open_id = #{openId}
+  </update>
+
+
+  <update id="updateTeam" >
+    update commission
+    set
+      all_money = all_money + #{Commission},
+      remain = remain + #{Commission},
+      team_money = team_money + #{Commission}
+    where open_id = #{openId}
+  </update>
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

@@ -19,6 +19,18 @@
     id, order_detail_uuid, type, agent_open_id, commission, actual_commission, is_success, 
     create_time, do_time, do_type, reserve, reserve1
   </sql>
+
+
+
+  <select id="findAgentCommission" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from agent_commission
+    where order_detail_uuid = #{uuid}
+  </select>
+
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

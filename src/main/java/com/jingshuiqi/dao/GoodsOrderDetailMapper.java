@@ -41,4 +41,6 @@ public interface GoodsOrderDetailMapper {
     int findOrderCommentDetailNum(@Param("uuid") String orderUuid);
 
     int findRefundOrderDetail(@Param("uuid")String uuid);
+
+    int findRefundNowOrder(@Param("uuid") String uuid);
 }

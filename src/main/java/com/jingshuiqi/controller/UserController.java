@@ -32,4 +32,19 @@ public class UserController {
         return userService.findUserInfo(token);
     }
 
+    @ApiOperation(value = "查看我的购物币" , notes = "根据url查看我的信息")
+    @RequestMapping(value = "findUserCoins" , method = RequestMethod.POST)
+    public JsonResult findUserCoins(HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        return userService.findUserCoins(token);
+    }
+
+    @ApiOperation(value = "查看我的购物币流水" , notes = "根据url查看我的信息")
+    @RequestMapping(value = "findCoinsList" , method = RequestMethod.POST)
+    public JsonResult findCoinsList(@ApiParam(value = "分页信息") @RequestBody PageObject pageObject,HttpServletRequest request){
+        String token = request.getHeader("x-access-token");
+        pageObject.setOpenId(token);
+        return userService.findCoinsList(pageObject);
+    }
+
 }

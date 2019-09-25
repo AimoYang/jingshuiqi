@@ -37,6 +37,16 @@ public class UserBase {
 
     private String bindUuid;
 
+    private Date agentTime;
+
+    public Date getAgentTime() {
+        return agentTime;
+    }
+
+    public void setAgentTime(Date agentTime) {
+        this.agentTime = agentTime;
+    }
+
     public String getBindUuid() {
         return bindUuid;
     }

@@ -184,6 +184,27 @@
     where open_id = #{openId}
   </update>
 
+  <select id="findIndexOrderFor" resultMap="BaseResultMap" >
+    select
+    u.nick_name, u.icon
+    from user_base as u
+    left join goods_order as g on g.open_id = u.open_id
+    where g.create_time >=DATE_SUB(NOW(),INTERVAL 1 MINUTE)
+    order by g.create_time desc
+    limit 3
+  </select>
+
+
+  <update id="updateAddCoins" parameterType="com.jingshuiqi.bean.UserBase" >
+    update user_base
+    set
+      shop_coins = shop_coins + #{allCoins}
+    where open_id = #{openId}
+  </update>
+
+
+
+
 
 
 

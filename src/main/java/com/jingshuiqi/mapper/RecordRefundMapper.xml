@@ -7,7 +7,8 @@
     <result column="order_uuid" property="orderUuid" jdbcType="VARCHAR" />
     <result column="refund_reason" property="refundReason" jdbcType="VARCHAR" />
     <result column="refund_num" property="refundNum" jdbcType="INTEGER" />
-    <result column="refund_fee" property="refundFee" jdbcType="VARCHAR" />
+    <result column="refund_fee" property="refundFee" jdbcType="DOUBLE" />
+    <result column="deduction" property="deduction" jdbcType="INTEGER" />
     <result column="refuse_reason" property="refuseReason" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
@@ -15,11 +16,11 @@
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, uuid, order_uuid, refund_reason, refund_num, refund_fee, refuse_reason, create_time, 
-    end_time, is_success, is_delete
+    id, uuid, order_uuid, refund_reason, refund_num, refund_fee, deduction, refuse_reason,
+    create_time, end_time, is_success, is_delete
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from record_refund
     where id = #{id,jdbcType=INTEGER}
@@ -31,12 +32,14 @@
   <insert id="insert" parameterType="com.jingshuiqi.bean.RecordRefund" >
     insert into record_refund (id, uuid, order_uuid, 
       refund_reason, refund_num, refund_fee, 
-      refuse_reason, create_time, end_time, 
-      is_success, is_delete)
-    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR}, 
-      #{refundReason,jdbcType=VARCHAR}, #{refundNum,jdbcType=INTEGER}, #{refundFee,jdbcType=VARCHAR}, 
-      #{refuseReason,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{isSuccess,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER})
+      deduction, refuse_reason, create_time,
+      end_time, is_success, is_delete
+      )
+    values (#{id,jdbcType=INTEGER}, #{uuid,jdbcType=VARCHAR}, #{orderUuid,jdbcType=VARCHAR},
+      #{refundReason,jdbcType=VARCHAR}, #{refundNum,jdbcType=INTEGER}, #{refundFee,jdbcType=DOUBLE},
+      #{deduction,jdbcType=INTEGER}, #{refuseReason,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{endTime,jdbcType=TIMESTAMP}, #{isSuccess,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.RecordRefund" >
     insert into record_refund
@@ -58,6 +61,9 @@
       </if>
       <if test="refundFee != null" >
         refund_fee,
+      </if>
+      <if test="deduction != null" >
+        deduction,
       </if>
       <if test="refuseReason != null" >
         refuse_reason,
@@ -92,7 +98,10 @@
         #{refundNum,jdbcType=INTEGER},
       </if>
       <if test="refundFee != null" >
-        #{refundFee,jdbcType=VARCHAR},
+        #{refundFee,jdbcType=DOUBLE},
+      </if>
+      <if test="deduction != null" >
+        #{deduction,jdbcType=INTEGER},
       </if>
       <if test="refuseReason != null" >
         #{refuseReason,jdbcType=VARCHAR},
@@ -127,7 +136,10 @@
         refund_num = #{refundNum,jdbcType=INTEGER},
       </if>
       <if test="refundFee != null" >
-        refund_fee = #{refundFee,jdbcType=VARCHAR},
+        refund_fee = #{refundFee,jdbcType=DOUBLE},
+      </if>
+      <if test="deduction != null" >
+        deduction = #{deduction,jdbcType=INTEGER},
       </if>
       <if test="refuseReason != null" >
         refuse_reason = #{refuseReason,jdbcType=VARCHAR},
@@ -153,7 +165,8 @@
       order_uuid = #{orderUuid,jdbcType=VARCHAR},
       refund_reason = #{refundReason,jdbcType=VARCHAR},
       refund_num = #{refundNum,jdbcType=INTEGER},
-      refund_fee = #{refundFee,jdbcType=VARCHAR},
+      refund_fee = #{refundFee,jdbcType=DOUBLE},
+      deduction = #{deduction,jdbcType=INTEGER},
       refuse_reason = #{refuseReason,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},

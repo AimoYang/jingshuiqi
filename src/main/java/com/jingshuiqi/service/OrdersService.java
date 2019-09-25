@@ -1,16 +1,15 @@
 package com.jingshuiqi.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jingshuiqi.bean.*;
 import com.jingshuiqi.controller.OrdersController;
 import com.jingshuiqi.dao.*;
 import com.jingshuiqi.form.ListId;
-import com.jingshuiqi.util.ArithUtil;
-import com.jingshuiqi.util.PageObject;
-import com.jingshuiqi.util.RandomNum;
-import com.jingshuiqi.util.ResultUtil;
+import com.jingshuiqi.util.*;
 import com.jingshuiqi.util.pay.PayUtil;
 import com.jingshuiqi.util.pay.Sha1Util;
 import com.jingshuiqi.vo.OrderGoods;
+import groovy.util.logging.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -28,6 +27,7 @@ import java.util.*;
  * @Date: 2019/9/23 0023 15:34
  * @Description:
  */
+@Slf4j
 @Service
 public class OrdersService {
 
@@ -56,14 +56,28 @@ public class OrdersService {
     private UserBaseMapper userBaseMapper;
     @Autowired
     private RecordRefundMapper recordRefundMapper;
+    @Autowired
+    private AgentMapper agentMapper;
+    @Autowired
+    private CommissionMapper commissionMapper;
+    @Autowired
+    private ExchangeCodeMapper exchangeCodeMapper;
+    @Autowired
+    private LogisticsMapper logisticsMapper;
+    @Autowired
+    private OrderCommissionMapper orderCommissionMapper;
+    @Autowired
+    private AgentCommissionMapper agentCommissionMapper;
+    @Autowired
+    private ShopCoinsMapper shopCoinsMapper;
 
     public JsonResult payOrder(String url, String uuid , HttpServletRequest request , HttpServletResponse response) {
         GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(uuid);
         goodsOrder.setGoodsOrderDetails(goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid()));
-        goodsOrder.setPayType(0);
         if (goodsOrder.getOrderStatus() == 5) {
             return ResultUtil.fail("支付超时");
         }
+
         Map<String, Object> map = PayUtil.getPayForCharge(request, response, goodsOrder.getOpenId(), goodsOrder.getActualPrice().toString() , goodsOrder.getUuid());
         String ticket = accessTokenService.findTicket();
         String str = "jsapi_ticket="+ ticket +"&noncestr="+ map.get("nonceStr") +"&timestamp="+ map.get("timeStamp")+"&url="+url;
@@ -77,6 +91,7 @@ public class OrdersService {
     public JsonResult saveOrderCheck(GoodsOrder goodsOrder) {
 
         goodsOrder.setOrderPrice((double)0);
+        goodsOrder.setAllCoins(0);
         String orderUuid = RandomNum.getRandomFileName();
         goodsOrder.setUuid(orderUuid);
         goodsOrder.setPayUuid(orderUuid);
@@ -98,16 +113,26 @@ public class OrdersService {
                 if (goods == null) {
                     return ResultUtil.fail("该商品失效");
                 }
+                if (goods.getGoodsType() == 1){
+                    int row = exchangeCodeMapper.findCode(goodsOrder.getCode(),goodsOrderDetail.getGoodsUuid());
+                    if (row <= 0){
+                        return ResultUtil.fail("兑换码失效");
+                    }
+                    goodsOrderDetail.setPrice((double)0);
+                    goodsOrderDetail.setAmount((double)0);
+                }else {
+                    goodsOrderDetail.setPrice(sku.getNewPrice());
+                    goodsOrderDetail.setAmount(sku.getNewPrice() * goodsOrderDetail.getQuantity()-goodsOrderDetail.getDeduction());
+                }
 
                 String uuid = "Zi" + RandomNum.getRandomFileName();
                 goodsOrderDetail.setThumb(goods.getThumb());
                 goodsOrderDetail.setProductName(goods.getGoodsName());
-                goodsOrderDetail.setPrice(sku.getNewPrice());
-                goodsOrderDetail.setAmount(sku.getNewPrice() * goodsOrderDetail.getQuantity()-goodsOrderDetail.getDeduction());
                 goodsOrderDetail.setUuid(uuid);
                 goodsOrderDetail.setOrderUuid(orderUuid);
                 goodsOrderDetail.setProperties(sku.getProperties());
                 goodsOrderDetail.setStatus(0);
+                goodsOrder.setAllCoins(goodsOrder.getAllCoins()+goodsOrderDetail.getQuantity()*goods.getDeductionBy());
                 goodsOrder.setOrderPrice(goodsOrder.getOrderPrice() + goodsOrderDetail.getAmount());
                 goodsOrderDetailMapper.insertSelective(goodsOrderDetail);
                 if (goodsOrder.getReserve() != null) {
@@ -144,6 +169,8 @@ public class OrdersService {
         goodsOrder.setTradeSuccessfulTime(new Date());
         goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder);
         try {
+            Integer coins = 0;
+            UserBase usr = userBaseMapper.findUserInfo(goodsOrder.getOpenId());
             for (GoodsOrderDetail goodsOrderDetail : ordersDetailsList) {
                 Goods goods = goodsMapper.findGoodsInfoByUuid(goodsOrderDetail.getGoodsUuid());
                 if (goods == null) {
@@ -151,7 +178,37 @@ public class OrdersService {
                     return;
                 }
                 if (goods.getGoodsType() == 2){
-                    return;
+                    UserBase userBase = new UserBase();
+                    userBase.setUserType(1);
+                    userBase.setOpenId(goodsOrder.getOpenId());
+                    int row = userBaseMapper.updateUserInfo(userBase);
+                    if (row <= 0){
+                        logger.info("更新代理状态失败1"+"---" + orderNum);
+                    }
+                    Agent agent = new Agent();
+                    agent.setAgentType(1);
+                    agent.setCreateTime(new Date());
+                    agent.setOpenId(goodsOrder.getOpenId());
+                    int rows = agentMapper.insertSelective(agent);
+                    if (rows <= 0){
+                        logger.info("更新代理状态失败2"+"---"+orderNum);
+                    }
+                    Commission commission = new Commission();
+                    commission.setOpenId(goodsOrder.getOpenId());
+                    int ro = commissionMapper.insertSelective(commission);
+                    if (ro <= 0){
+                        logger.info("更新代理状态失败3"+"---"+orderNum);
+                    }
+                }
+                if(goods.getGoodsType() == 1){
+                    if (goodsOrder.getCode() == null){
+                        logger.info(new Date().toString()+"-----"+"兑换码为空"+"---"+orderNum);
+                    }else {
+                        int row = exchangeCodeMapper.reCode(goodsOrder.getCode(),new Date());
+                        if (row <= 0){
+                            logger.info(new Date().toString()+"-----"+"兑换码更新失败"+"---"+orderNum);
+                        }
+                    }
                 }
                 Sku sku = skuMapper.findSkuByUuid(goodsOrderDetail.getSkuUuid());
                 if (sku == null){
@@ -165,10 +222,16 @@ public class OrdersService {
                 goodsWithBLOBs.setId(goods.getId());
                 goodsWithBLOBs.setShowCount(goods.getShowCount() + goodsOrderDetail.getQuantity());
                 goodsMapper.updateByPrimaryKeySelective(goodsWithBLOBs);
+                coins = coins + goodsOrderDetail.getDeduction();
             }
+            usr.setOpenId(goodsOrder.getOpenId());
+            usr.setConsumeMoney(usr.getConsumeMoney()+goodsOrder.getActualPrice());
+            usr.setShopCoins(usr.getShopCoins() - coins);
+            userBaseMapper.updateUserInfo(usr);
         } catch (Exception e) {
             logger.info(new Date().toString() + "更新订单数据错误:" + orderNum);
         }
+        return;
     }
 
     public JsonResult saveOrderShop(String token,ListId listId) {
@@ -210,7 +273,10 @@ public class OrdersService {
             GoodsOrderDetail goodsOrderDetail = goodsOrderDetailMapper.selectByUuid(uuid);
             if (goodsOrderDetail.getIsRefund() == 1){
                 RecordRefund recordRefund = recordRefundMapper.selectByOrderUuid(uuid);
-                BeanUtils.copyProperties(recordRefund,goodsOrderDetail);
+                goodsOrderDetail.setRefundFee(recordRefund.getRefundFee());
+                goodsOrderDetail.setRefundNum(recordRefund.getRefundNum());
+                goodsOrderDetail.setRefundReason(recordRefund.getRefundReason());
+                goodsOrderDetail.setRefuseReason(recordRefund.getRefuseReason());
             }
             GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(goodsOrderDetail.getOrderUuid());
             goodsOrder.setGoodsOrderDetails(Arrays.asList(goodsOrderDetail));
@@ -222,24 +288,91 @@ public class OrdersService {
         }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public JsonResult updateState(GoodsOrder goodsOrder) {
-        GoodsOrder goodsOrder2 = goodsOrderMapper.findOrdersByUuid(goodsOrder.getUuid());
-        if (goodsOrder2 == null){
-            return ResultUtil.fail("订单失效");
+        if (goodsOrder.getIsDelete() != null){
+            goodsOrderMapper.deleteOrder(goodsOrder);
+            return ResultUtil.success();
         }
-        if (goodsOrder.getOrderStatus() == 5){
-            if (goodsOrder2.getOrderStatus() > 0){
-                return ResultUtil.fail("订单已付款，无法取消");
-            }else {
-                goodsOrder2.setOrderStatus(5);
-                goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder2);
-                return ResultUtil.success();
+        try {
+            GoodsOrder goodsOrder2 = goodsOrderMapper.findOrdersByUuid(goodsOrder.getUuid());
+            if (goodsOrder2 == null){
+                return ResultUtil.fail("订单失效");
             }
+            if (goodsOrder.getOrderStatus() == 5){
+                if (goodsOrder2.getOrderStatus() > 0){
+                    return ResultUtil.fail("订单已付款，无法取消");
+                }else {
+                    goodsOrder2.setOrderStatus(5);
+                    goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder2);
+                    return ResultUtil.success();
+                }
+            }
+            if (goodsOrder.getOrderStatus() == 3){
+                int row = goodsOrderDetailMapper.findRefundNowOrder(goodsOrder.getUuid());
+                if (row > 0){
+                    return ResultUtil.fail("还有订单正在退款，不能确认");
+                }
+                goodsOrder2.setOrderStatus(3);
+                goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder2);
+                ShopCoins shopCoins = new ShopCoins();
+                shopCoins.setCreateTime(new Date());
+                shopCoins.setOpenId(goodsOrder2.getOpenId());
+                shopCoins.setCoin(goodsOrder2.getAllCoins());
+                shopCoins.setType(1);
+                shopCoinsMapper.insertSelective(shopCoins);
+                userBaseMapper.updateAddCoins(goodsOrder2.getAllCoins(),goodsOrder2.getOpenId());
+                return OrderCommissionBeing(goodsOrder2.getUuid());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            return ResultUtil.fail("操作失败");
         }
-        if (goodsOrder.getOrderStatus() == 3){
+        return ResultUtil.fail("操作无效");
+    }
 
+    @Transactional(rollbackFor = Exception.class)
+    public JsonResult OrderCommissionBeing(String uuid){
+        List<GoodsOrderDetail> goodsOrderDetails = goodsOrderDetailMapper.findOrderDetail(uuid);
+        try {
+            for (GoodsOrderDetail g : goodsOrderDetails) {
+                OrderCommission orderCommission = orderCommissionMapper.findCommission(g.getUuid());
+                if (orderCommission != null){
+                    if (orderCommission.getParentOpenId() != null){
+                        commissionMapper.updateIncome(orderCommission.getParentOpenId(),orderCommission.getActualParentCommission());
+                    }
+                    if (orderCommission.getGrandpaOpenId() != null){
+                        commissionMapper.updateIncome(orderCommission.getGrandpaOpenId(),orderCommission.getActualGrandpaCommission());
+                    }
+                    orderCommission.setIsSuccess((short)1);
+                    orderCommission.setDoType((short)1);
+                    orderCommission.setDoTime(new Date());
+                    orderCommissionMapper.updateByPrimaryKey(orderCommission);
+                }
+                List<AgentCommission> list = agentCommissionMapper.findAgentCommission(g.getUuid());
+                if (list.size() != 0) {
+                    for (AgentCommission a : list) {
+                        if (a.getType() == 2){
+                            commissionMapper.updateCity(a.getAgentOpenId(),a.getActualCommission());
+                        }
+                        if (a.getType() == 3){
+                            commissionMapper.updateTeam(a.getAgentOpenId(),a.getActualCommission());
+                        }
+                        a.setIsSuccess((short)1);
+                        a.setDoType((short)1);
+                        a.setDoTime(new Date());
+                        agentCommissionMapper.updateByPrimaryKey(a);
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            logger.info(new Date().toString() +"--------" + "更新分佣数据错误:" + uuid);
+            return ResultUtil.fail("操作失败");
         }
-        return ResultUtil.success();
+       return ResultUtil.success();
     }
 
     public JsonResult findUserOrdersComment(PageObject pageObject) {
@@ -288,6 +421,14 @@ public class OrdersService {
         if (goodsOrder.getOrderStatus() != 1 && goodsOrder.getOrderStatus() != 2 && goodsOrder.getOrderStatus() != 6){
             return ResultUtil.fail("无法退单");
         }
+        if (goodsOrderDetail.getQuantity().equals(recordRefund.getRefundNum())){
+            recordRefund.setDeduction(goodsOrderDetail.getDeduction());
+        }else {
+            recordRefund.setDeduction(0);
+        }
+        if (recordRefund.getRefundFee() != goodsOrderDetail.getAmount()*recordRefund.getRefundNum()/goodsOrderDetail.getQuantity()){
+            return ResultUtil.fail("退款价格异常");
+        }
         recordRefund.setIsSuccess(0);
         recordRefund.setCreateTime(new Date());
         goodsOrderDetail.setIsRefund(1);
@@ -297,8 +438,11 @@ public class OrdersService {
             goodsOrderDetailMapper.updateByPrimaryKeySelective(goodsOrderDetail);
             int row = goodsOrderDetailMapper.findRefundOrderDetail(goodsOrder.getUuid());
             if (row > 0){
-                goodsOrder.setOrderStatus(6);
+                if (goodsOrder.getOrderStatus() == 2){
+                    goodsOrder.setOrderStatus(6);
+                }
             }else {
+                goodsOrder.setOrderStatusPrefix(goodsOrder.getOrderStatus());
                 goodsOrder.setOrderStatus(4);
             }
             goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder);
@@ -308,5 +452,24 @@ public class OrdersService {
             return ResultUtil.fail("申请失败");
         }
         return ResultUtil.success();
+    }
+
+    public JsonResult findIndexOrderFor() {
+        List<UserBase> list = userBaseMapper.findIndexOrderFor();
+        return ResultUtil.success(list);
+    }
+
+    public JsonResult findUserOrdersDelivery(String uuid) throws Exception {
+        Logistics logistics = logisticsMapper.findDelivery(uuid);
+        if (logistics == null){
+            ResultUtil.fail("查询无订单");
+        }
+        String result = KD100Util.getExpressageKey(logistics.getExpressageCom(), logistics.getExpressageId());
+        if(result.equals("查询出错")){
+            return new  JsonResult(StatusCode.FAIL, "查询出错", "");
+        }else {
+            JSONObject jsonObject = JSONObject.parseObject(result);
+            return new  JsonResult(StatusCode.SUCCESS, "ok", jsonObject);
+        }
     }
 }

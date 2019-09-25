@@ -55,6 +55,12 @@ public class OrdersController {
         return ordersService.findOrderFor(uuid);
     }
 
+    @ApiOperation(value = "查看首页订单信息" , notes = "查看首页订单信息")
+    @RequestMapping(value = "findIndexOrderFor" , method = RequestMethod.GET)
+    public JsonResult findIndexOrderFor(){
+        return ordersService.findIndexOrderFor();
+    }
+
     @ApiOperation(value = "更新订单状态", notes = "更新订单状态")
     @RequestMapping(value = "updateOrderState", method = RequestMethod.POST)
     public JsonResult updateOrderState(
@@ -93,6 +99,12 @@ public class OrdersController {
         String token = request.getHeader("x-access-token");
         pageObject.setOpenId(token);
         return ordersService.findCancelOrders(pageObject);
+    }
+
+    @ApiOperation(value = "查看我的商品订单快递" , notes = "根据url查看我的商品订单快递")
+    @RequestMapping(value = "findUserOrdersDelivery" , method = RequestMethod.POST)
+    public JsonResult findUserOrdersDelivery(@ApiParam(value = "总订单的uuid")@RequestParam("uuid") String uuid ,HttpServletRequest request) throws Exception {
+        return ordersService.findUserOrdersDelivery(uuid);
     }
 
 }

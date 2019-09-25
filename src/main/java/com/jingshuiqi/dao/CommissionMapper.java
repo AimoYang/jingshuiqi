@@ -17,4 +17,10 @@ public interface CommissionMapper {
     int updateByPrimaryKey(Commission record);
 
     Commission selectByOpenId(@Param("openId") String openId);
+
+    void updateIncome(@Param("openId") String parentOpenId, @Param("Commission") Double actualParentCommission);
+
+    void updateCity(@Param("openId") String agentOpenId, @Param("Commission") Double actualCommission);
+
+    void updateTeam(@Param("openId")String agentOpenId, @Param("Commission")Double actualCommission);
 }

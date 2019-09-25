@@ -13,7 +13,9 @@ public class RecordRefund {
 
     private Integer refundNum;
 
-    private String refundFee;
+    private Double refundFee;
+
+    private Integer deduction;
 
     private String refuseReason;
 
@@ -65,12 +67,20 @@ public class RecordRefund {
         this.refundNum = refundNum;
     }
 
-    public String getRefundFee() {
+    public Double getRefundFee() {
         return refundFee;
     }
 
-    public void setRefundFee(String refundFee) {
-        this.refundFee = refundFee == null ? null : refundFee.trim();
+    public void setRefundFee(Double refundFee) {
+        this.refundFee = refundFee;
+    }
+
+    public Integer getDeduction() {
+        return deduction;
+    }
+
+    public void setDeduction(Integer deduction) {
+        this.deduction = deduction;
     }
 
     public String getRefuseReason() {

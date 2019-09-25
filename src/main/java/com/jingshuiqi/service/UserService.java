@@ -1,16 +1,15 @@
 package com.jingshuiqi.service;
 
 import com.jingshuiqi.bean.*;
-import com.jingshuiqi.dao.AgentMapper;
-import com.jingshuiqi.dao.AreaMapper;
-import com.jingshuiqi.dao.ShareLinkMapper;
-import com.jingshuiqi.dao.UserBaseMapper;
+import com.jingshuiqi.dao.*;
+import com.jingshuiqi.util.PageObject;
 import com.jingshuiqi.util.ResultUtil;
 import com.jingshuiqi.util.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -33,6 +32,8 @@ public class UserService {
     private CodeService codeService;
     @Autowired
     private ShareLinkMapper shareLinkMapper;
+    @Autowired
+    private ShopCoinsMapper shopCoinsMapper;
 
     public JsonResult findUserInfo(String token) {
         Map<String, Object> map = new HashMap<String, Object>(2);
@@ -48,10 +49,10 @@ public class UserService {
                     shareLink2.setOpenid(userBase.getOpenId());
                     shareLink2.setUuid(userBase.getBindUuid());
                     shareLinkMapper.saveBindUuid(shareLink2);
-                    userBase.setIsCode(codeService.Code("http://weixin.houtianfu.com?state=" + userBase.getBindUuid()));
+                    userBase.setIsCode(codeService.Code("http://weixin.jinshanzhu.com?state=" + userBase.getBindUuid()));
                     userBaseMapper.updateUserInfo(userBase);
                 }else {
-                    userBase.setIsCode(codeService.Code("http://weixin.houtianfu.com?state=" + shareLink.getUuid()));
+                    userBase.setIsCode(codeService.Code("http://weixin.jinshanzhu.com?state=" + shareLink.getUuid()));
                     userBaseMapper.updateUserInfo(userBase);
                 }
                 userBase.setIsCode(codeService.WeCode(userBase.getIsCode()));
@@ -65,6 +66,7 @@ public class UserService {
                 String address = areaMapper.findAddress(agent.getAreaId());
                 userBase.setReserve(address);
             }
+            userBase.setAgentTime(agent.getCreateTime());
         }
         JsonResult r = doCommissionService.findCommission(token);
         map.put("UserBase",userBase);
@@ -72,4 +74,18 @@ public class UserService {
         return ResultUtil.success(map);
     }
 
+    public JsonResult findUserCoins(String token) {
+        UserBase userBase = userBaseMapper.findUserInfo(token);
+        return ResultUtil.success(userBase.getShopCoins());
+    }
+
+    public JsonResult findCoinsList(PageObject pageObject) {
+        Map<String, Object> map = new HashMap<String, Object>(2);
+        List<ShopCoins> list = shopCoinsMapper.findCoinsList(pageObject);
+        int row = shopCoinsMapper.getCoinsListRow(pageObject);
+        pageObject.setRowCount(row);
+        map.put("list", list);
+        map.put("pageObject", pageObject);
+        return ResultUtil.success(map);
+    }
 }

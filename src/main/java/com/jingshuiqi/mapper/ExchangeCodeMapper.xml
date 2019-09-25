@@ -16,6 +16,23 @@
     id, goods_uuid, create_time, expire_time, used_time, code_uuid, code_type, reserve, 
     is_delete
   </sql>
+
+  <select id="findCode" resultType="java.lang.Integer" >
+    select
+    count(1)
+    from exchange_code
+    where code_uuid = #{code} and goods_uuid = #{goodsUuid} and UNIX_TIMESTAMP(expire_time) - UNIX_TIMESTAMP(now()) > 0
+  </select>
+
+  <update id="reCode" >
+    update exchange_code
+    set
+      used_time = #{date},
+      code_type = 1
+    where code_uuid = #{code}
+  </update>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

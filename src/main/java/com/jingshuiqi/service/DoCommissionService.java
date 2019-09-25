@@ -331,7 +331,7 @@ public class DoCommissionService {
      * @param page
      * @return
      */
-    public  Map<String,Object> findMemberOrders(String openId, TypeDatePage page){
+    public  JsonResult findMemberOrders(String openId, TypeDatePage page){
         Map<String, Object> map = new HashMap<String, Object>(2);
         if(page.getType() != 3){
             Integer rowCount = goodsOrderMapper.countMemberOrders(openId,page);
@@ -340,14 +340,14 @@ public class DoCommissionService {
             List<GoodsOrderBean> list = goodsOrderMapper.selectMemberOrders(openId,page);
             map.put("page", page);
             map.put("info", dealOrderDetail(list,openId));
-            return map;
+            return ResultUtil.success(map);
         }
         Integer rowCount = goodsOrderMapper.countMemberRefundOrders(openId,page);
         page.setRowCount(rowCount);
         List<GoodsOrderBean> list = goodsOrderMapper.selectMemberRefundOrders(openId,page);
         map.put("page", page);
         map.put("info", dealRefundOrderDetail(list,openId));
-        return map;
+        return ResultUtil.success(map);
     }
 
     private  List<GoodsOrderBean> dealOrderDetail(List<GoodsOrderBean> list,String openId){

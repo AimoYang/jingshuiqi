@@ -1,234 +1,217 @@
-2019-09-24 10:10:40,864 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.jingshuiqi.dao.GoodsOrderMapper.findUserOrdersInfo]
-2019-09-24 10:13:34,033 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.jingshuiqi.dao.GoodsOrderMapper.findUserOrdersInfo]
-2019-09-24 10:16:09,613 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.jingshuiqi.dao.GoodsOrderMapper.findUserOrdersInfo]
-2019-09-24 10:55:25,939 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 10:55:50,471 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 10:59:23,387 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 10:59:48,581 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:01:39,577 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:02:22,392 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:02:32,568 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:05:02,584 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:05:58,023 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:06:22,129 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:06:46,798 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:06:51,455 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:07:14,112 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:08:46,227 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:09:50,156 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:09:58,137 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:10:17,338 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'id' not found. Available parameters are [pageObject, param1]]
-2019-09-24 11:15:48,619 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException:
-### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
-### The error may involve com.jingshuiqi.dao.GoodsOrderDetailMapper.getUserOrdersCommentRow
-### The error occurred while executing a query
-### SQL: select     count(1)     from goods_order_detail as d     join in goods_order as g on g.uuid = d.order_uuid     where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0]
-2019-09-24 11:15:56,152 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): com.jingshuiqi.dao.GoodsOrderDetailMapper.findCancelOrders]
-2019-09-23 09:04:16,147 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot construct instance of `com.jingshuiqi.util.PageObject` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (16); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot construct instance of `com.jingshuiqi.util.PageObject` (although at least one Creator exists): no int/Int-argument constructor/factory method to deserialize from Number value (16)
- at [Source: (PushbackInputStream); line: 1, column: 1]]
-2019-09-23 09:06:00,594 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
-2019-09-23 09:30:36,688 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
-2019-09-23 09:32:40,037 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
-2019-09-23 09:34:54,079 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
-2019-09-23 09:35:52,634 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.ClassCastException: com.jingshuiqi.bean.Floor cannot be cast to com.jingshuiqi.vo.IndexFloor]
-2019-09-23 10:03:58,147 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'bannerController' method
-public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBannerById(com.jingshuiqi.util.PageObject)
-to {POST /findBannerById}: There is already 'bannerController' bean method
-public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBanner() mapped.
-2019-09-23 10:06:13,190 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentationPluginsBootstrapper' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/DocumentationPluginsBootstrapper.class]: Unsatisfied dependency expressed through constructor parameter 1; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webMvcRequestHandlerProvider' defined in URL [jar:file:/D:/%e8%bd%af%e4%bb%b6/apache-maven-3.5.3/repository/io/springfox/springfox-spring-web/2.7.0/springfox-spring-web-2.7.0.jar!/springfox/documentation/spring/web/plugins/WebMvcRequestHandlerProvider.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'bannerController' method
-public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBannerById(com.jingshuiqi.util.PageObject)
-to {POST /findBannerById}: There is already 'bannerController' bean method
-public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.BannerController.findBanner() mapped.
-2019-09-23 15:44:06,728 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers already contains value for com.jingshuiqi.dao.UserBaseMapper.Base_Column_List
-2019-09-23 15:46:25,591 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing Mapper XML. Cause: java.lang.IllegalArgumentException: XML fragments parsed from previous mappers already contains value for com.jingshuiqi.dao.UserBaseMapper.Base_Column_List
-2019-09-23 21:18:44,997 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException:
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list'
-### The error may exist in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\UserBaseMapper.xml]
-### The error may involve defaultParameterMap
-### The error occurred while setting parameters
-### SQL: SELECT         user_base.id,         user_base.open_id,         user_base.nick_name,         user_base.icon,         user_base.`name`,         user_base.phone,         user_base.birth_date,         user_base.is_enable,         user_base.create_time,         user_base.last_login,         user_base.consume_money,         user_base.shop_coins,         user_base.reserve,         user_base.is_delete,         IFNULL(IF(user_type = 0,user_type,agent_type),0)AS user_type     FROM         user_base     LEFT JOIN `share` ON `share`.open_id = user_base.open_id     WHERE         `share`.is_delete = 0     AND user_base.is_delete = 0     AND `share`.parent_open_id = ?
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'agent_type' in 'field list']
-2019-09-23 21:30:49,587 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'page' not found. Available parameters are [arg1, arg0, param1, param2]]
-2019-09-23 21:31:43,953 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException:
-### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
-
-    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
-    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
-    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
-    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
-    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
-   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
-    FROM
-        goods_order
-    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
-    LEFT JOIN `share` on user_base.open_id = `share`.open_id
-    WHERE
-        goods_order.is_delete = 0
-    and `share`.is_delete = 0
-    and `share`.parent_open_id = ?
-
-
-    order by goods_order.create_time desc
-    limit ?,?
-### The error may exist in file [E:\MySpace\jingshuiqi\target\classes\com\jingshuiqi\mapper\GoodsOrderMapper.xml]
-### The error may involve com.jingshuiqi.dao.GoodsOrderMapper.selectMemberOrders
-### The error occurred while executing a query
-### SQL: SELECT               goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,     goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,     goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,     goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,     goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete    , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon     FROM         goods_order     LEFT JOIN user_base ON goods_order.open_id = user_base.open_id     LEFT JOIN `share` on user_base.open_id = `share`.open_id     WHERE         goods_order.is_delete = 0     and `share`.is_delete = 0     and `share`.parent_open_id = ?                 order by goods_order.create_time desc     limit ?,?
-### Cause: java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
-
-    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
-    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
-    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
-    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
-    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
-   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
-    FROM
-        goods_order
-    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
-    LEFT JOIN `share` on user_base.open_id = `share`.open_id
-    WHERE
-        goods_order.is_delete = 0
-    and `share`.is_delete = 0
-    and `share`.parent_open_id = ?
-
-
-    order by goods_order.create_time desc
-    limit ?,?
-; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
-
-    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
-    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
-    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
-    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
-    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
-   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
-    FROM
-        goods_order
-    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
-    LEFT JOIN `share` on user_base.open_id = `share`.open_id
-    WHERE
-        goods_order.is_delete = 0
-    and `share`.is_delete = 0
-    and `share`.parent_open_id = ?
-
-
-    order by goods_order.create_time desc
-    limit ?,?; nested exception is java.sql.SQLException: sql injection violation, syntax error: syntax error, error in :'INCT goods_order.uuid,user_base.nic',expect DOT, actual DOT goods_order : SELECT
-
-    goods_order.id , goods_order.open_id,goods_order.order_price, goods_order.actual_price,
-    goods_order.receiver_name, goods_order.receiver_phone, goods_order.receiver_address,
-    goods_order.buyer_message, goods_order.freight, goods_order.order_status, goods_order.is_comment,
-    goods_order.pay_uuid, goods_order.pay_time, goods_order.delivery_time,
-    goods_order.trade_successful_time, goods_order.pay_type, goods_order.create_time, goods_order.is_delete
-   , DISTINCT goods_order.uuid,user_base.nick_name,user_base.icon
-    FROM
-        goods_order
-    LEFT JOIN user_base ON goods_order.open_id = user_base.open_id
-    LEFT JOIN `share` on user_base.open_id = `share`.open_id
-    WHERE
-        goods_order.is_delete = 0
-    and `share`.is_delete = 0
-    and `share`.parent_open_id = ?
-
-
-    order by goods_order.create_time desc
-    limit ?,?]
-2019-09-24 13:28:11,825 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.UncategorizedSQLException: 
-### Error querying database.  Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
-### The error may involve com.jingshuiqi.dao.GoodsOrderDetailMapper.getUserOrdersCommentRow
-### The error occurred while executing a query
-### SQL: select     count(1)     from goods_order_detail as d     join in goods_order as g on g.uuid = d.order_uuid     where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-### Cause: java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-; uncategorized SQLException; SQL state [null]; error code [0]; sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0; nested exception is java.sql.SQLException: sql injection violation, syntax error: ERROR. token : IN, pos : 64 : select
-    count(1)
-    from goods_order_detail as d
-    join in goods_order as g on g.uuid = d.order_uuid
-    where d.open_id = ? and g.order_status = 3 and d.is_one = 0]
-2019-09-24 13:30:23,542 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.open_id' in 'where clause'
+2019-09-25 09:24:31,638 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 09:25:09,065 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 09:27:09,133 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 09:27:51,509 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 09:29:15,698 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 10:31:30,138 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 10:32:17,885 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 10:34:33,667 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 10:36:32,953 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'pageObject' not found. Available parameters are [openId, param1]]
+2019-09-25 10:40:00,012 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 10:41:56,680 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'pageObject' not found. Available parameters are [openId, param1]]
+2019-09-25 10:42:23,289 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 10:42:27,121 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.apache.ibatis.binding.BindingException: Mapper method 'com.jingshuiqi.dao.GoodsCartMapper.findGoodsCartNum attempted to return null from a method with a primitive return type (int).]
+2019-09-25 10:43:30,432 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 10:44:09,820 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 11:11:59,175 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 13:16:24,174 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:33:43,380 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:33:48,301 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:33:52,114 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:36:02,305 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:36:16,823 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:41:21,825 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 13:42:41,082 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 14:00:27,247 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 14:54:15,607 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 15:40:57,953 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'uuid' is not present]
+2019-09-25 15:42:42,097 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 15:44:21,918 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 15:48:08,914 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 15:58:09,649 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 16:26:17,790 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 4; 元素内容必须由格式正确的字符数据或标记组成。
+2019-09-25 16:27:17,142 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 4; 元素内容必须由格式正确的字符数据或标记组成。
+2019-09-25 16:28:08,762 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 4; 元素内容必须由格式正确的字符数据或标记组成。
+2019-09-25 16:29:46,471 WARN [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext [AbstractApplicationContext.java : 557] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressController': Unsatisfied dependency expressed through field 'addressService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressService': Unsatisfied dependency expressed through field 'addressMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'addressMapper' defined in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\dao\AddressMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is org.springframework.core.NestedIOException: Failed to parse mapping resource: 'file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsMapper.xml]'; nested exception is org.apache.ibatis.builder.BuilderException: Error creating document instance.  Cause: org.xml.sax.SAXParseException; lineNumber: 4; columnNumber: 4; 元素内容必须由格式正确的字符数据或标记组成。
+2019-09-25 16:30:26,854 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 16:41:31,221 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 17:12:14,967 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 17:24:38,328 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:24:52,823 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:25:01,631 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:32:26,146 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 17:37:44,231 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:37:57,930 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:38:00,812 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:41:43,695 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 17:59:27,090 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 17:59:45,706 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.dao.QueryTimeoutException: Redis command timed out; nested exception is io.lettuce.core.RedisCommandTimeoutException: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 300 millisecond(s)]
+2019-09-25 18:00:02,161 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:00:03,767 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:00:09,217 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:06:26,041 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:06:30,151 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:06:39,934 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:18:34,255 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:19:56,783 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:24:00,852 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:24:22,832 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:25:34,185 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:17,676 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:18,396 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:20,496 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:23,956 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:26,320 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:27,381 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:30,692 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:31:33,444 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:34:35,718 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:35:06,533 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:37:37,806 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:38:05,723 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:38:08,962 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:38:15,526 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:38:17,408 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:38:48,140 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:39:16,143 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:39:33,564 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:39:41,578 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:39:46,302 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:39:57,984 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list'
 ### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
-### SQL: select     count(1)     from goods_order_detail as d     left join goods_order as g on g.uuid = d.order_uuid     where d.open_id = ? and g.order_status = 3 and d.is_one = 0
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.open_id' in 'where clause'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.open_id' in 'where clause']
-2019-09-24 14:41:28,478 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
-2019-09-24 14:41:34,140 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
-2019-09-24 14:47:48,419 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
-2019-09-24 15:14:22,702 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
-2019-09-24 15:16:11,141 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'uuid' is not present]
-2019-09-24 15:21:41,156 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'uuid' is not present]
-2019-09-24 15:23:57,981 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
-2019-09-24 15:41:56,628 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+### SQL: select           id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name,     amount, properties, deduction, commission, status, is_refund, is_one, code         from goods_order_detail     where order_uuid = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list']
+2019-09-25 18:40:07,500 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:40:10,093 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:40:16,855 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list'
 ### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
-### SQL: select     d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason     from goods_order_detail as d     left join record_refund as r on r.order_uuid = d.uuid     left join goods_order as g on g.uuid = d.order_uuid     where d.is_refund = 1 and d.is_delete = 0 and g.open_id = ?     order by d.id desc     limit ?, ?
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause']
-2019-09-24 16:10:20,109 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.jingshuiqi.bean.JsonResult com.jingshuiqi.controller.DoCommissionController.findBankCardList(com.jingshuiqi.dto.TypePage,javax.servlet.http.HttpServletRequest)]
-2019-09-24 16:11:24,959 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
-2019-09-24 16:19:26,295 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 16:23:01,447 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 16:23:05,285 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2019-09-24 16:24:36,269 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 16:25:19,189 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 16:25:38,262 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2019-09-24 16:28:20,686 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 16:32:47,955 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 16:46:03,684 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
-2019-09-24 17:05:41,368 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
+### SQL: select           id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name,     amount, properties, deduction, commission, status, is_refund, is_one, code         from goods_order_detail     where order_uuid = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list']
+2019-09-25 18:40:41,740 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 18:41:07,117 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list'
 ### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
 ### The error may involve defaultParameterMap
 ### The error occurred while setting parameters
-### SQL: select     d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason     from goods_order_detail as d     left join record_refund as r on r.order_uuid = d.uuid     left join goods_order as g on g.uuid = d.order_uuid     where d.is_refund = 1 and d.is_delete = 0 and g.open_id = ?     order by d.id desc     limit ?, ?
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause']
-2019-09-24 17:11:23,334 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
-### The error may exist in file [D:\YGY\jingshuiqi_sp\target\classes\com\jingshuiqi\mapper\GoodsOrderDetailMapper.xml]
-### The error may involve defaultParameterMap
-### The error occurred while setting parameters
-### SQL: select     d.*,r.refund_reason, r.refund_num, r.refund_fee, r.refuse_reason     from goods_order_detail as d     left join record_refund as r on r.order_uuid = d.uuid     left join goods_order as g on g.uuid = d.order_uuid     where d.is_refund = 1 and d.is_delete = 0 and g.open_id = ?     order by d.id desc     limit ?, ?
-### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause'
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'd.is_delete' in 'where clause']
-2019-09-24 17:12:03,825 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 17:23:27,621 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-24 17:43:32,478 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
-2019-09-24 17:43:47,614 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'application/x-www-form-urlencoded;charset=UTF-8' not supported]
-2019-09-24 18:25:41,953 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+### SQL: select           id, uuid, order_uuid, goods_uuid, sku_uuid, quantity, price, thumb, product_name,     amount, properties, deduction, commission, status, is_refund, is_one, code         from goods_order_detail     where order_uuid = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'code' in 'field list']
+2019-09-25 18:53:57,959 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 19:12:40,901 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 19:33:36,823 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:15,677 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:16,638 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:21,511 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:23,235 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:30,294 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:32,248 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:35,541 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:43,770 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:46,279 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:49,047 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:53,419 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:33:58,613 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:34:09,530 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:34:26,598 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:34:33,131 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:34:37,092 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:34:41,071 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:34:52,159 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:35:03,839 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:35:05,395 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:35:24,591 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 20:50:28,712 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 20:54:04,336 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 21:02:35,157 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 21:03:04,519 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 21:06:27,476 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:07:11,972 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:14:51,944 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 21:24:49,576 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:24:49,621 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:24:51,017 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:26:48,645 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:26:52,744 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:26:56,333 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:26:57,545 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:00,843 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:02,491 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:03,181 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:04,952 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:06,504 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:12,741 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:15,233 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:16,263 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:18,946 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:23,749 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:27:53,996 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:28:34,290 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:29:11,658 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:29:34,917 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:29:42,156 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:29:54,197 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:30:21,027 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 21:31:08,411 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:31:23,788 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:32:09,820 WARN [http-nio-81-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:33:57,652 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:34:33,554 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:44:11,474 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:44:25,122 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:44:26,781 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:45:20,316 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:28,774 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:32,400 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:33,889 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:35,399 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:47,029 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:52,666 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:46:56,615 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:47:36,979 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:47:39,190 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:47:44,271 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:47:48,630 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:50:56,996 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:55:58,379 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 21:59:56,055 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 22:02:12,821 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:03:22,751 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:06:18,028 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:06:24,468 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:06:27,798 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:06:30,741 WARN [http-nio-81-exec-5] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:06:31,711 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:06:33,490 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:07:34,297 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:07:38,961 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:07:45,844 WARN [http-nio-81-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:08:14,645 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:08:23,898 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:09:08,345 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:09:30,138 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:13:08,868 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:13:42,519 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:14:12,710 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:14:18,584 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:14:21,471 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:14:34,718 WARN [http-nio-81-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:14:38,180 WARN [http-nio-81-exec-8] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:39:21,535 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 22:39:47,437 WARN [http-nio-81-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:40:20,893 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:46:18,934 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-09-25 22:51:21,633 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:51:22,861 WARN [http-nio-81-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:51:25,066 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:52:51,805 WARN [http-nio-81-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:55:28,703 WARN [http-nio-81-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 22:55:39,983 WARN [http-nio-81-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-09-25 23:00:11,002 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]

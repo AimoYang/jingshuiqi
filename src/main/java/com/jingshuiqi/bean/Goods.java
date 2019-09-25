@@ -44,6 +44,8 @@ public class Goods {
 
     private Double freight;
 
+    private String adImage;
+
     private Integer isOne;
 
     private Integer isHot;
@@ -55,6 +57,14 @@ public class Goods {
     private String reserve;
 
     private List<Sku> skus;
+
+    public String getAdImage() {
+        return adImage;
+    }
+
+    public void setAdImage(String adImage) {
+        this.adImage = adImage;
+    }
 
     public List<Sku> getSkus() {
         return skus;

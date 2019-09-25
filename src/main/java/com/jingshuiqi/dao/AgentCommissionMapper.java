@@ -22,4 +22,6 @@ public interface AgentCommissionMapper {
     Double sumWaitCalculate(String openId);
 
     List<AgentCommission> selectByOrderDetailUuid(@Param("orderDetailUuid") String orderDetailUuid);
+
+    List<AgentCommission> findAgentCommission(@Param("uuid") String uuid);
 }
