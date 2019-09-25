@@ -64,19 +64,37 @@ public class DoCommissionService {
         if(share != null && share.getIsDelete() == 0){
             //父级openId
             String parentOpenId = share.getParentOpenId();
-            //父级分佣
-            Double parentCommission = ArithUtil.mul(sku.getOneCommission(),quantity);
             orderCommission.setParentOpenId(parentOpenId);
-            orderCommission.setParentCommission(parentCommission);
+            Agent parentAgent = agentMapper.selectByOpenId(parentOpenId);
+            if(parentAgent == null){
+                orderCommission.setParentCommission((double)0);
+            }else {
+                if(openId.equals(parentOpenId)){
+                    orderCommission.setParentCommission((double)0);
+                }else {
+                    //父级分佣
+                    Double parentCommission = ArithUtil.mul(sku.getOneCommission(),quantity);
+                    orderCommission.setParentCommission(parentCommission);
+                }
+            }
             //二级返佣
             Share share1 = shareMapper.findUserInfoForBind(parentOpenId);
             if(share1 != null && share1.getIsDelete() == 0){
                 //父父级openId
                 String grandpaOpenId = share1.getParentOpenId();
                 //父父级分佣
-                Double grandpaCommission = ArithUtil.mul(sku.getTwoCommission(),quantity);
                 orderCommission.setGrandpaOpenId(grandpaOpenId);
-                orderCommission.setGrandpaCommission(grandpaCommission);
+                Agent grandpaAgent = agentMapper.selectByOpenId(grandpaOpenId);
+                if(grandpaAgent == null){
+                    orderCommission.setGrandpaCommission((double)0);
+                }else {
+                    if(openId.equals(grandpaOpenId)){
+                        orderCommission.setGrandpaCommission((double)0);
+                    }else {
+                        Double grandpaCommission = ArithUtil.mul(sku.getTwoCommission(),quantity);
+                        orderCommission.setGrandpaCommission(grandpaCommission);
+                    }
+                }
             }
             orderCommission.setOrderDetailUuid(orderDetailUuid);
             orderCommission.setCreateTime(now);
@@ -128,7 +146,10 @@ public class DoCommissionService {
         for (UserAgent u: list) {
             if(openId.equals(u.getOpenId())){
                 if(u.getUserType() == 1 && u.getAgentType() == 3){
-                    return  u.getOpenId();
+                    Agent agent = agentMapper.selectByOpenId(u.getOpenId());
+                    if(agent != null){
+                        return  u.getOpenId();
+                    }
                 }
                 map.put(openId,openId);
                 if(u.getParentOpenId() == null || "".equals(u.getParentOpenId())){
