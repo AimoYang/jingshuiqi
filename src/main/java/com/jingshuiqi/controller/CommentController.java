@@ -2,6 +2,7 @@ package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.Comment;
 import com.jingshuiqi.bean.JsonResult;
+import com.jingshuiqi.resubmit.DuplicateSubmitToken;
 import com.jingshuiqi.service.CommentService;
 import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
@@ -41,6 +42,7 @@ public class CommentController {
         return commentService.findUserCommentInfo(pageObject);
     }
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "发表商品评论信息" , notes = "根据url发表商品评论信息")
     @RequestMapping(value = "saveCommentInfo" , method = RequestMethod.POST)
     public JsonResult saveCommentInfo(@ApiParam(value = "评论信息") @RequestBody Comment comment, HttpServletRequest request){

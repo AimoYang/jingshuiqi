@@ -5,6 +5,7 @@ import com.jingshuiqi.bean.GoodsOrderDetail;
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.bean.RecordRefund;
 import com.jingshuiqi.form.ListId;
+import com.jingshuiqi.resubmit.DuplicateSubmitToken;
 import com.jingshuiqi.service.OrdersService;
 import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
@@ -28,8 +29,9 @@ public class OrdersController {
     @Autowired
     private OrdersService ordersService;
 
+
     @ApiOperation(value = "微信支付订单" , notes = "微信支付订单")
-    @RequestMapping(value = "payOrder" , method = RequestMethod.POST)
+    @RequestMapping(value = "/pay/payall" , method = RequestMethod.POST)
     public JsonResult payOrder(@ApiParam(value = "订单的uuid") @RequestParam("uuid") String uuid , HttpServletRequest request , HttpServletResponse response ,String url){
         return ordersService.payOrder(url, uuid, request, response);
     }

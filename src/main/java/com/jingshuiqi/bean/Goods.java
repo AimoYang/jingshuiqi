@@ -1,5 +1,7 @@
 package com.jingshuiqi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +20,10 @@ public class Goods {
 
     private String pictures;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date goodsCreateTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date goodsUpdateTime;
 
     private Integer isShelf;

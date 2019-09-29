@@ -35,4 +35,6 @@ public interface UserBaseMapper {
     List<UserBase> findIndexOrderFor();
 
     void updateAddCoins(@Param("allCoins") Integer allCoins, @Param("openId")String openId);
+
+    int updateUserData(UserBase userBase);
 }

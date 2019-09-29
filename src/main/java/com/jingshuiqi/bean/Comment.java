@@ -1,5 +1,7 @@
 package com.jingshuiqi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Comment {
@@ -17,6 +19,7 @@ public class Comment {
 
     private String reply;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date createTime;
 
     private Integer isDelete;

@@ -5,6 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="open_id" property="openId" jdbcType="VARCHAR" />
     <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="icon" property="icon" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="CHAR" />
@@ -20,7 +21,7 @@
     <result column="is_code" property="isCode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, open_id, nick_name, icon, name, phone, birth_date, is_enable, create_time, last_login,
+    id, open_id, nick_name, sex, icon, name, phone, birth_date, is_enable, create_time, last_login,
     consume_money, shop_coins, reserve, user_type, is_delete, is_code
   </sql>
 
@@ -42,6 +43,9 @@
       </if>
       <if test="nickName != null" >
         nick_name,
+      </if>
+      <if test="sex != null" >
+        sex,
       </if>
       <if test="icon != null" >
         icon,
@@ -93,6 +97,9 @@
       <if test="nickName != null" >
         #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
       <if test="icon != null" >
         #{icon,jdbcType=VARCHAR},
       </if>
@@ -140,6 +147,9 @@
     <set >
       <if test="nickName != null" >
         nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
       </if>
       <if test="icon != null" >
         icon = #{icon,jdbcType=VARCHAR},
@@ -202,6 +212,15 @@
     where open_id = #{openId}
   </update>
 
+  <update id="updateUserData" parameterType="com.jingshuiqi.bean.UserBase" >
+    update user_base
+    set
+      name = #{name,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=CHAR}
+    where open_id = #{openId,jdbcType=VARCHAR}
+  </update>
+
+
 
 
 
@@ -223,17 +242,17 @@
   </delete>
   <insert id="insert" parameterType="com.jingshuiqi.bean.UserBase" >
     insert into user_base (id, open_id, nick_name, 
-      icon, name, phone, birth_date, 
-      is_enable, create_time, last_login, 
-      consume_money, shop_coins, reserve, 
-      user_type, is_delete, is_code
-      )
+      sex, icon, name, phone,
+      birth_date, is_enable, create_time,
+      last_login, consume_money, shop_coins,
+      reserve, user_type, is_delete,
+      is_code)
     values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
-      #{icon,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{birthDate,jdbcType=TIMESTAMP},
-      #{isEnable,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{lastLogin,jdbcType=TIMESTAMP},
-      #{consumeMoney,jdbcType=DOUBLE}, #{shopCoins,jdbcType=INTEGER}, #{reserve,jdbcType=VARCHAR},
-      #{userType,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER}, #{isCode,jdbcType=VARCHAR}
-      )
+      #{sex,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR},
+      #{birthDate,jdbcType=TIMESTAMP}, #{isEnable,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{lastLogin,jdbcType=TIMESTAMP}, #{consumeMoney,jdbcType=DOUBLE}, #{shopCoins,jdbcType=INTEGER},
+      #{reserve,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{isDelete,jdbcType=INTEGER},
+      #{isCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.jingshuiqi.bean.UserBase" >
     insert into user_base
@@ -246,6 +265,9 @@
       </if>
       <if test="nickName != null" >
         nick_name,
+      </if>
+      <if test="sex != null" >
+        sex,
       </if>
       <if test="icon != null" >
         icon,
@@ -297,6 +319,9 @@
       <if test="nickName != null" >
         #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
       <if test="icon != null" >
         #{icon,jdbcType=VARCHAR},
       </if>
@@ -347,6 +372,9 @@
       <if test="nickName != null" >
         nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
       <if test="icon != null" >
         icon = #{icon,jdbcType=VARCHAR},
       </if>
@@ -393,6 +421,7 @@
     update user_base
     set open_id = #{openId,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
       icon = #{icon,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=CHAR},

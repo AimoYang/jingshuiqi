@@ -18,7 +18,9 @@ public interface ExchangeCodeMapper {
 
     int updateByPrimaryKey(ExchangeCode record);
 
-    int findCode(@Param("code") String code, @Param("goodsUuid") String goodsUuid);
+    ExchangeCode findCode(@Param("code") String code, @Param("goodsUuid") String goodsUuid);
 
     int reCode(@Param("code")String code, @Param("date") Date date);
+
+    void updateCode(@Param("code")String code, @Param("goodsUuid")String goodsUuid);
 }

@@ -35,14 +35,16 @@ public class GoodsService {
     @Autowired
     private CodeService codeService;
 
-    public JsonResult findGoodsInfo(String uuid, String token) {
+    public JsonResult findGoodsInfo(String uuid, String token, Integer state) {
         Map<String,Object> map = new HashMap<String, Object>(2);
         Goods goods = goodsMapper.findGoodsInfoByUuid(uuid);
         if (goods == null) {
             return ResultUtil.fail("该商品失效");
         }
         goods.setSkus(skuMapper.findSku(uuid));
-        goods.setReserve(codeService.WeCode(goods.getThumb()));
+        if (state == 1){
+            goods.setReserve(codeService.WeCode(goods.getThumb()));
+        }
         int rows = recordsMapper.findRecordsInfo(uuid, token);
         if (rows == 0) {
             map.put("isCollect", 0);

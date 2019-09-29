@@ -131,6 +131,9 @@
     count(1)
     from goods
     where is_delete = 0 and is_shelf = 1
+    <if test="pageObject.name != null and pageObject.name != ''">
+      and goods_name LIKE CONCAT ('%',#{pageObject.name},'%')
+    </if>
   </select>
 
   <select id="findBannerById" resultMap="ResultMapWithBLOBs" >

@@ -46,9 +46,10 @@ public static String getPayNo(String url,String xmlParam){
 		 httpost.setEntity(new StringEntity(xmlParam, "UTF-8"));
 		 HttpResponse response = httpclient.execute(httpost);
 	     String jsonStr = EntityUtils.toString(response.getEntity(), "UTF-8");
+		 System.out.println("-------------"+"jsonStr:"+jsonStr);
 	     logger.info("获取prepay_id返回值:" + jsonStr + "，当前时间：" + new Date());
 	     Map<String, Object> dataMap = new HashMap<String, Object>();
-	     
+
 	     if(jsonStr.indexOf("FAIL")!=-1){
 	    	return prepay_id;
 	     }

@@ -4,11 +4,11 @@ public class Configure {
 	private static String key = "你的商户的api秘钥";
 
 	//小程序ID	
-	private static String appID = "wx1923dcce28c19258";
+	private static String appID = "wx9de51f80532538c9";
 	//商户号
-	private static String mch_id = "1534649181";
+	private static String mch_id = "1553291271";
 	//
-	private static String secret = "g789ewp5tygwengmsgfs9vmwrv4temq3";
+	private static String secret = "cfrogwp5e98ty455894wcq9304tu3ev5";
 
 	public static String getSecret() {
 		return secret;

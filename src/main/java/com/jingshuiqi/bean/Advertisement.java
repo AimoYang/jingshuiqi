@@ -1,5 +1,7 @@
 package com.jingshuiqi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Advertisement {
@@ -9,6 +11,7 @@ public class Advertisement {
 
     private String image;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date createTime;
 
     private Integer sort;
@@ -17,9 +20,19 @@ public class Advertisement {
 
     private String url;
 
+    private Integer num;
+
     private Integer isShow;
 
     private Integer isDelete;
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
     public Integer getId() {
         return id;

@@ -9,6 +9,7 @@
     <result column="sort" property="sort" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="INTEGER" />
     <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
     <result column="is_show" property="isShow" jdbcType="INTEGER" />
     <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
   </resultMap>
@@ -18,8 +19,8 @@
 
   <select id="findBanner" resultMap="BaseResultMap" >
     select
-    <include refid="Base_Column_List" />
-    from advertisement
+    a.*,(select count(1) from re_advertisement_goods as r where r.advertisement_id = a.id) num
+    from advertisement as a
     where is_delete = 0 and is_show = 1
     order by sort
   </select>

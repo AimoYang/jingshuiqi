@@ -64,6 +64,13 @@ public class LoginService {
 		JsonResult r = new JsonResult();
 		ShareLink shareLink = shareLinkDao.findOpenidByBindUuid(bindUuid);
 		String oneOpenid = shareLink.getOpenid();
+		Share oneShare = shareDao.findUserInfoForBind(oneOpenid);
+		if (oneShare == null){
+			oneShare = new Share();
+			oneShare.setOpenId(oneOpenid);
+			oneShare.setCreateTime(new Date());
+			shareDao.insertSelective(oneShare);
+		}
 		Share share = shareDao.findUserInfoForBind(token);
 		if (token.equals(oneOpenid)) {
 			r.setResult(StatusCode.FAIL);
@@ -129,6 +136,7 @@ public class LoginService {
 				userBase2.setLastLogin(new Date());
 				userBase2.setIcon(userBase.getIcon());
 				userBase2.setNickName(userBase.getNickName());
+				userBase2.setSex(userBase.getSex());
 				int row = userBaseDao.updateUserInfo(userBase);
 				if (row > 0) {
 					boolean flag = redisService.set(userBase.getOpenId(), userBase2);
@@ -198,6 +206,11 @@ public class LoginService {
 	public JsonResult findUserInfoByReCode(String uuid) {
 		JsonResult r = new JsonResult();
 		Code code = codeDao.findCode(uuid);
+		if (code == null){
+			r.setResult(StatusCode.INVALID);
+			r.setMsg("code的失效，请清除缓存");
+			return r;
+		}
 		//通过刷新code获取accessToken
 		AccessToken accessToken = WeixinUtil.refreshCodeAccessToken(code.getReCode());
 		//刷新code拥有30天有效期若失效重新授权

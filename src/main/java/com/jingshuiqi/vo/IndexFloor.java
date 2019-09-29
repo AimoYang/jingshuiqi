@@ -14,4 +14,6 @@ import java.util.List;
 public class IndexFloor extends Floor {
 
     private String goodsUuid;
+
+    private Integer num;
 }

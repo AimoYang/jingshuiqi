@@ -4,6 +4,7 @@ import com.jingshuiqi.bean.BankCard;
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.dto.TypeDatePage;
 import com.jingshuiqi.dto.TypePage;
+import com.jingshuiqi.resubmit.DuplicateSubmitToken;
 import com.jingshuiqi.service.DoCommissionService;
 import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
@@ -61,6 +62,7 @@ public class DoCommissionController {
         return doCommissionService.findBankCardList(token);
     }
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "添加用户银行卡" , notes = "根据url获取用户银行卡列表")
     @RequestMapping(value = "addBankCard" , method = RequestMethod.POST)
     public JsonResult addBankCard(@ApiParam(value = "分页信息") @RequestBody BankCard bankCard, HttpServletRequest request){
@@ -68,6 +70,7 @@ public class DoCommissionController {
         return doCommissionService.addBankCard(token,bankCard.getBankCard(),bankCard.getBankName(),bankCard.getOwnerName());
     }
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "提现到用户银行卡" , notes = "根据url提现到用户银行卡")
     @RequestMapping(value = "withdrawDeposit" , method = RequestMethod.POST)
     public JsonResult withdrawDeposit(@ApiParam(value = "银行卡的id") @RequestParam("id") Integer bankCardId,Double money, HttpServletRequest request){

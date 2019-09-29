@@ -2,6 +2,7 @@ package com.jingshuiqi.controller;
 
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.form.GoodsAllPage;
+import com.jingshuiqi.resubmit.DuplicateSubmitToken;
 import com.jingshuiqi.service.GoodsService;
 import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
@@ -27,9 +28,9 @@ public class GoodsController {
 
     @ApiOperation(value = "查看商品信息" , notes = "根据url查看商品信息")
     @RequestMapping(value = "findGoodsInfo" , method = RequestMethod.POST)
-    public JsonResult findGoodsInfo(@ApiParam(value = "商品的uuid") @RequestParam("uuid") String uuid, HttpServletRequest request){
+    public JsonResult findGoodsInfo(@ApiParam(value = "商品的uuid") @RequestParam("uuid") String uuid,@RequestParam("state") Integer state, HttpServletRequest request){
         String token = request.getHeader("x-access-token");
-        JsonResult r = goodsService.findGoodsInfo(uuid ,token);
+        JsonResult r = goodsService.findGoodsInfo(uuid ,token ,state);
         return r;
     }
 

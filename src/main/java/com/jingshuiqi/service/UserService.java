@@ -39,10 +39,10 @@ public class UserService {
         Map<String, Object> map = new HashMap<String, Object>(2);
         UserBase userBase = userBaseMapper.findUserInfo(token);
         if (userBase.getUserType() != 0) {
+            ShareLink shareLink = shareLinkMapper.findBindUuid(userBase.getOpenId());
             if (userBase.getIsCode() != null) {
                 userBase.setIsCode(codeService.WeCode(userBase.getIsCode()));
             }else {
-                ShareLink shareLink = shareLinkMapper.findBindUuid(userBase.getOpenId());
                 if (shareLink == null) {
                     userBase.setBindUuid(UUIDGenerator.generate());
                     ShareLink shareLink2 = new ShareLink();
@@ -52,11 +52,13 @@ public class UserService {
                     userBase.setIsCode(codeService.Code("http://weixin.jinshanzhu.com?state=" + userBase.getBindUuid()));
                     userBaseMapper.updateUserInfo(userBase);
                 }else {
+                    System.out.println("---------"+shareLink.getUuid());
                     userBase.setIsCode(codeService.Code("http://weixin.jinshanzhu.com?state=" + shareLink.getUuid()));
                     userBaseMapper.updateUserInfo(userBase);
                 }
                 userBase.setIsCode(codeService.WeCode(userBase.getIsCode()));
             }
+            userBase.setBindUuid(shareLink.getUuid());
         }
         userBase.setReserve(null);
         if (userBase.getUserType() == 1){
@@ -87,5 +89,13 @@ public class UserService {
         map.put("list", list);
         map.put("pageObject", pageObject);
         return ResultUtil.success(map);
+    }
+
+    public JsonResult updateUserData(UserBase userBase) {
+        int row = userBaseMapper.updateUserData(userBase);
+        if (row <= 0){
+            return ResultUtil.fail("更新失败");
+        }
+        return ResultUtil.success();
     }
 }

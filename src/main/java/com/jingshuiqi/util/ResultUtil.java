@@ -56,4 +56,12 @@ public class ResultUtil {
         return resultVO;
     }
 
+    public static JsonResult order(Object object){
+        JsonResult resultVO = new JsonResult();
+        resultVO.setData(object);
+        resultVO.setResult(3);
+        resultVO.setMsg("请求成功");
+        return resultVO;
+    }
+
 }

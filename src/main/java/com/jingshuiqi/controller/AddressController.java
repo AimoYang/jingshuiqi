@@ -3,6 +3,7 @@ package com.jingshuiqi.controller;
 import com.jingshuiqi.bean.Address;
 import com.jingshuiqi.bean.JsonResult;
 import com.jingshuiqi.form.AddressForm;
+import com.jingshuiqi.resubmit.DuplicateSubmitToken;
 import com.jingshuiqi.service.AddressService;
 import com.jingshuiqi.util.PageObject;
 import io.swagger.annotations.Api;
@@ -26,6 +27,7 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "新增地址信息" , notes = "根据url新增地址信息")
     @RequestMapping(value = "saveAddressInfo" , method = RequestMethod.POST)
     public JsonResult saveAddressInfo(@ApiParam(value = "地址信息") @RequestBody @Valid AddressForm addressForm, HttpServletRequest request){
@@ -48,6 +50,7 @@ public class AddressController {
         return addressService.findUserAddressInfo(id);
     }
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "更新我的地址信息" , notes = "根据url更新我的地址信息")
     @RequestMapping(value = "updateAddressInfo" , method = RequestMethod.POST)
     public JsonResult updateAddressInfo(@ApiParam(value = "地址信息") @RequestBody Address address, HttpServletRequest request){
@@ -56,12 +59,14 @@ public class AddressController {
         return addressService.updateAddressInfo(address);
     }
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "更新我的地址信息" , notes = "根据url更新我的地址信息")
     @RequestMapping(value = "deleteAddress" , method = RequestMethod.POST)
     public JsonResult deleteAddress(@ApiParam(value = "地址信息") @RequestParam("id") Integer id, HttpServletRequest request){
         return addressService.deleteAddress(id);
     }
 
+    @DuplicateSubmitToken
     @ApiOperation(value = "更新个人默认地址信息" , notes = "根据url更新个人默认地址信息")
     @RequestMapping(value = "updateDefaultAddressInfo" , method = RequestMethod.POST)
     public JsonResult updateDefaultAddressInfo(@ApiParam(value = "地址的id") @RequestParam("id") Integer id ,HttpServletRequest request){

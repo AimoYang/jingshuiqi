@@ -1,5 +1,7 @@
 package com.jingshuiqi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class GoodsOrder {
 
     private Integer addressId;
 
+    private String addressArea;
+
     private String buyerMessage;
 
     private Integer freight;
@@ -34,16 +38,20 @@ public class GoodsOrder {
 
     private String payUuid;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date payTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date deliveryTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date tradeSuccessfulTime;
 
     private Integer orderType;
 
     private Integer payType;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date createTime;
 
     private Integer isDelete;
@@ -55,6 +63,14 @@ public class GoodsOrder {
     private String reserve;
 
     private Integer allCoins;
+
+    public String getAddressArea() {
+        return addressArea;
+    }
+
+    public void setAddressArea(String addressArea) {
+        this.addressArea = addressArea;
+    }
 
     public Integer getAllCoins() {
         return allCoins;

@@ -1,5 +1,7 @@
 package com.jingshuiqi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class AgentCommission {
@@ -17,8 +19,10 @@ public class AgentCommission {
 
     private Short isSuccess;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date doTime;
 
     private Short doType;

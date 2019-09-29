@@ -1,5 +1,7 @@
 package com.jingshuiqi.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class UserBase {
@@ -8,6 +10,8 @@ public class UserBase {
     private String openId;
 
     private String nickName;
+
+    private Integer sex;
 
     private String icon;
 
@@ -19,8 +23,10 @@ public class UserBase {
 
     private Integer isEnable;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date createTime;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date lastLogin;
 
     private Double consumeMoney;
@@ -37,6 +43,7 @@ public class UserBase {
 
     private String bindUuid;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone ="GMT+8")
     private Date agentTime;
 
     public Date getAgentTime() {
@@ -77,6 +84,14 @@ public class UserBase {
 
     public void setNickName(String nickName) {
         this.nickName = nickName == null ? null : nickName.trim();
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
     }
 
     public String getIcon() {

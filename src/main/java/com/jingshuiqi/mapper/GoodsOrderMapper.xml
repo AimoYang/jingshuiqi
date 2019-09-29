@@ -10,6 +10,7 @@
     <result column="receiver_name" property="receiverName" jdbcType="VARCHAR" />
     <result column="receiver_phone" property="receiverPhone" jdbcType="CHAR" />
     <result column="receiver_address" property="receiverAddress" jdbcType="VARCHAR" />
+    <result column="address_area" property="addressArea" jdbcType="VARCHAR" />
     <result column="address_id" property="addressId" jdbcType="INTEGER" />
     <result column="buyer_message" property="buyerMessage" jdbcType="VARCHAR" />
     <result column="freight" property="freight" jdbcType="INTEGER" />
@@ -30,7 +31,7 @@
     <result column="all_coins" property="allCoins" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, uuid, open_id, order_price, actual_price, receiver_name, receiver_phone, receiver_address,
+    id, uuid, open_id, order_price, actual_price, receiver_name, receiver_phone, receiver_address, address_area,
     address_id, buyer_message, freight, order_status_prefix, order_status, is_comment,
     pay_uuid, pay_time, delivery_time, trade_successful_time, order_type, pay_type, create_time,
     is_delete, code, state, reserve, all_coins
@@ -55,8 +56,10 @@
       and order_status = #{pageObject.id}
     </if>
     <if test="pageObject.id == 2">
-      and order_status = 6
+      or order_status = 6
     </if>
+    order by id desc
+    limit #{pageObject.startIndex},#{pageObject.pageSize}
   </select>
 
   <select id="getUserOrdersRow" resultType="java.lang.Integer" >
@@ -153,6 +156,9 @@
       <if test="receiverAddress != null" >
         receiver_address,
       </if>
+      <if test="addressArea != null" >
+        address_area,
+      </if>
       <if test="addressId != null" >
         address_id,
       </if>
@@ -232,6 +238,9 @@
       </if>
       <if test="receiverAddress != null" >
         #{receiverAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="addressArea != null" >
+        #{addressArea,jdbcType=VARCHAR},
       </if>
       <if test="addressId != null" >
         #{addressId,jdbcType=INTEGER},

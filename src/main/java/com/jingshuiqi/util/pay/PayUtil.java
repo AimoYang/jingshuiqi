@@ -124,7 +124,7 @@ public class PayUtil {
 		String prepay_id = "";
 		System.out.println("用户支付请求数据xml为:" + xml);
 		try {
-			prepay_id = new GetWxOrderno().getPayNo(createOrderURL, xml);
+			prepay_id = GetWxOrderno.getPayNo(createOrderURL, xml);
 			if (prepay_id.equals("")) {
 				map.put("msg", "unifiedorder");
 				return map;

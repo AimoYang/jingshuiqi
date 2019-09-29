@@ -15,8 +15,7 @@ import com.jingshuiqi.util.WeixinUtil;
  */
 public class SendMpTemplate {
 
-	public static String sendTemplateMessage(String openId, Template template,
-			AccessToken token , String formId) {
+	public static String sendTemplateMessage(String openId, Template template, AccessToken token , String formId) {
 		try {
 			if (openId == null) {
 				return "nullDbUser";

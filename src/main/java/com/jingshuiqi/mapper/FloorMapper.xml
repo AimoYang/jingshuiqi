@@ -12,6 +12,7 @@
   </resultMap>
   <resultMap id="FloorResultMap" type="com.jingshuiqi.vo.IndexFloor" extends="BaseResultMap">
     <result column="goods_uuid" property="goodsUuid" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, floor_img, floor_title, sort, is_index, is_delete, create_time
@@ -19,7 +20,7 @@
 
   <select id="findIndexFloorInfo" resultMap="FloorResultMap" >
     select
-    f.*,b.goods_uuid
+    f.*,b.goods_uuid,(select count(1) from floor_bind as b where b.floor_id = f.id) num
     from floor as f
     left join floor_bind as b on f.id = b.floor_id
     where f.is_delete = 0 and (select count(1) from floor_bind as b where b.floor_id = f.id) > 0

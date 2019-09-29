@@ -17,9 +17,9 @@
     is_delete
   </sql>
 
-  <select id="findCode" resultType="java.lang.Integer" >
+  <select id="findCode" resultMap="BaseResultMap" >
     select
-    count(1)
+    <include refid="Base_Column_List" />
     from exchange_code
     where code_uuid = #{code} and goods_uuid = #{goodsUuid} and UNIX_TIMESTAMP(expire_time) - UNIX_TIMESTAMP(now()) > 0
   </select>
@@ -31,6 +31,15 @@
       code_type = 1
     where code_uuid = #{code}
   </update>
+
+  <update id="updateCode" >
+    update exchange_code
+    set
+      code_type = 4
+    where code_uuid = #{code} and goods_uuid = #{goodsUuid}
+  </update>
+
+
 
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
