@@ -145,4 +145,25 @@ public class OrderCommission {
     public void setReserve1(String reserve1) {
         this.reserve1 = reserve1 == null ? null : reserve1.trim();
     }
+
+
+    @Override
+    public String toString() {
+        return "OrderCommission{" +
+                "id=" + id +
+                ", orderDetailUuid='" + orderDetailUuid + '\'' +
+                ", parentOpenId='" + parentOpenId + '\'' +
+                ", grandpaOpenId='" + grandpaOpenId + '\'' +
+                ", parentCommission=" + parentCommission +
+                ", grandpaCommission=" + grandpaCommission +
+                ", actualParentCommission=" + actualParentCommission +
+                ", actualGrandpaCommission=" + actualGrandpaCommission +
+                ", isSuccess=" + isSuccess +
+                ", createTime=" + createTime +
+                ", doTime=" + doTime +
+                ", doType=" + doType +
+                ", reserve='" + reserve + '\'' +
+                ", reserve1='" + reserve1 + '\'' +
+                '}';
+    }
 }
