@@ -122,4 +122,22 @@ public class AgentCommission {
     public void setReserve1(String reserve1) {
         this.reserve1 = reserve1 == null ? null : reserve1.trim();
     }
+
+    @Override
+    public String toString() {
+        return "AgentCommission{" +
+                "id=" + id +
+                ", orderDetailUuid='" + orderDetailUuid + '\'' +
+                ", type=" + type +
+                ", agentOpenId='" + agentOpenId + '\'' +
+                ", commission=" + commission +
+                ", actualCommission=" + actualCommission +
+                ", isSuccess=" + isSuccess +
+                ", createTime=" + createTime +
+                ", doTime=" + doTime +
+                ", doType=" + doType +
+                ", reserve='" + reserve + '\'' +
+                ", reserve1='" + reserve1 + '\'' +
+                '}';
+    }
 }

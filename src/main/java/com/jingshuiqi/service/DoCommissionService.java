@@ -68,6 +68,7 @@ public class DoCommissionService {
             Agent parentAgent = agentMapper.selectByOpenId(parentOpenId);
             if(parentAgent == null){
                 orderCommission.setParentCommission((double)0);
+                orderCommission.setActualParentCommission((double)0);
             }else {
                 if(openId.equals(parentOpenId)){
                     orderCommission.setParentCommission((double)0);
@@ -105,6 +106,7 @@ public class DoCommissionService {
             orderCommission.setCreateTime(now);
             orderCommission.setIsSuccess((short)0);
             //添加sql
+            System.out.println("orderCommission ==================="+orderCommission.toString());
             orderCommissionMapper.insertSelective(orderCommission);
         }
         List<UserAgent> list = userBaseMapper.selectUserAgent();
@@ -121,6 +123,7 @@ public class DoCommissionService {
             agentCommission.setType(3);
             agentCommission.setIsSuccess((short)0);
             agentCommission.setOrderDetailUuid(orderDetailUuid);
+            System.out.println("agentCommission总裁代理 ==================="+agentCommission.toString());
             //添加sql
             agentCommissionMapper.insertSelective(agentCommission);
         }
@@ -137,6 +140,7 @@ public class DoCommissionService {
                 agentCommission.setType(2);
                 agentCommission.setIsSuccess((short)0);
                 agentCommission.setOrderDetailUuid(orderDetailUuid);
+                System.out.println("agentCommission  地区代理 ==================="+agentCommission.toString());
                 //添加sql
                 agentCommissionMapper.insertSelective(agentCommission);
             }
