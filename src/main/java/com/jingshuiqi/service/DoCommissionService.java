@@ -62,22 +62,45 @@ public class DoCommissionService {
         OrderCommission orderCommission = new OrderCommission();
         //一级分佣
         Share share = shareMapper.findUserInfoForBind(openId);
-        if(share != null && share.getIsDelete() == 0){
+        if(share != null && share.getIsDelete() == 0 && share.getParentOpenId() != null && !"".equals(share.getParentOpenId())){
             //父级openId
             String parentOpenId = share.getParentOpenId();
-            //父级分佣
-            Double parentCommission = ArithUtil.mul(sku.getOneCommission(),quantity);
             orderCommission.setParentOpenId(parentOpenId);
-            orderCommission.setParentCommission(parentCommission);
+            Agent parentAgent = agentMapper.selectByOpenId(parentOpenId);
+            if(parentAgent == null){
+                orderCommission.setParentCommission((double)0);
+            }else {
+                if(openId.equals(parentOpenId)){
+                    orderCommission.setParentCommission((double)0);
+                    orderCommission.setActualParentCommission((double)0);
+                }else {
+                    //父级分佣
+                    Double parentCommission = ArithUtil.mul(sku.getOneCommission(),quantity);
+                    orderCommission.setParentCommission(parentCommission);
+                    orderCommission.setActualParentCommission(parentCommission);
+                }
+            }
             //二级返佣
             Share share1 = shareMapper.findUserInfoForBind(parentOpenId);
-            if(share1 != null && share1.getIsDelete() == 0){
+            if(share1 != null && share1.getIsDelete() == 0  && share1.getParentOpenId() != null && !"".equals(share1.getParentOpenId())){
                 //父父级openId
                 String grandpaOpenId = share1.getParentOpenId();
                 //父父级分佣
-                Double grandpaCommission = ArithUtil.mul(sku.getTwoCommission(),quantity);
                 orderCommission.setGrandpaOpenId(grandpaOpenId);
-                orderCommission.setGrandpaCommission(grandpaCommission);
+                Agent grandpaAgent = agentMapper.selectByOpenId(grandpaOpenId);
+                if(grandpaAgent == null){
+                    orderCommission.setGrandpaCommission((double)0);
+                    orderCommission.setActualGrandpaCommission((double)0);
+                }else {
+                    if(openId.equals(grandpaOpenId)){
+                        orderCommission.setGrandpaCommission((double)0);
+                        orderCommission.setActualGrandpaCommission((double)0);
+                    }else {
+                        Double grandpaCommission = ArithUtil.mul(sku.getTwoCommission(),quantity);
+                        orderCommission.setGrandpaCommission(grandpaCommission);
+                        orderCommission.setActualGrandpaCommission(grandpaCommission);
+                    }
+                }
             }
             orderCommission.setOrderDetailUuid(orderDetailUuid);
             orderCommission.setCreateTime(now);
@@ -94,6 +117,7 @@ public class DoCommissionService {
             agentCommission.setAgentOpenId(topOpenId);
             Double commission = ArithUtil.mul(sku.getTopCommission(),quantity);
             agentCommission.setCommission(commission);
+            agentCommission.setActualCommission(commission);
             agentCommission.setCreateTime(now);
             agentCommission.setType(3);
             agentCommission.setIsSuccess((short)0);
@@ -109,6 +133,7 @@ public class DoCommissionService {
                 agentCommission.setAgentOpenId(agent.getOpenId());
                 Double commission = ArithUtil.mul(sku.getCityCommission(),quantity);
                 agentCommission.setCommission(commission);
+                agentCommission.setActualCommission(commission);
                 agentCommission.setCreateTime(now);
                 agentCommission.setType(2);
                 agentCommission.setIsSuccess((short)0);
@@ -129,7 +154,10 @@ public class DoCommissionService {
         for (UserAgent u: list) {
             if(openId.equals(u.getOpenId())){
                 if(u.getUserType() == 1 && u.getAgentType() == 3){
-                    return  u.getOpenId();
+                    Agent agent = agentMapper.selectByOpenId(u.getOpenId());
+                    if(agent != null){
+                        return  u.getOpenId();
+                    }
                 }
                 map.put(openId,openId);
                 if(u.getParentOpenId() == null || "".equals(u.getParentOpenId())){
