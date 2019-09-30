@@ -23,4 +23,6 @@ public interface ExchangeCodeMapper {
     int reCode(@Param("code")String code, @Param("date") Date date);
 
     void updateCode(@Param("code")String code, @Param("goodsUuid")String goodsUuid);
+
+    void updateReCode(@Param("code")String code);
 }

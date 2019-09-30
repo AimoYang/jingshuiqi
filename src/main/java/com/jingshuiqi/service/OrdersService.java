@@ -74,6 +74,8 @@ public class OrdersService {
     private ShopCoinsMapper shopCoinsMapper;
     @Autowired
     private CustomService customService;
+    @Autowired
+    private RedisService redisService;
 
     public JsonResult payOrder(String url, String uuid , HttpServletRequest request , HttpServletResponse response) {
         Map<String, Object> map = new HashMap<String, Object>(2);
@@ -102,7 +104,7 @@ public class OrdersService {
     @Transactional(rollbackFor = Exception.class)
     public JsonResult saveOrderCheck(GoodsOrder goodsOrder) {
 
-
+        Integer coins = 0;
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String orderUuid = RandomNum.getRandomFileName();
 
@@ -154,7 +156,7 @@ public class OrdersService {
                 goodsOrderDetail.setOrderUuid(orderUuid);
                 goodsOrderDetail.setProperties(sku.getProperties());
                 goodsOrderDetail.setStatus(0);
-                goodsOrder.setAllCoins(goodsOrder.getAllCoins() + goodsOrderDetail.getDeduction());
+                goodsOrder.setAllCoins(goodsOrder.getAllCoins() + goods.getDeductionBy());
                 goodsOrder.setOrderPrice(goodsOrder.getOrderPrice() + goodsOrderDetail.getAmount());
                 goodsOrder.setFreight(goodsOrder.getFreight() + goods.getFreight().intValue());
                 goodsOrderDetailMapper.insertSelective(goodsOrderDetail);
@@ -166,13 +168,17 @@ public class OrdersService {
                 }
                 doCommissionService.calculateCommission(uuid,goodsOrder.getOpenId(),sku.getId(),goodsOrderDetail.getQuantity(),area == null ? null : area.getId());
                 OrderCommission orderCommission = orderCommissionMapper.findCommission(goodsOrderDetail.getUuid());
-                if (orderCommission.getParentOpenId() != null){
-                    customService.content(orderCommission.getParentOpenId() , "亲，您的好友下了一笔订单"+"\n"+"\n"+"昵称: ("+userBase.getNickName()+")"+"\n"+"商品名称: ("+goodsOrderDetail.getProductName()+")"+"\n"+"时间: "+df.format(new Date())+"\n"+"\n"+"支付完成后，您将获得佣金" );
+                if (orderCommission != null){
+                    if (orderCommission.getParentOpenId() != null){
+                        customService.content(orderCommission.getParentOpenId() , "亲，您的好友下了一笔订单"+"\n"+"\n"+"昵称: ("+userBase.getNickName()+")"+"\n"+"商品名称: ("+goodsOrderDetail.getProductName()+")"+"\n"+"时间: "+df.format(new Date())+"\n"+"\n"+"支付完成后，您将获得佣金" );
+                    }
                 }
+                coins = coins + goodsOrderDetail.getDeduction();
+
             }
             goodsOrder.setIsComment(0);
             goodsOrder.setOrderPrice(ArithUtil.fun(goodsOrder.getOrderPrice()) + goodsOrder.getFreight());
-            goodsOrder.setActualPrice(goodsOrder.getOrderPrice() - goodsOrder.getAllCoins());
+            goodsOrder.setActualPrice(goodsOrder.getOrderPrice());
             goodsOrder.setGoodsOrderDetails(list);
             goodsOrder.setCreateTime(new Date());
 
@@ -185,7 +191,7 @@ public class OrdersService {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return ResultUtil.fail("订单生成失败");
         }
-
+        redisService.set(orderUuid + "_order", orderUuid ,(long)1800);
         return ResultUtil.success(goodsOrder);
     }
 
@@ -366,6 +372,11 @@ public class OrdersService {
                 if (goodsOrder2.getOrderStatus() > 0){
                     return ResultUtil.fail("订单已付款，无法取消");
                 }else {
+                    if (goodsOrder.getOrderType() == 1){
+                        if (goodsOrder.getCode() != null){
+                            exchangeCodeMapper.updateReCode(goodsOrder.getCode());
+                        }
+                    }
                     goodsOrder2.setOrderStatus(5);
                     goodsOrderMapper.updateByPrimaryKeySelective(goodsOrder2);
                     return ResultUtil.success();
@@ -406,13 +417,25 @@ public class OrdersService {
                 if (orderCommission != null){
                     if (orderCommission.getParentOpenId() != null){
                         Agent agent = agentMapper.findAgent(orderCommission.getParentOpenId());
+                        Commission commission = commissionMapper.selectByOpenId(orderCommission.getParentOpenId());
+                        if (commission == null){
+                            commission = new Commission();
+                            commission.setOpenId(orderCommission.getParentOpenId());
+                            commissionMapper.insertSelective(commission);
+                        }
                         commissionMapper.updateIncome(orderCommission.getParentOpenId(),orderCommission.getActualParentCommission());
                         customService.content(orderCommission.getParentOpenId() , "亲，您的佣金 +"+orderCommission.getActualParentCommission()+"\n"+"来源:  【支付成功】"+"\n"+"身份:  【"+getAgent(agent.getAgentType())+"】"+"\n"+"顾客: "+usr.getNickName()+"\n"+"性别: "+getSex(usr.getSex())+"\n"+"时间: "+df.format(new Date()));
                     }
                     if (orderCommission.getGrandpaOpenId() != null){
                         Agent agent2 = agentMapper.findAgent(orderCommission.getGrandpaOpenId());
+                        Commission commission = commissionMapper.selectByOpenId(orderCommission.getGrandpaOpenId());
+                        if (commission == null){
+                            commission = new Commission();
+                            commission.setOpenId(orderCommission.getGrandpaOpenId());
+                            commissionMapper.insertSelective(commission);
+                        }
                         commissionMapper.updateIncome(orderCommission.getGrandpaOpenId(),orderCommission.getActualGrandpaCommission());
-                        customService.content(orderCommission.getParentOpenId() , "亲，您的佣金 +"+orderCommission.getActualParentCommission()+"\n"+"来源:  【支付成功】"+"\n"+"身份:  【"+getAgent(agent2.getAgentType())+"】"+"\n"+"顾客: "+usr.getNickName()+"\n"+"性别: "+getSex(usr.getSex())+"\n"+"时间: "+df.format(new Date()));
+                        customService.content(orderCommission.getGrandpaOpenId() , "亲，您的佣金 +"+orderCommission.getActualGrandpaCommission()+"\n"+"来源:  【支付成功】"+"\n"+"身份:  【"+getAgent(agent2.getAgentType())+"】"+"\n"+"顾客: "+usr.getNickName()+"\n"+"性别: "+getSex(usr.getSex())+"\n"+"时间: "+df.format(new Date()));
                     }
                     orderCommission.setIsSuccess((short)1);
                     orderCommission.setDoType((short)1);
@@ -424,11 +447,23 @@ public class OrdersService {
                     for (AgentCommission a : list) {
                         if (a.getType() == 2){
                             Agent agent = agentMapper.findAgent(a.getAgentOpenId());
+                            Commission commission = commissionMapper.selectByOpenId(a.getAgentOpenId());
+                            if (commission == null){
+                                commission = new Commission();
+                                commission.setOpenId(a.getAgentOpenId());
+                                commissionMapper.insertSelective(commission);
+                            }
                             commissionMapper.updateCity(a.getAgentOpenId(),a.getActualCommission());
                             customService.content(orderCommission.getParentOpenId() , "亲，您的佣金 +"+orderCommission.getActualParentCommission()+"\n"+"来源:  【支付成功】"+"\n"+"身份:  【"+getAgent(agent.getAgentType())+"】"+"\n"+"顾客: "+usr.getNickName()+"\n"+"性别: "+getSex(usr.getSex())+"\n"+"时间: "+df.format(new Date()));
                         }
                         if (a.getType() == 3){
                             Agent agent = agentMapper.findAgent(a.getAgentOpenId());
+                            Commission commission = commissionMapper.selectByOpenId(a.getAgentOpenId());
+                            if (commission == null){
+                                commission = new Commission();
+                                commission.setOpenId(a.getAgentOpenId());
+                                commissionMapper.insertSelective(commission);
+                            }
                             commissionMapper.updateTeam(a.getAgentOpenId(),a.getActualCommission());
                             customService.content(orderCommission.getParentOpenId() , "亲，您的佣金 +"+orderCommission.getActualParentCommission()+"\n"+"来源:  【支付成功】"+"\n"+"身份:  【"+getAgent(agent.getAgentType())+"】"+"\n"+"顾客: "+usr.getNickName()+"\n"+"性别: "+getSex(usr.getSex())+"\n"+"时间: "+df.format(new Date()));
                         }

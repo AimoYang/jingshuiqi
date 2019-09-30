@@ -39,6 +39,14 @@
     where code_uuid = #{code} and goods_uuid = #{goodsUuid}
   </update>
 
+  <update id="updateReCode" >
+    update exchange_code
+    set
+      code_type = 0
+    where code_uuid = #{code}
+  </update>
+
+
 
 
 
