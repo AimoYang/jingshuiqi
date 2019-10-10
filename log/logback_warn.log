@@ -1,15 +1,94 @@
-2019-09-29 14:13:22,429 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 15:53:39,746 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 15:53:46,434 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 16:27:27,788 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 17:15:46,725 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 17:29:52,962 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 18:27:30,414 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 18:53:51,937 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 19:02:50,117 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 19:10:34,316 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 19:11:42,033 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 19:14:55,637 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 20:51:12,539 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 20:54:34,576 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
-2019-09-29 21:20:36,062 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-10-09 09:24:37,252 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-10-09 09:28:37,207 WARN [http-nio-82-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [ExceptionHandlerExceptionResolver.java : 419] Failure in @ExceptionHandler public com.jingshuiqi.bean.JsonResult com.jingshuiqi.util.ExceptionControllerAdvice.execption(java.lang.Exception)
+org.apache.catalina.connector.ClientAbortException: java.io.IOException: 您的主机中的软件中止了一个已建立的连接。
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:341)
+	at org.apache.catalina.connector.OutputBuffer.flushByteBuffer(OutputBuffer.java:766)
+	at org.apache.catalina.connector.OutputBuffer.append(OutputBuffer.java:671)
+	at org.apache.catalina.connector.OutputBuffer.writeBytes(OutputBuffer.java:376)
+	at org.apache.catalina.connector.OutputBuffer.write(OutputBuffer.java:354)
+	at org.apache.catalina.connector.CoyoteOutputStream.write(CoyoteOutputStream.java:96)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator._flushBuffer(UTF8JsonGenerator.java:2085)
+	at com.fasterxml.jackson.core.json.UTF8JsonGenerator.flush(UTF8JsonGenerator.java:1097)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:915)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:287)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:103)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:180)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:82)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:122)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:408)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:61)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:140)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:79)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1298)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1110)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1056)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.io.IOException: 您的主机中的软件中止了一个已建立的连接。
+	at sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:51)
+	at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:93)
+	at sun.nio.ch.IOUtil.write(IOUtil.java:65)
+	at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:471)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:140)
+	at org.apache.tomcat.util.net.NioBlockingSelector.write(NioBlockingSelector.java:101)
+	at org.apache.tomcat.util.net.NioSelectorPool.write(NioSelectorPool.java:152)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1261)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:793)
+	at org.apache.tomcat.util.net.SocketWrapperBase.writeBlocking(SocketWrapperBase.java:563)
+	at org.apache.tomcat.util.net.SocketWrapperBase.write(SocketWrapperBase.java:501)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.doWrite(Http11OutputBuffer.java:538)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.doWrite(ChunkedOutputFilter.java:110)
+	at org.apache.coyote.http11.Http11OutputBuffer.doWrite(Http11OutputBuffer.java:190)
+	at org.apache.coyote.Response.doWrite(Response.java:599)
+	at org.apache.catalina.connector.OutputBuffer.realWriteBytes(OutputBuffer.java:329)
+	... 67 common frames omitted
+2019-10-09 09:32:25,342 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-10-09 13:21:41,524 WARN [http-nio-82-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver [AbstractHandlerExceptionResolver.java : 198] Resolved [java.lang.NullPointerException]
+2019-10-09 16:24:52,757 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]
+2019-10-09 16:27:04,021 WARN [restartedMain] s.d.s.w.r.p.ParameterDataTypeReader [ParameterDataTypeReader.java : 86] Trying to infer dataType org.springframework.web.multipart.MultipartFile[]

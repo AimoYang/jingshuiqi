@@ -8,6 +8,7 @@ import com.jingshuiqi.form.ListId;
 import com.jingshuiqi.util.*;
 import com.jingshuiqi.util.pay.PayUtil;
 import com.jingshuiqi.util.pay.Sha1Util;
+import com.jingshuiqi.util.template.AccessToken;
 import com.jingshuiqi.util.template.MessageTemplate;
 import com.jingshuiqi.vo.OrderGoods;
 import groovy.util.logging.Slf4j;
@@ -170,7 +171,9 @@ public class OrdersService {
                 OrderCommission orderCommission = orderCommissionMapper.findCommission(goodsOrderDetail.getUuid());
                 if (orderCommission != null){
                     if (orderCommission.getParentOpenId() != null){
-                        customService.content(orderCommission.getParentOpenId() , "亲，您的好友下了一笔订单"+"\n"+"\n"+"昵称: ("+userBase.getNickName()+")"+"\n"+"商品名称: ("+goodsOrderDetail.getProductName()+")"+"\n"+"时间: "+df.format(new Date())+"\n"+"\n"+"支付完成后，您将获得佣金" );
+                        if (orderCommission.getActualParentCommission() != 0){
+                            customService.content(orderCommission.getParentOpenId() , "亲，您的好友下了一笔订单"+"\n"+"\n"+"昵称: ("+userBase.getNickName()+")"+"\n"+"商品名称: ("+goodsOrderDetail.getProductName()+")"+"\n"+"时间: "+df.format(new Date())+"\n"+"\n"+"支付完成后，您将获得佣金" );
+                        }
                     }
                 }
                 coins = coins + goodsOrderDetail.getDeduction();
@@ -199,6 +202,10 @@ public class OrdersService {
     public void updateGoodsNumber(String orderNum) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         GoodsOrder goodsOrder = goodsOrderMapper.findOrdersByUuid(orderNum);
+        if (goodsOrder.getOrderStatus() == 1) {
+            return;
+        }
+
         List<GoodsOrderDetail> ordersDetailsList = goodsOrderDetailMapper.findOrderDetail(goodsOrder.getUuid());
         goodsOrder.setOrderStatus(1);
         goodsOrder.setTradeSuccessfulTime(new Date());
@@ -293,7 +300,9 @@ public class OrdersService {
             map.put("remark", "欢迎再次购买！");
             MessageTemplate messageTemplate = new MessageTemplate();
             String template = messageTemplate.perTicketOk(map,goodsOrder.getOpenId());
-            net.sf.json.JSONObject json = WeixinUtil.msgToUser(template,WeixinUtil.getAccessToken());
+            AccessToken accessToken1 = new AccessToken();
+            accessToken1.setToken(accessTokenService.findAccessToken());
+            net.sf.json.JSONObject json = WeixinUtil.msgToUser(template,accessToken1);
             System.out.println(json);
 
         } catch (Exception e) {
@@ -308,7 +317,7 @@ public class OrdersService {
         int deductionMax = userBase.getShopCoins();
         double allPrice = 0;
         List<OrderGoods> list = new ArrayList<>();
-        Map<String, Object> map = new HashMap<String, Object>(3);
+        Map<String, Object> map = new HashMap<String, Object>(4);
         for (Integer id : listId.getId()) {
             OrderGoods orderGoods = new OrderGoods();
             GoodsCart goodsCart = goodsCartMapper.selectByPrimaryKey(id);
@@ -372,9 +381,9 @@ public class OrdersService {
                 if (goodsOrder2.getOrderStatus() > 0){
                     return ResultUtil.fail("订单已付款，无法取消");
                 }else {
-                    if (goodsOrder.getOrderType() == 1){
-                        if (goodsOrder.getCode() != null){
-                            exchangeCodeMapper.updateReCode(goodsOrder.getCode());
+                    if (goodsOrder2.getOrderType() == 1){
+                        if (goodsOrder2.getCode() != null){
+                            exchangeCodeMapper.updateReCode(goodsOrder2.getCode());
                         }
                     }
                     goodsOrder2.setOrderStatus(5);
